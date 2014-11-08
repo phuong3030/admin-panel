@@ -1,0 +1,12 @@
+site 'http://community.opscode.com/api/v1'
+
+cookbook 'apt'
+cookbook 'git'
+cookbook 'build-essential'
+cookbook 'ruby_build'
+cookbook 'nodejs'
+cookbook 'rbenv', :git => 'https://github.com/fnichol/chef-rbenv.git'
+cookbook 'vim'
+cookbook 'mysql'
+cookbook 'user'
+cookbook 'sudo'

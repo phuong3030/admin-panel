@@ -1,0 +1,109 @@
+body#comfy {
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 150%;
+  background: white;
+  margin: 0;
+  padding: 0;
+  color: #323537;
+
+  .body-wrapper {
+    height: auto;
+
+    .center-column {
+      margin: 0px 250px 0 0;
+    }
+  }
+}
+
+#header {
+  background: #6a7176;
+  background: -webkit-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: -moz-linear-gradient(-90deg, #6a7176, #4d5256);
+  background: linear, -90deg, #6a7176, #4d5256;
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  -ms-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FF6A7176', endColorstr='#FF4D5256');
+  border-bottom: 1px solid #44484b;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.37);
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.37);
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.37);
+  text-shadow: black 0 1px 0;
+  display: table;
+  height: 20px;
+  width: 100%;
+  overflow: visible;
+  position: inherit;
+  padding: 2px 0;
+  z-index: 900;
+
+  h1 {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap;
+    color: #cdcdcd;
+    margin-right: 20px;
+    margin-bottom: 0px;
+    padding: 3px 30px 0 30px;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1.2;
+  }
+
+  .navigation {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    top: 2px;
+    position: relative;
+
+    &.tabs {
+      width: 100%;
+    }
+
+    &.utils {
+      color: #aaa;
+      display: table-cell;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      padding-right: 26px;
+      text-align: right;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: 4px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      font-size: 1em;
+      position: relative;
+
+      &:hover a, &:focus a, & > a.active {
+        background: #7b8389;
+        color: #fff;
+      }
+
+      a {
+        color: #cdcdcd;
+        text-decoration: none;
+        padding: 6px 10px 4px 10px;
+        position: relative;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        border-radius: 10px;
+        font-size: 0.85em;
+      }
+    }
+  }
+}
+
+h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 2em;
+  line-height: 100%;
+  font-weight: bold;
+  color: #5e6469;
+}

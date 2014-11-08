@@ -1,0 +1,16 @@
+// Active Admin's got SASS!
+@import "active_admin/mixins";
+@import "active_admin/base";
+
+#header ul.tabs > li {
+  & > a.active {
+    background: #7b8389;
+    color: #fff;
+  }
+
+  a {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+}
