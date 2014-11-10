@@ -1,4 +1,3 @@
-binding.pry
 ActiveAdmin.register FoodStore::Product, :as => "Product" do
   permit_params :name, :description, :category_id, :slug
 
@@ -26,7 +25,7 @@ ActiveAdmin.register FoodStore::Product, :as => "Product" do
   form do |f|
     f.inputs :name 
     f.inputs :description
-    f.inputs :category, :as => :select, :collection => Category.all
+    f.inputs :category, :as => :select, :collection => FoodStore::Category.all
 
     f.actions
   end
