@@ -1,6 +1,5 @@
 module Core
   class User < ActiveRecord::Base
-
     has_and_belongs_to_many :roles, :class_name => "Core::Role"
 
     devise :database_authenticatable, 
@@ -20,7 +19,7 @@ module Core
     end
 
     def remove_role(role)
-      self.user_roles.find_by( role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
+      self.user_roles.find_by(role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
     end
 
   end

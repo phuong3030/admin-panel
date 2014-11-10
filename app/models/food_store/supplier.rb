@@ -1,4 +1,2 @@
-module FoodStore
-  class Supplier < User
-  end
+class FoodStore::Supplier < User
 end
