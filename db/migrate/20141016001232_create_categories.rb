@@ -1,6 +1,6 @@
 class CreateCategories < ActiveRecord::Migration
   def change
-    create_table :food_store_categories do |t|
+    create_table :categories do |t|
       t.string :name
       t.text :description
       t.text :slug 
@@ -8,6 +8,6 @@ class CreateCategories < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :food_store_categories, :slug, :unique => true
+    add_index :categories, :slug, :unique => true
   end
 end
