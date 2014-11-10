@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141110074205) do
+ActiveRecord::Schema.define(version: 20141110153759) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20141110074205) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id"
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
+
+  create_table "categories", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.text     "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "categories", ["slug"], name: "index_categories_on_slug", unique: true
 
   create_table "comfy_cms_blocks", force: true do |t|
     t.string   "identifier",                      null: false
@@ -147,17 +157,29 @@ ActiveRecord::Schema.define(version: 20141110074205) do
   add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true
   add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position"
 
-  create_table "food_store_categories", force: true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.text     "slug"
+  create_table "food_store_addresses", force: true do |t|
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "city"
+    t.string   "phone"
+    t.string   "company"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "food_store_categories", ["slug"], name: "index_food_store_categories_on_slug", unique: true
+  create_table "food_store_assets", force: true do |t|
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.integer  "attachment_file_size"
+    t.datetime "attachment_updated_at"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
-  create_table "food_store_line_items", force: true do |t|
+  create_table "line_items", force: true do |t|
     t.decimal  "price"
     t.integer  "quantity"
     t.integer  "order_id"
@@ -166,10 +188,10 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_line_items", ["order_id"], name: "index_food_store_line_items_on_order_id"
-  add_index "food_store_line_items", ["variant_id"], name: "index_food_store_line_items_on_variant_id"
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+  add_index "line_items", ["variant_id"], name: "index_line_items_on_variant_id"
 
-  create_table "food_store_orders", force: true do |t|
+  create_table "orders", force: true do |t|
     t.string   "number"
     t.integer  "item_total"
     t.integer  "total"
@@ -188,13 +210,13 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_orders", ["bill_address_id"], name: "index_food_store_orders_on_bill_address_id"
-  add_index "food_store_orders", ["customer_id"], name: "index_food_store_orders_on_customer_id"
-  add_index "food_store_orders", ["ship_address_id"], name: "index_food_store_orders_on_ship_address_id"
-  add_index "food_store_orders", ["shipping_method_id"], name: "index_food_store_orders_on_shipping_method_id"
-  add_index "food_store_orders", ["supplier_id"], name: "index_food_store_orders_on_supplier_id"
+  add_index "orders", ["bill_address_id"], name: "index_orders_on_bill_address_id"
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id"
+  add_index "orders", ["ship_address_id"], name: "index_orders_on_ship_address_id"
+  add_index "orders", ["shipping_method_id"], name: "index_orders_on_shipping_method_id"
+  add_index "orders", ["supplier_id"], name: "index_orders_on_supplier_id"
 
-  create_table "food_store_payment_methods", force: true do |t|
+  create_table "payment_methods", force: true do |t|
     t.string   "type"
     t.string   "name"
     t.text     "description"
@@ -203,7 +225,7 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  create_table "food_store_payments", force: true do |t|
+  create_table "payments", force: true do |t|
     t.decimal  "amount"
     t.string   "state"
     t.integer  "payment_method_id"
@@ -212,19 +234,19 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_payments", ["order_id"], name: "index_food_store_payments_on_order_id"
-  add_index "food_store_payments", ["payment_method_id"], name: "index_food_store_payments_on_payment_method_id"
+  add_index "payments", ["order_id"], name: "index_payments_on_order_id"
+  add_index "payments", ["payment_method_id"], name: "index_payments_on_payment_method_id"
 
-  create_table "food_store_product_properties", force: true do |t|
+  create_table "product_properties", force: true do |t|
     t.string   "value"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "food_store_product_properties", ["product_id"], name: "index_food_store_product_properties_on_product_id"
+  add_index "product_properties", ["product_id"], name: "index_product_properties_on_product_id"
 
-  create_table "food_store_products", force: true do |t|
+  create_table "products", force: true do |t|
     t.integer  "category_id"
     t.string   "name"
     t.text     "description"
@@ -234,11 +256,11 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_products", ["available_on"], name: "index_food_store_products_on_available_on"
-  add_index "food_store_products", ["name"], name: "index_food_store_products_on_name"
-  add_index "food_store_products", ["slug"], name: "index_food_store_products_on_slug", unique: true
+  add_index "products", ["available_on"], name: "index_products_on_available_on"
+  add_index "products", ["name"], name: "index_products_on_name"
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true
 
-  create_table "food_store_properties", force: true do |t|
+  create_table "properties", force: true do |t|
     t.string   "name"
     t.integer  "product_id"
     t.integer  "property_id"
@@ -246,10 +268,23 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_properties", ["product_id"], name: "index_food_store_properties_on_product_id"
-  add_index "food_store_properties", ["property_id"], name: "index_food_store_properties_on_property_id"
+  add_index "properties", ["product_id"], name: "index_properties_on_product_id"
+  add_index "properties", ["property_id"], name: "index_properties_on_property_id"
 
-  create_table "food_store_shipments", force: true do |t|
+  create_table "roles", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles_users", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "shipments", force: true do |t|
     t.string   "number"
     t.string   "tracking"
     t.decimal  "cost"
@@ -262,41 +297,12 @@ ActiveRecord::Schema.define(version: 20141110074205) do
     t.datetime "updated_at"
   end
 
-  add_index "food_store_shipments", ["address_id"], name: "index_food_store_shipments_on_address_id"
-  add_index "food_store_shipments", ["order_id"], name: "index_food_store_shipments_on_order_id"
-  add_index "food_store_shipments", ["shipping_method_id"], name: "index_food_store_shipments_on_shipping_method_id"
+  add_index "shipments", ["address_id"], name: "index_shipments_on_address_id"
+  add_index "shipments", ["order_id"], name: "index_shipments_on_order_id"
+  add_index "shipments", ["shipping_method_id"], name: "index_shipments_on_shipping_method_id"
 
-  create_table "food_store_shipping_methods", force: true do |t|
+  create_table "shipping_methods", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "food_store_variants", force: true do |t|
-    t.string   "sku"
-    t.decimal  "price"
-    t.decimal  "weight"
-    t.decimal  "height"
-    t.decimal  "width"
-    t.decimal  "depth"
-    t.boolean  "is_master"
-    t.integer  "count_on_hand"
-    t.integer  "product_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "food_store_variants", ["product_id"], name: "index_food_store_variants_on_product_id"
-
-  create_table "roles", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "roles_users", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -320,5 +326,21 @@ ActiveRecord::Schema.define(version: 20141110074205) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "variants", force: true do |t|
+    t.string   "sku"
+    t.decimal  "price"
+    t.decimal  "weight"
+    t.decimal  "height"
+    t.decimal  "width"
+    t.decimal  "depth"
+    t.boolean  "is_master"
+    t.integer  "count_on_hand"
+    t.integer  "product_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "variants", ["product_id"], name: "index_variants_on_product_id"
 
 end
