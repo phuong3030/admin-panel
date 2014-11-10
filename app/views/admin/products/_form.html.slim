@@ -1,0 +1,24 @@
+.row
+  = semantic_form_for admin_products_path do |f|
+    .col-md-8
+      = f.inputs do
+        = f.input(:name, :lable => "Name")
+        = f.input(:description, :as => :text, :lable => "Description", :required => false)
+
+      = f.inputs do 
+        = f.input( \
+            :available_on, \
+            :required => false, \
+            :as => :date_picker, \
+            :input_html => { :value => Date.today } \
+          )
+        = f.input( \
+            :category, \
+            :required => false, \
+            :as => :select, \ 
+            :collection => FoodStore::Category.all \
+          )
+    
+      = f.action(:submit, :button_html => { :value => "Create Product" })
+    .col-md-4
+      = f.inputs(:name => "Master Variant")
