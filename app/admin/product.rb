@@ -1,6 +1,5 @@
-binding.pry
 ActiveAdmin.register FoodStore::Product, :as => "Product" do
-  permit_params :name, :description, :category_id, :slug
+  permit_params :name, :description, :available_on, :category_id, :slug
 
   # scope_to :current_user
   # scope :test
@@ -14,6 +13,7 @@ ActiveAdmin.register FoodStore::Product, :as => "Product" do
     #redirect_to collection_path, :alert => "Didn't really delete these!"
   #end
 
+  # Index page 
   index do 
     selectable_column
     column :name, :sortable => :name do |product|
@@ -23,12 +23,31 @@ ActiveAdmin.register FoodStore::Product, :as => "Product" do
     actions
   end
 
-  form do |f|
-    f.inputs :name 
-    f.inputs :description
-    f.inputs :category, :as => :select, :collection => Category.all
+  # Custom form 
+  form :partial => "/admin/products/form"
 
-    f.actions
+  # Sidebar
+  sidebar 'Product Details' do
+    ul do
+      li link_to(
+        'Images gallery'
+        #:controller => 'images',
+        #:action => 'index',
+        #'q[product_id_equals]' => "#{product.id}"
+      )
+      li link_to(
+        'Variants'
+        #:controller => 'images',
+        #:action => 'index',
+        #'q[product_id_equals]' => "#{product.id}"
+      )
+      li link_to(
+        'Product Properties'
+        #:controller => 'images',
+        #:action => 'index',
+        #'q[product_id_equals]' => "#{product.id}"
+      )
+    end
   end
 
 end

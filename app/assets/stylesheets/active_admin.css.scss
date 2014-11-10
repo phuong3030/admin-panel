@@ -1,4 +1,7 @@
-// Active Admin's got SASS!
+/*
+ *= require bootstrap  
+ */
+
 @import "active_admin/mixins";
 @import "active_admin/base";
 
@@ -13,4 +16,23 @@
     -moz-border-radius: 10px;
     border-radius: 10px;
   }
+}
+
+// Override bootstrap
+form fieldset ol > li label.label {
+  display: block;
+  text-align: left;
+  float: left;
+  font-size: 1.0em;
+  font-weight: bold;
+  color: #5e6469;
+}
+
+input[type="date"] {
+  line-height: 1;
+  text-align: center;
+}
+
+li.action {
+  list-style: none;
 }

@@ -29,12 +29,6 @@ ActiveAdmin.register FoodStore::Category, :as => "Category" do
   form do |f|
     f.inputs :name 
     f.inputs :description
-    f.inputs do
-      f.has_many :products, :allow_destory => true do |cf|
-        cf.input :name
-        cf.input :description
-      end
-    end
 
     f.actions
   end
