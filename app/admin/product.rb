@@ -1,3 +1,4 @@
+binding.pry
 ActiveAdmin.register FoodStore::Product, :as => "Product" do
   permit_params :name, :description, :category_id, :slug
 

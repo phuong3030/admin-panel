@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  number: MyString
+  item_total: 1
+  total: 1
+  adjustment_total: 1
+  customer_id: 
+  supplier_id: 
+  shipping_method_id: 
+  bill_address_id: 
+  ship_address_id: 
+  completed_at: 2014-11-10 14:19:22
+  email: MyString
+  special_instructions: MyString
+  state: MyString
+  payment_total: 9.99
+
+two:
+  number: MyString
+  item_total: 1
+  total: 1
+  adjustment_total: 1
+  customer_id: 
+  supplier_id: 
+  shipping_method_id: 
+  bill_address_id: 
+  ship_address_id: 
+  completed_at: 2014-11-10 14:19:22
+  email: MyString
+  special_instructions: MyString
+  state: MyString
+  payment_total: 9.99
