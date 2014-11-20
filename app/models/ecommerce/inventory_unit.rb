@@ -1,4 +1,4 @@
-class Ecommerce::InventoryUnit < ActiveRecord::Base
+class Ecommerce::InventoryUnit < Ecommerce::Base
   belongs_to :variant
   belongs_to :order
   belongs_to :shipment

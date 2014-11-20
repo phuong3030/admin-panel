@@ -1,2 +1,4 @@
-class Ecommerce::Taxonomy < ActiveRecord::Base
+class Ecommerce::Taxonomy < Ecommerce::Base
+
+  has_many :taxons
 end

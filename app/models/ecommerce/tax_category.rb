@@ -1,2 +1,2 @@
-class Ecommerce::TaxCategory < ActiveRecord::Base
+class Ecommerce::TaxCategory < Ecommerce::Base
 end

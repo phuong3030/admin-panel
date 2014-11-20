@@ -1,3 +1,3 @@
-class Ecommerce::CreditCard < ActiveRecord::Base
-  belongs_to :address
+class Ecommerce::CreditCard < Ecommerce::Base
+  belongs_tc :address
 end

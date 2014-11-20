@@ -1,2 +1,2 @@
-class Ecommerce::PaymentMethod < ActiveRecord::Base
+class Ecommerce::PaymentMethod < Ecommerce::Base
 end

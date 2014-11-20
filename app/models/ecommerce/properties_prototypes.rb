@@ -1,4 +1,4 @@
-class Ecommerce::PropertiesPrototypes < ActiveRecord::Base
+class Ecommerce::PropertiesPrototypes < Ecommerce::Base
   belongs_to :prototype
   belongs_to :property
 end

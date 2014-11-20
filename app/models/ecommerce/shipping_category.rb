@@ -1,2 +1,2 @@
-class Ecommerce::ShippingCategory < ActiveRecord::Base
+class Ecommerce::ShippingCategory < Ecommerce::Base
 end

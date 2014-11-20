@@ -1,2 +1,2 @@
-class Ecommerce::Zone < ActiveRecord::Base
+class Ecommerce::Zone < Ecommerce::Base
 end

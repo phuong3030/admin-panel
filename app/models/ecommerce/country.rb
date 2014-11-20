@@ -1,2 +1,2 @@
-class Ecommerce::Country < ActiveRecord::Base
+class Ecommerce::Country < Ecommerce::Base
 end
