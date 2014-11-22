@@ -1,2 +1,7 @@
-h1 = new_taxonomy 
+= stylesheet_link_tag 'admin/taxonomy/index', media: 'all', 'data-turbolinks-track' => true
 
+= semantic_form_for new_taxonomy, :url => admin_taxonomies_path do |f|
+  = f.inputs :name
+  = f.actions
+
+= render 'admin/taxonomy/taxonomy_tree', :taxonomies => taxonomies

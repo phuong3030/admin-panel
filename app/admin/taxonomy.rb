@@ -14,23 +14,21 @@ ActiveAdmin.register Ecommerce::Taxonomy, :as => "Taxonomy" do
 
   filter :name
   menu :priority => 2
-
-  collection_action :custom_page, :method => :get do
-    @a = 1
-    render 'admin/taxonomy/custom_page', :a => @a
-  end
+  config.batch_actions = false
+  config.paginate = false
 
   controller do
-    def cus
-      @a = 1
-      render 'admin/taxonomy/custom_page', :a => @a
-    end
   end
 
   index do
     @new_taxonomy = Ecommerce::Taxonomy.new
+    @taxonomies = Ecommerce::Taxonomy.tree
 
-    render 'admin/taxonomy/index', :new_taxonomy => @new_taxonomy
+    render(
+      'admin/taxonomy/index', 
+      :new_taxonomy => @new_taxonomy,
+      :taxonomies => @taxonomies
+    )
   end
 
 end

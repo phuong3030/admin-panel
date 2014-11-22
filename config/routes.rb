@@ -5,7 +5,6 @@ Rails.application.routes.draw do
       :users, 
       ActiveAdmin::Devise.config.merge({ :class_name => "Core::User" })
     )
-    get '/admin/taxonomies/cus' => 'admin/taxonomies#cus'
 
     ActiveAdmin.routes(self)
 
