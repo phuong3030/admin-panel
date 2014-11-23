@@ -20,17 +20,13 @@ module FoodStore::AuthModule
     when "Supplier"
       supplier_root_url
     else
-      root_url
+      ability = Core::Ability.new(current_user)
+      if ability.can?(:manage, "Cms:Site")
+        comfy_admin_cms_path
+      else
+        root_url
+      end
     end if user_signed_in? 
-  end
-
-  def authenticate_admin!
-    authenticate_user!
-
-    unless current_user.role? :admin
-      flash[:alert] = "Unauthorized Access!"
-      redirect_to new_user_session_path
-    end
   end
 
   def access_denied(exception)
