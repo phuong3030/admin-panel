@@ -1,13 +1,6 @@
 Rails.application.routes.draw do
 
   #scope ":locale", :locale => /#{I18n.available_locales.join("|")}/ do 
-    devise_for(
-      :users, 
-      ActiveAdmin::Devise.config.merge({ :class_name => "Core::User" })
-    )
-
-    ActiveAdmin.routes(self)
-
     comfy_route :cms_admin, :path => '/admin/cms'
 
     # root for render page from CMS system
