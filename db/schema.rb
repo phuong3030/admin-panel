@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120100351) do
+ActiveRecord::Schema.define(version: 20141120145325) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -455,6 +455,26 @@ ActiveRecord::Schema.define(version: 20141120100351) do
   end
 
   add_index "ecommerce_states", ["country_id"], name: "index_ecommerce_states_on_country_id"
+
+  create_table "ecommerce_stock_items", force: true do |t|
+    t.integer  "count_on_hand"
+    t.integer  "variant_id"
+    t.integer  "stock_location_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ecommerce_stock_items", ["stock_location_id"], name: "index_ecommerce_stock_items_on_stock_location_id"
+  add_index "ecommerce_stock_items", ["variant_id"], name: "index_ecommerce_stock_items_on_variant_id"
+
+  create_table "ecommerce_stock_locations", force: true do |t|
+    t.string   "name"
+    t.integer  "address_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ecommerce_stock_locations", ["address_id"], name: "index_ecommerce_stock_locations_on_address_id"
 
   create_table "ecommerce_tax_categories", force: true do |t|
     t.string   "name"

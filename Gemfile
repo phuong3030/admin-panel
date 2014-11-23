@@ -12,7 +12,6 @@ gem 'turbolinks'
 # Authen and author gem 
 gem 'devise'
 gem 'cancancan'
-gem 'activeadmin', github: 'activeadmin'
 
 # CMS
 gem 'comfortable_mexican_sofa'
@@ -20,6 +19,12 @@ gem 'comfortable_mexican_sofa'
 # Pagination and file upload gem 
 gem 'kaminari'
 gem 'paperclip'
+
+# Tree data structure
+gem 'ancestry'
+
+# API
+gem 'grape'
 
 # View engine
 gem 'slim-rails'
