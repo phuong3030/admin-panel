@@ -5,12 +5,14 @@ Rails.application.routes.draw do
       :users, 
       { 
         :skip => [:registration],
-        :controllers => { :sessions => 'session' },
+        :controllers => { :sessions => 'devise/session' },
         :class_name => 'Core::User',
         :path => '/admin',
         :path_names => {:sign_in => 'login', :sign_out => 'logout'}
       }
     )
+
+    get '/admin' => 'admin/core#index', :as => "admin_root"
       
     comfy_route :cms_admin, :path => '/admin/cms'
 
