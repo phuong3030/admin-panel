@@ -1,10 +1,25 @@
-// Include Desktop Specific JavaScript files here (or inside of your Desktop Controller, or differentiate based off App.mobile === false)
-require(["App", "routers/AppRouter", "controllers/DesktopController", "jquery", "backbone", "marionette", "jqueryui", "bootstrap", "backbone.validateAll"],
-    function (App, AppRouter, AppController) {
-        App.appRouter = new AppRouter({
-            controller:new AppController()
-        });
-        // Start Marionette Application in desktop mode (default)
-        App.start();
+/*
+ * Main app starting point
+ */
+require(
+  [
+    'App', 
+    'routers/router', 
+    'controllers/DesktopController', 
+    'jquery', 
+    'backbone', 
+    'marionette', 
+    'jqueryui', 
+    'bootstrap', 
+    'backbone.validateAll',
+    'backbone.routefilter'
+  ],
+  function (App, MainRouter, AppController) {
 
+    App.mainRouter = new MainRouter({
+      controller: new AppController()
     });
+
+    App.start();
+  }
+);

@@ -1,25 +1,21 @@
-define(
-  ["jquery", "backbone"],
-  function($, Backbone) {
+define(["jquery", "backbone"], function($, Backbone) {
 
+  var Taxon = Backbone.Model.extend({
 
-    var Taxon = Backbone.Model.extend({
+    urlRoot: "/api/taxons", 
 
-      urlRoot: "/api/taxons", 
+    initialize: function() {
 
-      initialize: function() {
+    },
 
-      },
+    defaults: {
 
-      defaults: {
+    },
 
-      },
+    validate: function(attrs) {
 
-      validate: function(attrs) {
+    }
+  });
 
-      }
-    });
-
-    return Taxon;
-  }
-);
+  return Taxon;
+});

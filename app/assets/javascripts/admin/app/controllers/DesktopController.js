@@ -1,12 +1,14 @@
-define(['App', 'backbone', 'marionette', 'views/WelcomeView', 'views/DesktopHeaderView'],
-    function (App, Backbone, Marionette, WelcomeView, DesktopHeaderView) {
-    return Backbone.Marionette.Controller.extend({
-        initialize:function (options) {
-            App.headerRegion.show(new DesktopHeaderView());
-        },
-        //gets mapped to in AppRouter's appRoutes
-        index:function () {
-            App.mainRegion.show(new WelcomeView());
-        }
-    });
+define(['backbone', 'marionette'], function (Backbone, Marionette ) {
+
+  return Backbone.Marionette.Controller.extend({
+    initialize: function (options) {
+
+      // init header, sidebar
+    },
+
+    index: function () {
+
+      console.log('index page');
+    }
+  });
 });

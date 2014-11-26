@@ -1,24 +1,61 @@
 define(
-  ['jquery', 'backbone', 'marionette', 'underscore', 'handlebars'],
+  [
+    'jquery', 
+    'backbone', 
+    'marionette', 
+    'underscore', 
+    'handlebars'
+  ],
   function ($, Backbone, Marionette, _, Handlebars) {
+
     var App = new Backbone.Marionette.Application();
 
     function isMobile() {
+
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
       return ((/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(userAgent));
     }
 
-    //Organize Application into regions corresponding to DOM elements
-    //Regions can contain views, Layouts, or subregions nested as necessary
+    // Organize Application into regions corresponding to DOM elements
+    // Regions can contain views, Layouts, or subregions nested as necessary
     App.addRegions({
-      headerRegion: "header",
-      leftSidebarRegion: "#sidebar-left",
-      RightSidebarRegion: "#sidebar-right",
-      mainRegion: "#main"
+      headerRegion: 'header',
+      leftSidebarRegion: '#sidebar-left',
+      RightSidebarRegion: '#sidebar-right',
+      mainRegion: '#main'
     });
 
-    App.addInitializer(function () {
-      Backbone.history.start();
+    // Start subApp manually when routes change
+    App.startSubApp = function (appName, args) {
+
+      var currentApp = appName ? App.module(appName) : null;
+
+      if (App.currentApp === currentApp) {
+
+        return;
+      }
+
+      if (App.currentApp) {
+
+        App.currentApp.stop();
+      }
+
+      App.currentApp = currentApp;
+      if (currentApp) {
+
+        currentApp.start(args);
+      }
+    };
+
+    App.on('start', function () {
+
+      if (Backbone.history) {
+
+        require(['routers/taxonomy'], function () {
+
+          Backbone.history.start();
+        });
+      }
     });
 
     App.mobile = isMobile();
