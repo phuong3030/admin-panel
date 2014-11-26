@@ -21,7 +21,9 @@ module FoodStore::AuthModule
       supplier_root_url
     else
       ability = Core::Ability.new(current_user)
-      if ability.can?(:manage, "Cms:Site")
+      if ability.can?(:manage, :all)
+        admin_root_path
+      elsif ability.can?(:manage, "Cms:Site")
         comfy_admin_cms_path
       else
         root_url

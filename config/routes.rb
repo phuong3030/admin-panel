@@ -12,11 +12,14 @@ Rails.application.routes.draw do
       }
     )
 
+    # Mount API
+    mount API::Base => '/api' 
+
     get '/admin' => 'admin/core#index', :as => "admin_root"
       
     comfy_route :cms_admin, :path => '/admin/cms'
 
-    # root for render page from CMS system
+    # Root for render page from CMS system
     root :to => "comfy/cms/content#show"
 
     # Make sure this routeset is defined last
