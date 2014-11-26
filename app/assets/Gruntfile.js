@@ -12,6 +12,7 @@ module.exports = function(grunt) {
                     preserveLicenseComments: false,
                     optimize: "uglify",
                     optimizeCss: "standard",
+                    findNestedDependencies: true,
                     mainConfigFile: "javascripts/admin/app/config/config.js",
                     include: ["init/MobileInit"],
                     out: "javascripts/admin/app/init/MobileInit.min.js",
@@ -55,6 +56,7 @@ module.exports = function(grunt) {
                     // Cannot use almond since it does not currently appear to support requireJS's config-map
                     name: "../libs/almond",
                     preserveLicenseComments: false,
+                    findNestedDependencies: true,
                     optimize: "uglify",
                     mainConfigFile: "javascripts/admin/app/config/config.js",
                     include: ["init/DesktopInit"],
