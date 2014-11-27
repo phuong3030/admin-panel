@@ -1,0 +1,53 @@
+<form id='search' method='post' action='#'>
+  <input type='text' name='search' class='menu-search-text' placeholder='Search'>
+
+  <div class='menu-search-category'>
+    <a class='dropdown-toggle' id='search-category' data-target='#' data-toggle='dropdown'>
+      <span class='separator'></span>
+      <span class='text'>Category</span>
+      <span class='icon'>
+        <i class='fa fa-caret-down'></i>
+      </span>
+    </a> 
+
+    <div class='menu-content'>
+      <ul class='dropdown-menu' role='menu' aria-labelledby='search-category'>
+        <li>
+          <label>
+            <input type='checkbox' value='all'>
+            <span>All</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type='checkbox' value='products'>
+            <span>Products</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type='checkbox' value='Taxon'>
+            <span>Taxon</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type='checkbox' value='Order'>
+            <span>Order</span>
+          </label>
+        </li>
+        <li>
+          <label>
+            <input type='checkbox' value='Stock'>
+            <span>Stock transfer</span>
+          </label>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <span class='menu-search-submit'>
+    <i class='fa fa-search'></i>
+  </span>
+
+</form>
