@@ -23,7 +23,7 @@ define(
       leftSidebarRegion: '#sidebar-left',
       rightSidebarRegion: '#sidebar-right',
       headSection: '#head-section',
-      headTitle: '#head-title',
+      headTitle: '#title-section',
       content: '#content-section'
     });
 
