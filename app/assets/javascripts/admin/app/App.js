@@ -21,8 +21,10 @@ define(
     App.addRegions({
       headerRegion: 'header',
       leftSidebarRegion: '#sidebar-left',
-      RightSidebarRegion: '#sidebar-right',
-      mainRegion: '#main'
+      rightSidebarRegion: '#sidebar-right',
+      headSection: '#head-section',
+      headTitle: '#head-title',
+      content: '#content-section'
     });
 
     // Start subApp manually when routes change
