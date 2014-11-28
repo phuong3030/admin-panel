@@ -1,4 +1,4 @@
-define(['App'], function (App) {
+define(['app'], function (App) {
 
   App.module('Taxonomy', function (TaxonomyApp) {
 
@@ -15,5 +15,5 @@ define(['App'], function (App) {
     });
   });
 
-  return App.Taxonomy;
+  return App.module('Taxonomy');
 });

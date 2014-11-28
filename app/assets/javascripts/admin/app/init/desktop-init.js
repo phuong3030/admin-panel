@@ -3,9 +3,10 @@
  */
 require(
   [
-    'App', 
+    'app', 
     'routers/router', 
-    'controllers/DesktopController', 
+    'controllers/desktop-controller', 
+    'modules/shared/header',
     'jquery', 
     'backbone', 
     'marionette', 
