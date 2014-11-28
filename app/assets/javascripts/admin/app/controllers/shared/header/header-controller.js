@@ -17,10 +17,13 @@ define(['app', 'views/header/header-layout'], function (App, HeaderLayout) {
          * Create mega menu controller instance to draw mega menu and
          * listen all event from app sent to mega menu 
          */
-        require(['controllers/header/mega_menu-controller'], function () {
-        
-          console.log('Mega menu is created');
-        });
+        require(
+          ['controllers/shared/header/mega_menu-controller'], 
+          function (MegaMenuController) {
+            
+            var megaMenuController = new MegaMenuController();
+          }
+        );
       }, 
     
       // Create menu search 
@@ -30,10 +33,13 @@ define(['app', 'views/header/header-layout'], function (App, HeaderLayout) {
          * Create menu search controller instance to draw menu search and
          * listen all event from app sent to menu search
          */
-        require(['controllers/header/menu_search-controller'], function () {
+        require(
+          ['controllers/shared/header/menu_search-controller'], 
+          function (MenuSearchController) {
         
-          console.log('Menu search is created');
-        });
+            var menuSearchController = new MenuSearchController();
+          }
+        );
       },
 
       // Create panel header
@@ -44,12 +50,10 @@ define(['app', 'views/header/header-layout'], function (App, HeaderLayout) {
          * listen all event from app sent to panel header
          */
         require(
-          ['controllers/header/panel_header-controller'], 
+          ['controllers/shared/header/panel_header-controller'], 
           function (PanelHeaderController) {
         
             var panelHeaderController = new PanelHeaderController();
-
-            panelHeaderController.createPanelHeader();
           }
         );
       },

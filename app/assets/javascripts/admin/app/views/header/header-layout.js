@@ -17,7 +17,7 @@ define(
       template: headerTemplate,
 
       regions: {
-        panelHeaderRegion: '.top-nav',
+        panelHeaderRegion: '.panel-header',
         menuSearchRegion: '.menu-search',
         megaMenuRegion: '.mega-menu-wrapper'
       },

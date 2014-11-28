@@ -1,5 +1,5 @@
 /*
- * Header View
+ * Mega menu View
  *
  * Use for render mega menu in header
  */

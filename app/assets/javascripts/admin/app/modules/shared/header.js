@@ -1,5 +1,5 @@
 define(
-  ['app', 'controllers/header/header-controller'], 
+  ['app', 'controllers/shared/header/header-controller'], 
   function (App, HeaderController) {
 
     App.module("Header", function (HeaderApp, App, Backbone, Marionette, $, _) {
@@ -12,9 +12,9 @@ define(
         var headerController = new HeaderController();
 
         // Create header's items
-        headerController.createMegaMenu();
-        headerController.createMenuSearch();
         headerController.createPanelHeader();
+        headerController.createMenuSearch();
+        headerController.createMegaMenu();
       });
     });
   }
