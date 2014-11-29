@@ -4,10 +4,11 @@
  */  
 require(
   [
-    'App', 
+    'app', 
     'jquery', 
     'routers/router', 
-    'controllers/MobileController', 
+    'controllers/mobile-controller', 
+    'modules/shared/header',
     'backbone', 
     'marionette', 
     'jquerymobile', 

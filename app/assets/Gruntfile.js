@@ -14,8 +14,8 @@ module.exports = function(grunt) {
                     optimizeCss: "standard",
                     findNestedDependencies: true,
                     mainConfigFile: "javascripts/admin/app/config/config.js",
-                    include: ["init/MobileInit"],
-                    out: "javascripts/admin/app/init/MobileInit.min.js",
+                    include: ["init/mobile-init"],
+                    out: "javascripts/admin/app/init/mobile-init.min.js",
 
                     /*********
                      * https://github.com/SlexAxton/require-handlebars-plugin
@@ -59,8 +59,8 @@ module.exports = function(grunt) {
                     findNestedDependencies: true,
                     optimize: "uglify",
                     mainConfigFile: "javascripts/admin/app/config/config.js",
-                    include: ["init/DesktopInit"],
-                    out: "javascripts/admin/app/init/DesktopInit.min.js"
+                    include: ["init/desktop-init"],
+                    out: "javascripts/admin/app/init/desktop-init.min.js"
                 }
             },
             desktopCSS: {

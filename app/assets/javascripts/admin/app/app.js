@@ -21,8 +21,10 @@ define(
     App.addRegions({
       headerRegion: 'header',
       leftSidebarRegion: '#sidebar-left',
-      RightSidebarRegion: '#sidebar-right',
-      mainRegion: '#main'
+      rightSidebarRegion: '#sidebar-right',
+      headSectionReion: '#head-section',
+      headTitleRegion: '#title-section',
+      contentRegion: '#content-section'
     });
 
     // Start subApp manually when routes change
@@ -51,7 +53,7 @@ define(
 
       if (Backbone.history) {
 
-        require(['routers/taxonomy'], function () {
+        require(['routers/taxonomy-router'], function () {
 
           Backbone.history.start();
         });
