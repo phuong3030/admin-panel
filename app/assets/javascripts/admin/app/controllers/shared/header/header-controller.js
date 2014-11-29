@@ -9,64 +9,26 @@ define(['app', 'views/header/header-layout'], function (App, HeaderLayout) {
   App.module('Header.HeaderController', function (HeaderController, App, Backbone, Marionette) {
 
     HeaderController.Controller = Backbone.Marionette.Controller.extend({
-    
-      // Create mega menu
-      createMegaMenu: function () {
-
-        /*
-         * Create mega menu controller instance to draw mega menu and
-         * listen all event from app sent to mega menu 
-         */
-        require(
-          ['controllers/shared/header/mega_menu-controller'], 
-          function (MegaMenuController) {
-            
-            var megaMenuController = new MegaMenuController();
-          }
-        );
-      }, 
-    
-      // Create menu search 
-      createMenuSearch: function () {
-
-        /*
-         * Create menu search controller instance to draw menu search and
-         * listen all event from app sent to menu search
-         */
-        require(
-          ['controllers/shared/header/menu_search-controller'], 
-          function (MenuSearchController) {
+      createHeaderLayout: function () {
         
-            var menuSearchController = new MenuSearchController();
-          }
-        );
-      },
+        var headerLayout = new HeaderLayout();
 
-      // Create panel header
-      createPanelHeader: function () {
-
-        /*
-         * Create menu search controller instance to draw panel header and
-         * listen all event from app sent to panel header
-         */
-        require(
-          ['controllers/shared/header/panel_header-controller'], 
-          function (PanelHeaderController) {
-        
-            var panelHeaderController = new PanelHeaderController();
-          }
-        );
-      },
+        // Initialize header html structure
+        App.headerRegion.show(headerLayout); 
+        // Store header pointer to create header's items later
+        App.headerLayout = headerLayout;
+      }
     });
 
     HeaderController.addInitializer(function () {
       
-      var headerLayout = new HeaderLayout();
+      /*
+       * Always init header layout immediately to
+       * ensure it exisits before it's item
+       */ 
+      var headerController = new HeaderController.Controller();
 
-      // Initialize header html structure
-      App.headerRegion.show(headerLayout); 
-      // Store header pointer to create header's items later
-      App.headerLayout = headerLayout;
+      headerController.createHeaderLayout();
     });
   });
 
