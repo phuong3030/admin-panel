@@ -10,44 +10,24 @@ define(
       HeaderApp.addInitializer(function () {
 
         /*
-         * Create mega menu controller instance to draw mega menu and
-         * listen all event from app sent to mega menu 
+         * Create mega menu, menu search, panel header controller instance to 
+         * draw mega menu and listen all event from app sent to mega menu 
          */
         require(
-          ['controllers/shared/header/mega_menu-controller'], 
-          function (MegaMenuController) {
+          [
+            'controllers/shared/header/mega_menu-controller',
+            'controllers/shared/header/menu_search-controller',
+            'controllers/shared/header/panel_header-controller'
+          ], 
+          function (MegaMenuController, MenuSearchController, PanelHeaderController) {
             
-            var megaMenuController = new MegaMenuController();
-
-            megaMenuController.createMegaMenu();
-          }
-        );
-
-        /*
-         * Create menu search controller instance to draw menu search and
-         * listen all event from app sent to menu search
-         */
-        require(
-          ['controllers/shared/header/menu_search-controller'], 
-          function (MenuSearchController) {
-        
-            var menuSearchController = new MenuSearchController();
-
-            menuSearchController.createMenuSearch();
-          }
-        );
-
-        /*
-         * Create menu search controller instance to draw panel header and
-         * listen all event from app sent to panel header
-         */
-        require(
-          ['controllers/shared/header/panel_header-controller'], 
-          function (PanelHeaderController) {
-        
-            var panelHeaderController = new PanelHeaderController();
+            var megaMenuController = new MegaMenuController(),
+                menuSearchController = new MenuSearchController(),
+                panelHeaderController = new PanelHeaderController();
 
             panelHeaderController.createPanelHeader();
+            menuSearchController.createMenuSearch();
+            megaMenuController.createMegaMenu();
           }
         );
       });
