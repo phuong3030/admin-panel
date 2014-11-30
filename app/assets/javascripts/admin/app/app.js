@@ -4,9 +4,10 @@ define(
     'backbone', 
     'marionette', 
     'underscore', 
-    'handlebars'
+    'handlebars',
+    'views/layouts/main-layout'
   ],
-  function ($, Backbone, Marionette, _, Handlebars) {
+  function ($, Backbone, Marionette, _, Handlebars, ApplicationLayout) {
 
     var App = new Backbone.Marionette.Application();
 
@@ -16,18 +17,21 @@ define(
       return ((/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(userAgent));
     }
 
-    // Organize Application into regions corresponding to DOM elements
-    // Regions can contain views, Layouts, or subregions nested as necessary
     App.addRegions({
+      applicationRegion: '.admin_body',
       headerRegion: 'header',
-      leftSidebarRegion: '#sidebar-left',
-      rightSidebarRegion: '#sidebar-right',
+      leftSidebarRegion: '#left-sidebar',
+      rightSidebarRegion: '#right-sidebar',
       headSectionReion: '#head-section',
       headTitleRegion: '#title-section',
       contentRegion: '#content-section'
     });
 
-    // Start subApp manually when routes change
+    // Init application layout view
+    App.applicationLayout = new ApplicationLayout();
+    App.applicationRegion.show(App.applicationLayout);
+
+    // Start subApp manually when subapp change
     App.startSubApp = function (appName, args) {
 
       var currentApp = appName ? App.module(appName) : null;
@@ -53,6 +57,7 @@ define(
 
       if (Backbone.history) {
 
+        // Init all subapp router before start hash change listener
         require(['routers/taxonomy-router'], function () {
 
           Backbone.history.start();

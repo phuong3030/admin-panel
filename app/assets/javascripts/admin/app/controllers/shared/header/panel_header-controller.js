@@ -1,4 +1,4 @@
-define(['app', 'views/header/panel_header-view'], function (App, PanelHeaderView) {
+define(['app', 'views/shared/header/panel_header-view'], function (App, PanelHeaderView) {
 
   return Backbone.Marionette.Controller.extend({
     // Render panel (logo and resize button)

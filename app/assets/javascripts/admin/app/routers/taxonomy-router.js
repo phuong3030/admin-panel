@@ -10,6 +10,8 @@ define(['app', 'modules/taxonomy'], function (App, TaxonomyApp) {
     'TaxonomyRouter', 
     function (TaxonomyRouter, App, Backbone, Marionette, $, _) {
 
+      'use strict';
+
       TaxonomyRouter.Router = Backbone.Marionette.AppRouter.extend({
         appRoutes: {
           'taxonomies': 'listTaxonomies'
