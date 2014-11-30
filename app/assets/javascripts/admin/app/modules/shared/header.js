@@ -4,7 +4,7 @@ define(
 
     App.module("Header", function (HeaderApp, App, Backbone, Marionette, $, _) {
 
-      "use strict";
+      'use strict';
 
       // Ensure header is always created
       HeaderApp.addInitializer(function () {

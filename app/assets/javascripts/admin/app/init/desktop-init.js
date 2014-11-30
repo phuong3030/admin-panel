@@ -7,6 +7,8 @@ require(
     'routers/router', 
     'controllers/desktop-controller', 
     'modules/shared/header',
+    'modules/shared/left_sidebar',
+    'modules/shared/right_sidebar',
     'jquery', 
     'backbone', 
     'marionette', 

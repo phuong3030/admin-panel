@@ -5,6 +5,25 @@ define(['app'], function (App) {
     'use strict';
 
     LeftSidebarApp.addInitializer(function () {
+
+      // Init left sidebar's items
+      require(
+        [
+          'controllers/shared/sidebar/left/left_navbar_tabs_menu-controller',
+          'controllers/shared/sidebar/left/left_navbar_menu-controller',
+          'controllers/shared/sidebar/left/left_navbar_bottom-controller'
+        ],
+        function (TabsMenuController, MenuController, BottomWidgetController) {
+
+          var tabsMenuController = new TabsMenuController(),
+              menuController = new MenuController(),
+              bottomWidgetController = new BottomWidgetController();
+
+          tabsMenuController.createNavbarTabsMenu();
+          menuController.createNavbarMenu();
+          bottomWidgetController.createBottomWidget();
+        }
+      );
     
     });
   });

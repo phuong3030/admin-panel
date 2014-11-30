@@ -4,9 +4,11 @@
  * Initialize HeadController module to create header html structure
  * Create and manage events from partial item in header
  */ 
-define(['app', 'views/shared/header/header-layout'], function (App, HeaderLayout) {
+define(['app', 'views/layouts/header-layout'], function (App, HeaderLayout) {
 
   App.module('Header.HeaderController', function (HeaderController, App, Backbone, Marionette) {
+
+    'use strict';
 
     HeaderController.Controller = Backbone.Marionette.Controller.extend({
       createHeaderLayout: function () {

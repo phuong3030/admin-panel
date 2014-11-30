@@ -4,6 +4,7 @@ define(['app'], function (App) {
 
     'use strict';
     
+    // Init right sidebar's items
     RightSidebarApp.addInitializer(function () {
 
     });

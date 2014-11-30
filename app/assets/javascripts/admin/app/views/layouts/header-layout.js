@@ -1,5 +1,5 @@
 /*
- * Header View
+ * Header Layout
  *
  * Use for render header html struture
  */
@@ -9,12 +9,16 @@ define(
     'backbone', 
     'marionette', 
     'jquery', 
-    'hbs!templates/shared/header/header'
+    'hbs!templates/layouts/header'
   ],
   function (App, Backbone, Marionette, $, headerTemplate) {
 
     return Backbone.Marionette.LayoutView.extend( {
       template: headerTemplate,
+
+      ui: {
+        wrapper: 'header'
+      },
 
       regions: {
         panelHeaderRegion: '.panel-header',
