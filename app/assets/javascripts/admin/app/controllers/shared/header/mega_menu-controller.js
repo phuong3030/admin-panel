@@ -1,4 +1,4 @@
-define(['app', 'views/header/mega_menu-view'], function (App, MegaMenuView) {
+define(['app', 'views/shared/header/mega_menu-view'], function (App, MegaMenuView) {
 
   return Backbone.Marionette.Controller.extend({
     // Create right header menu

@@ -1,4 +1,4 @@
-define(['app', 'views/header/menu_search-view'], function (App, MenuSearchView) {
+define(['app', 'views/shared/header/menu_search-view'], function (App, MenuSearchView) {
   
   return Backbone.Marionette.Controller.extend({
     // Create search box in header
