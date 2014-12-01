@@ -8,7 +8,7 @@ define(['app'], function (App) {
     TaxonomyApp.listTaxonomies = function () {
 
       console.log('Show taxonomies tree');
-    }
+    };
 
     TaxonomyApp.addFinalizer(function() {
       // Close controller 

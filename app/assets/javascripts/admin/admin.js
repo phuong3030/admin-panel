@@ -11,7 +11,7 @@
    * ---------------
    * Tip: Set to true to turn on "production" mode
    */
-  var production = false,
+  var production = true,
       filesToLoad,
       boilerplateMVC = { //BoilerplateMVC Helper Methods
 
@@ -121,7 +121,7 @@
       // JavaScript file that is loaded when in production mode
       "prod-init": "/assets/admin/app/init/mobile-init.min.js",
       "prod-js": { 
-        "data-main": "/assets/admin/app/config/config.js", 
+        "data-main": "/assets/admin/app/config/config.min.js", 
         "src": "/assets/admin/libs/require.js" 
       }
     };
@@ -144,7 +144,7 @@
       // JavaScript file that is loaded when in production mode
       "prod-init": "/assets/admin/app/init/desktop-init.min.js",
       "prod-js": { 
-        "data-main": "/assets/admin/app/config/config.js", 
+        "data-main": "/assets/admin/app/config/config.min.js", 
         "src": "/assets/admin/libs/require.js" 
       }
     };

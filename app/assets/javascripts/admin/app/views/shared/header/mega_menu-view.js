@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.ItemView.extend( {
       template: megaMenuTemplate,
+      className: 'mega-menu pull-right',
 
       // View Event Handlers
       events: {

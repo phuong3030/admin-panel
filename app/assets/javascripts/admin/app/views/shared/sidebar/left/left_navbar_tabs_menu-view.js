@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.LayoutView.extend( {
       template: navbarTabsMenuTemplate,
+      className: 'menu-container',
 
       // View Event Handlers
       events: {

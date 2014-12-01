@@ -23,6 +23,12 @@ require(
       controller: new AppController()
     });
 
-    App.start();
+    // Init application layout view before start app
+    require(['views/layouts/main-layout'], function (ApplicationLayout) {
+
+      App.applicationLayout = new ApplicationLayout();
+      App.applicationRegion.show(App.applicationLayout);
+      App.start();
+    });
   }
 );

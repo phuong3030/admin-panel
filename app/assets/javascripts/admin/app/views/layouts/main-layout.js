@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.LayoutView.extend( {
       template: applicationTemplate,
+      className: 'admin_body',
 
       // Listener for handle resize button event
       events: {
@@ -22,4 +23,4 @@ define(
       }
     });
   }
-)
+);
