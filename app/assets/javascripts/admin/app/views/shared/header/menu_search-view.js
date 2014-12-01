@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.ItemView.extend( {
       template: menuSearchTemplate,
+      className: 'menu-search',
 
       // View Event Handlers
       events: {

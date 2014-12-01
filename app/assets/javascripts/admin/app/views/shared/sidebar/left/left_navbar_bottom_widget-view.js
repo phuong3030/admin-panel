@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.LayoutView.extend( {
       template: navbarBottomWidget,
+      tagName: 'ul',
 
       // View Event Handlers
       events: {

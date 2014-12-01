@@ -1,5 +1,5 @@
 /*
- * Header Layout
+ * Left sidebar Layout
  *
  * Use for render header html struture
  */
@@ -9,18 +9,18 @@ define(
     'backbone', 
     'marionette', 
     'jquery', 
-    'hbs!templates/layouts/header'
+    'hbs!templates/layouts/left_sidebar'
   ],
   function (App, Backbone, Marionette, $, headerTemplate) {
 
     return Backbone.Marionette.LayoutView.extend( {
       template: headerTemplate,
-      className: 'top-menu-wrapper',
+      className: 'left-sidebar',
 
       regions: {
-        panelHeaderRegion: '.top-nav',
-        menuSearchRegion: '.header-container .col-sm-5.col-xs-12',
-        megaMenuRegion: '.mega-menu-wrapper'
+        tabsMenuRegion: '.navbar-tabs-menu',
+        navbarMenuRegion: '.navbar-menu-wrapper',
+        bottomWidgetRegion: '.navbar-bottom-widget'
       },
 
       // View Event Handlers

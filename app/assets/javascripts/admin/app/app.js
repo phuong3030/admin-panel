@@ -18,10 +18,10 @@ define(
     }
 
     App.addRegions({
-      applicationRegion: '.admin_body',
+      applicationRegion: 'body',
       headerRegion: 'header',
-      leftSidebarRegion: '#left-sidebar',
-      rightSidebarRegion: '#right-sidebar',
+      leftSidebarRegion: '#left-sidebar-wrapper',
+      rightSidebarRegion: '#right-sidebar-wrapper',
       headSectionReion: '#head-section',
       headTitleRegion: '#title-section',
       contentRegion: '#content-section'

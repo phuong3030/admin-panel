@@ -15,6 +15,7 @@ define(
 
     return Backbone.Marionette.ItemView.extend( {
       template: panelHeaderTemplate,
+      className: 'panel-header',
 
       // View Event Handlers
       events: {

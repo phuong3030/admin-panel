@@ -1,4 +1,6 @@
-define(['app'], function (App) {
+define(
+  ['app', 'controllers/shared/sidebar/left/left_sidebar-controller'], 
+  function (App, LeftSidebarController) {
 
   App.module('LeftSidebar', function (LeftSidebarApp, App, Backbone, Marionette, $, _) {
 

@@ -11,7 +11,7 @@ define(
       
         var navbarTabsMenu = new NavbarTabsMenuView();
         
-        App.leftSidebarRegion.attachView(navbarTabsMenu);
+        App.leftSidebarLayout.tabsMenuRegion.show(navbarTabsMenu);
       }   
     });
   }

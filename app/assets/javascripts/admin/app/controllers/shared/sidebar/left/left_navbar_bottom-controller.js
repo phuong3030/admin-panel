@@ -11,7 +11,7 @@ define(
       
         var bottomWidget = new BottomWidgetView();
 
-        App.leftSidebarRegion.attachView(bottomWidget);
+        App.leftSidebarLayout.bottomWidgetRegion.show(bottomWidget);
       }   
     });
   }
