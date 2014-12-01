@@ -4,10 +4,9 @@ define(
     'backbone', 
     'marionette', 
     'underscore', 
-    'handlebars',
-    'views/layouts/main-layout'
+    'handlebars'
   ],
-  function ($, Backbone, Marionette, _, Handlebars, ApplicationLayout) {
+  function ($, Backbone, Marionette, _, Handlebars) {
 
     var App = new Backbone.Marionette.Application();
 
@@ -26,10 +25,6 @@ define(
       headTitleRegion: '#title-section',
       contentRegion: '#content-section'
     });
-
-    // Init application layout view
-    App.applicationLayout = new ApplicationLayout();
-    App.applicationRegion.show(App.applicationLayout);
 
     // Start subApp manually when subapp change
     App.startSubApp = function (appName, args) {

@@ -1,6 +1,6 @@
 {
-  "name": "Administrator app",
-  "title":"Administrator app",
+  "name": "Administrator",
+  "title":"Administrator",
   "description":"Administrator app is web application built by Backbone Marionette and Rails API",
   "version":"1.0.0",
   "homepage":"https://github.com/phuong3030/foodstore",
@@ -9,11 +9,7 @@
     "email":"sir1001dem@gmail.com"
   },
   "repository":{
-    "type":"git",
     "url":"git@github.com:phuong3030/foodstore.git"
-  },
-  "bugs":{
-    "url":"https://github.com/phuong3030/Require-Boilerplate/issues"
   },
   "licenses":[
     {
@@ -22,11 +18,14 @@
     }
   ],
   "devDependencies":{
-    "grunt":"~0.4.1",
+    "grunt":"~0.4.5",
     "grunt-contrib-requirejs":"~0.4.0",
     "grunt-contrib-jshint":"~0.3.0",
+    "grunt-contrib-sass":"~0.8.1",
+    "grunt-contrib-uglify":"~0.6.0",
+    "grunt-contrib-watch":"~0.6.1",
     "uglify-js":"~2.2.5"
   },
-  "main":"./server/server",
+  "main":"",
   "keywords":["foodstore", "Administrator"]
 }
