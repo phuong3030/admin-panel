@@ -10,7 +10,7 @@ body {
   font-weight: 400;
 }
 
-img {
+Img {
   max-width: 100%;
 }
 
@@ -118,10 +118,17 @@ header {
   position: relative;
   @include border-radius(30px);
 
+  #search-category {
+    text-decoration: none;
+    color: #444;
+    cursor: pointer;
+  }
+
   .menu-search-text {
     border: none;
     color: #444;
     padding: 0;
+    width: 60% !important;
   }
 
   .menu-search-category {
@@ -139,6 +146,7 @@ header {
 
     .text {
       margin-right: 6px;
+      color: #444;
     }
   }
 
@@ -150,6 +158,11 @@ header {
     color: #FFF;
     padding: 2px 8px;
     @include border-radius(30px);
+
+    &:hover {
+      cursor: pointer;
+      background-color: #23c473;
+    }
   }
 }
 
@@ -166,25 +179,43 @@ header {
     height: 63px;
     list-style: none;
 
-    &.one-icon {
-      padding: 13px 7px 14px;
+    a {
+      color: #ccc;
     }
 
-    .mega-link {
-      color: #ccc;
-      border: 2px solid #EEE;
-      display: block;
-      height: 36px;
-      line-height: 30px;
-      width: 36px;
-      text-align: center;
-      padding: 0;
-      margin: 0;
-      overflow: hidden;
-      @include border-radius(30px);
+    .badge {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      background-color: #f85d2c !important;
+      padding: 4px 6px;
+      font-size: 9px;
+      @include transform(scale(0.86));
+    }
 
-      .mega-icon {
-        font-size: 16px;
+    &.one-icon {
+      padding: 13px 7px 14px;
+
+      & .mega-link:hover {
+        background-color: #fff !important;
+        color: #1fae66;
+      }
+
+      .mega-link {
+        border: 2px solid #EEE;
+        display: block;
+        height: 36px;
+        width: 36px;
+        line-height: 30px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        @include border-radius(30px);
+
+        .mega-icon {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -193,18 +224,125 @@ header {
     margin-left: 15px;
     padding: 13px 7px 14px;
 
+    .mega-link {
+      width: auto;
+      height: auto;
+    }
+
     .mega-image {
       float: left;
       height: 36px;
-      line-height: 30px;
       width: 36px;
+      line-height: 30px;
 
       img {
         @include border-radius(30px);
         vertical-align: top;
       }
     }
+
+    .mega-name {
+      display: block;
+      float: left;
+      margin-left: 10px;
+      margin-top: 5px;
+    }
+  }
+
+  li.one-big-icon {
+    padding: 14px 4px 13px;
+
+    .badge {
+      right: -4px;
+      top: 5px;
+    }
+
+    .mega-link {
+      font-size: 24px;
+      display: block;
+      height: 36px;
+      width: 36px;
+      line-height: 30px;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      @include border-radius(30px);
+    }
   }
 }
 
+/* Content 
+**********************************************/
+.content { 
+  position: relative;
 
+  .container-fluid {
+    position: relative;
+  }
+}
+
+/* Left sidebar
+**********************************************/
+#left-sidebar-wrapper {
+  margin-left: 0;
+  left: 0;
+}
+
+.sidebar {
+  width: 260px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  box-shadow: -5px 0 5px -5px #999 inset;
+}
+
+.navbar-tabs-menu {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  height: 60px;
+  background-color: #393d41;
+
+  .mega-menu-wrapper {
+    margin-top: -5px;
+
+    .mega-menu {
+      float: left;
+
+      .mega-ul {
+        margin: 0;
+        padding: 0;
+
+        .mega-li {
+          height: 60px;
+          padding: 13px 7px 10px;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+.navbar-menu-wrapper {
+  margin-left: -20px;
+  margin-right: -20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: relative;
+  @include box-shadow(0, 1px, 0, rgba(255, 255, 255, 0.5), inset);
+
+  .panel-menu {
+    right: 12px;
+    top: 12px;
+  }
+}
+
+/* Right sidebar
+**********************************************/
+#right-sidebar-wrapper {
+  right: 0;
+}
