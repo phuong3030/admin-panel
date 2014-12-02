@@ -1,4 +1,210 @@
+@import "mixins";
+
+/* Global 
+*****************************************/
+body {
+  background-color: #f0f0f0;
+  font-size: 13px;
+  font-family: 'Open Sans','arial';
+  line-height: 23px;
+  font-weight: 400;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Header 
+*****************************************/
 header {
   height: 63px;
   z-index: 999;
+
+  .top-menu-wrapper {
+    background-color: #242729;
+    width: 100%;
+    z-index: 999;
+    position: absolute;
+    -webkit-box-shadow: 0 -2px 4px rgba(50,50,50,0.75);
+    box-shadow: 0 -2px 4px rgba(50,50,50,0.75);
+  }
+
+  .header-container {
+    height: 63px;
+    margin-left: 245px;
+  }
 }
+
+.top-nav {
+  width: 260px;
+  padding-left: 20px;
+  padding-right: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+
+  .panel-header {
+    position: relative;
+  }
+
+  .panel-menu {
+    top: 16px;
+
+    .menu {
+      color: #BABABA;
+      background: rgba(0,0,0,0.6);
+      border-color: rgba(0,0,0,0.1);
+      height: 30px;
+      line-height: 28px;
+      width: 30px;
+
+      &:hover {
+        background: rgba(0,0,0,0.5);
+        border-color: rgba(0,0,0,0.1)
+      }
+    }
+  }
+
+  .logo {
+    float: left;
+
+    a { 
+      margin-top: 17px;
+      width: 120px;
+      display: inline-block;
+    }
+  }
+}
+
+.panel-menu {
+  position: absolute;
+  z-index: 2;
+  right: 0;
+  top: 0;
+  margin-right: -10px;
+
+  .menu {
+    @include border-radius(4px);
+
+    display: block;
+    float: left;
+    width: 26px;
+    height: 26px;
+    line-height: 24px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 14px;
+    margin-right: 10px;
+    vertical-align: middle;
+    border: 1px solid #fff;
+    color: #fff;
+    position: relative;
+
+    &:hover {
+      background: rgba(0,0,0,0.5);
+      color: #F5F5F5;
+    }
+  }
+}
+
+.menu-search {
+  width: 300px;
+  background: #FFF;
+  padding: 2px 0 2px 13px;
+  margin-left: 3px;
+  font-size: 12px;
+  margin-top: 18px;
+  position: relative;
+  @include border-radius(30px);
+
+  .menu-search-text {
+    border: none;
+    color: #444;
+    padding: 0;
+  }
+
+  .menu-search-category {
+    margin-right: 10px;
+    position: relative;
+    display: inline-block;
+
+    .separator {
+      border-left: 1px dotted #333;
+      margin-right: 8px;
+      height: 16px;
+      margin-bottom: -3px;
+      display: inline-block;
+    }
+
+    .text {
+      margin-right: 6px;
+    }
+  }
+
+  .menu-search-submit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: #1fae66;
+    color: #FFF;
+    padding: 2px 8px;
+    @include border-radius(30px);
+  }
+}
+
+.mega-menu-wrapper {
+  width: 100%;
+  position: relative;
+  z-index: 3;
+
+  .mega-li {
+    float: left;
+    position: relative;
+    margin-left: 5px;
+    padding: 18px 7px 20px;
+    height: 63px;
+    list-style: none;
+
+    &.one-icon {
+      padding: 13px 7px 14px;
+    }
+
+    .mega-link {
+      color: #ccc;
+      border: 2px solid #EEE;
+      display: block;
+      height: 36px;
+      line-height: 30px;
+      width: 36px;
+      text-align: center;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      @include border-radius(30px);
+
+      .mega-icon {
+        font-size: 16px;
+      }
+    }
+  }
+
+  li.profile {
+    margin-left: 15px;
+    padding: 13px 7px 14px;
+
+    .mega-image {
+      float: left;
+      height: 36px;
+      line-height: 30px;
+      width: 36px;
+
+      img {
+        @include border-radius(30px);
+        vertical-align: top;
+      }
+    }
+  }
+}
+
+

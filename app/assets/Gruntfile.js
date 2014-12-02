@@ -91,8 +91,8 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: ['scss/*.scss'],
-        tasks: ['sass'],
+        files: ['stylesheets/admin/*.scss'],
+        tasks: ['sass:dev'],
         options: {
           spawn: false
         }
