@@ -1,7 +1,7 @@
 @import "mixins";
 
 /* Global 
-*****************************************/
+ *****************************************/
 body {
   background-color: #f0f0f0;
   font-size: 13px;
@@ -10,8 +10,88 @@ body {
   font-weight: 400;
 }
 
-Img {
+img {
   max-width: 100%;
+}
+
+.bg-red {
+  background-color: #f85d2c !important
+}
+
+.bg-green {
+  background-color: #1fae66 !important
+}
+
+.bg-yellow {
+  background-color: #f89c2c !important
+}
+
+.bg-blue {
+  background-color: #23709e !important
+}
+
+.bg-white {
+  background-color: #fff !important
+}
+
+.bg-black {
+  background-color: #111 !important
+}
+
+.bg-grey {
+  background-color: #777 !important
+}
+
+.bg-dark-red {
+  background-color: #724c3f !important
+}
+
+.bg-dark-green {
+  background-color: #2e8258 !important
+}
+
+.bg-dark-blue {
+  background-color: #39515f !important
+}
+
+.bg-dark-yellow {
+  background-color: #7f684d !important
+}
+
+.bg-soft-red {
+  background-color: #ff7c62 !important
+}
+
+.bg-soft-green {
+  background-color: #4abc96 !important
+}
+
+.bg-soft-yellow {
+  background-color: #f2be3e !important
+}
+
+.bg-soft-blue {
+  background-color: #67b8cb !important
+}
+
+.bg-soft-grey {
+  background-color: #b5b5b5 !important
+}
+
+.bg-facebook {
+  background-color: #436eac !important
+}
+
+.bg-twitter {
+  background-color: #0598c9 !important
+}
+
+.bg-linkedin {
+  background-color: #2e8cc2 !important
+}
+
+.bg-googleplus {
+  background-color: #cf1900 !important
 }
 
 /* Header 
@@ -86,7 +166,6 @@ header {
 
   .menu {
     @include border-radius(4px);
-
     display: block;
     float: left;
     width: 26px;
@@ -170,14 +249,22 @@ header {
   width: 100%;
   position: relative;
   z-index: 3;
+  
+  .mega-ul {
+    margin: 0;
+    padding: 0;
+
+    & > .mega-li {
+      float: left;
+      position: relative;
+      margin-left: 5px;
+      padding: 18px 7px 20px;
+      height: 63px;
+    }
+  }
 
   .mega-li {
-    float: left;
-    position: relative;
-    margin-left: 5px;
-    padding: 18px 7px 20px;
-    height: 63px;
-    list-style: none;
+        list-style: none;
 
     a {
       color: #ccc;
@@ -196,13 +283,11 @@ header {
     &.one-icon {
       padding: 13px 7px 14px;
 
-      & .mega-link:hover {
-        background-color: #fff !important;
-        color: #1fae66;
+      & > .mega-link {
+        border: 2px solid #EEE;
       }
 
       .mega-link {
-        border: 2px solid #EEE;
         display: block;
         height: 36px;
         width: 36px;
@@ -216,6 +301,11 @@ header {
         .mega-icon {
           font-size: 16px;
         }
+      }
+
+      & > .mega-link:hover {
+        background-color: #fff !important;
+        color: #1fae66;
       }
     }
   }
@@ -314,13 +404,20 @@ header {
       float: left;
 
       .mega-ul {
-        margin: 0;
-        padding: 0;
-
         .mega-li {
           height: 60px;
           padding: 13px 7px 10px;
           margin-left: 12px;
+
+          &.one-icon .mega-link:hover {
+            color: #1fae66;
+          }
+
+          a {
+            color: #fff;
+            border: none;
+            line-height: 36px;
+          }
         }
       }
     }
