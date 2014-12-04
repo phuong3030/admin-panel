@@ -3,7 +3,7 @@ module Admin
 
     layout 'admin'
 
-    before_action :authenticate_user!, :except => [:login]
+    before_action :authenticate_admin, :except => [:login]
 
     # GET /admin
     def index
@@ -12,5 +12,13 @@ module Admin
     # GET /admin/login
     def login
     end
+
+    private
+      def authenticate_admin 
+        unless user_signed_in? && 
+           ((current_user.role? :admin) || (current_user.role? :cms_moderator))
+          redirect_to admin_login_path, :flash => { :error => "Invalid role!" }
+        end
+      end
   end
 end

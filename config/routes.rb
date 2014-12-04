@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #scope ":locale", :locale => /#{I18n.available_locales.join("|")}/ do 
     # Hide un-wanted routes
     devise_scope :user do
-      get 'user/login' => redirect('/admin/login')
+      get 'user/login' => redirect('/')
     end
 
     devise_for(

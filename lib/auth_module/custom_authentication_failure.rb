@@ -2,7 +2,7 @@ class CustomAuthenticationFailure < Devise::FailureApp
   protected 
 
   def redirect_url 
-    admin_login_path
+    root_path
   end 
 
 end 
