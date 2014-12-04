@@ -51,28 +51,26 @@
                         .form-group.mgbt-xs-20
                           .col-md-12
                             .label-wrapper.sr-only
-                              label.control-label for='username'  
+                              label.control-label for='email'  
                             #username-input-wrapper.input-wrapper
                               span.menu-icon
-                                i.fa.fa-user
-                            = f.input_field :username, :label => false,\
-                              :placeholder => 'Username', :id => 'username',\
-                              :name => 'username', :required => true
-
-                        .form-group.mgbt-xs-20
-                          .label-wrapper
-                            label.control-label.sr-only for="password" Password
-                          #password-input-wrapper.input-wrapper
-                            span.menu-icon
-                              i.fa.fa-key
-                          = f.input_field :password, :label => false,\
-                          :placeholder => 'Password'
+                                i.fa.fa-envelope
+                              = f.input_field :email, :label => false,\
+                                :placeholder => 'Email', :id => 'email',\
+                                :name => 'user[email]', :required => true
+                            .label-wrapper
+                              label.control-label.sr-only for="password" Password
+                            #password-input-wrapper.input-wrapper
+                              span.menu-icon
+                                i.fa.fa-key
+                              = f.input_field :password, :label => false,\
+                              :placeholder => 'Password', :name => 'user[password]'
 
                         #login-error.alert.alert-danger.hidden
                           i.fa.fa-exclamation-circle.fa-fw
                           | Please fill the necessary field
 
-                        .form-group
+                        .form-group.submit-area
                           .col-md-12.text-center.mgbt-xs-5
                             = f.button :submit, 'Login', :id => 'login-submit',\
                               :class => 'btn bg_green white width-100'
@@ -82,5 +80,5 @@
                               .col-xs-6
                                 .checkbox
                                   = f.input_field :remember_me, :as => :boolean,\
-                                  :id => 'checkbox-1'
-                                  label for="checkbox-1" Remember me
+                                  :label => false, :inline_label => true, \
+                                  :id => 'checkbox-1', :name => 'user[remember_me]'

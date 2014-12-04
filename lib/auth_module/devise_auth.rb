@@ -35,6 +35,18 @@ module FoodStore::AuthModule
     redirect_to admin_root_path, :alert => exception.message
   end
 
+
+  # store last url - this is needed for post-login redirect 
+  # to whatever the user last visited.
+  def store_location
+    return unless request.get? 
+    if request.format == "text/html" || request.content_type == "text/html"
+      session[:previous_url] = request.fullpath
+      session[:last_request_time] = Time.now.utc.to_i
+    end
+  end
+
+
   protected
 
   def configure_permitted_parameters

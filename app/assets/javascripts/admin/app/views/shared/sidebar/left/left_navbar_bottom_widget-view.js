@@ -24,7 +24,7 @@ define(
       logout: function(e) {
 
         $.ajax({
-          url: '/admin/logout',
+          url: '/user/logout',
           type: 'delete',
           statusCode: {
             204: function() {

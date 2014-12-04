@@ -1,8 +1,15 @@
 class CustomAuthenticationFailure < Devise::FailureApp 
-  protected 
+
+  def respond
+    if http_auth?
+      http_auth
+    else
+      redirect
+    end
+  end
 
   def redirect_url 
-    root_path
+    session[:previous_url] || root_path
   end 
 
 end 
