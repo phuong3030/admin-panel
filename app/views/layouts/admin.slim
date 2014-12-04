@@ -7,7 +7,7 @@ html.no-js
     meta content=("Administrator application") name="description" 
     meta content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, width=device-width" name="viewport" 
 
-    = javascript_include_tag 'admin/admin'
+    = yield :page_spec
     = csrf_meta_tags
   body
     = yield

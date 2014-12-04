@@ -8988,6 +8988,11 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 a:hover, a:focus {
   text-decoration: none;
   color: #0D9C54;
@@ -9479,6 +9484,54 @@ header .header-container {
   line-height: 36px;
 }
 
+.admin-menu {
+  margin-left: -20px;
+  margin-right: -20px;
+  font-size: 14px;
+}
+.admin-menu ul, .admin-menu li {
+  margin: 0;
+  padding: 0;
+}
+.admin-menu li {
+  list-style: none;
+  position: relative;
+}
+.admin-menu a {
+  color: #FFF;
+  display: block;
+  font-weight: 300;
+}
+.admin-menu .menu-icon {
+  font-size: 18px;
+  width: 24px;
+  height: 22px;
+  line-height: 20px;
+  float: left;
+  display: block;
+  margin-right: 15px;
+  text-align: center;
+  vertical-align: middle;
+}
+.admin-menu .menu-badge {
+  float: right;
+}
+.admin-menu > ul > li > a {
+  padding: 8px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+.admin-menu > ul > li > a:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+.admin-menu > ul > li:first-child a {
+  border-top: none;
+}
+.admin-menu > ul > li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
 .navbar-menu-wrapper {
   margin-left: -20px;
   margin-right: -20px;
@@ -9496,52 +9549,15 @@ header .header-container {
   margin-top: 40px;
   margin-bottom: 20px;
 }
-.navbar-menu-wrapper .admin-menu {
-  margin-left: -20px;
-  margin-right: -20px;
-  font-size: 14px;
+
+.navbar-spacing {
+  height: 300px;
 }
-.navbar-menu-wrapper .admin-menu ul, .navbar-menu-wrapper .admin-menu li {
-  margin: 0;
-  padding: 0;
-}
-.navbar-menu-wrapper .admin-menu li {
-  list-style: none;
-  position: relative;
-}
-.navbar-menu-wrapper .admin-menu a {
-  color: #FFF;
-  display: block;
-  font-weight: 300;
-}
-.navbar-menu-wrapper .admin-menu .menu-icon {
-  font-size: 18px;
-  width: 24px;
-  height: 22px;
-  line-height: 20px;
-  float: left;
-  display: block;
-  margin-right: 15px;
-  text-align: center;
-  vertical-align: middle;
-}
-.navbar-menu-wrapper .admin-menu .menu-badge {
-  float: right;
-}
-.navbar-menu-wrapper .admin-menu > ul > li > a {
-  padding: 8px 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
-  position: relative;
-}
-.navbar-menu-wrapper .admin-menu > ul > li > a:hover {
-  background: rgba(255, 255, 255, 0.15);
-}
-.navbar-menu-wrapper .admin-menu > ul > li:first-child a {
-  border-top: none;
-}
-.navbar-menu-wrapper .admin-menu > ul > li:last-child {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+
+.navbar-bottom-widget {
+  position: absolute;
+  bottom: 0;
+  width: 260px;
 }
 
 /* Right sidebar

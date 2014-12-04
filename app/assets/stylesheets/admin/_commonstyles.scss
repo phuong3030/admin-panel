@@ -24,6 +24,11 @@ h1, h2, h3, h4, h5, h6 {
   text-rendering: optimizelegibility;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 a:hover, a:focus {
   text-decoration: none;
   color: #0D9C54;
@@ -545,6 +550,65 @@ header {
   }
 }
 
+.admin-menu {
+  margin-left: -20px;
+  margin-right: -20px;
+  font-size: 14px;
+
+  ul, li {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    position: relative;
+  }
+
+  a {
+    color: #FFF;
+    display: block;
+    font-weight: 300;
+  }
+
+  .menu-icon {
+    font-size: 18px;
+    width: 24px;
+    height: 22px;
+    line-height: 20px;
+    float: left;
+    display: block;
+    margin-right: 15px;
+    text-align: center;
+    vertical-align: middle;
+  }
+
+  .menu-badge {
+    float: right;
+  }
+
+  & > ul > li {
+    & > a {
+      padding: 8px 20px;
+      border-top: 1px solid rgba(255,255,255,0.2);
+      border-bottom: 1px solid rgba(0,0,0,0.15);
+      position: relative;
+
+      &:hover {
+        background: rgba(255,255,255,0.15);
+      }
+    }
+
+    &:first-child a {
+      border-top: none;
+    }
+
+    &:last-child {
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+    }
+  }
+}
+
 .navbar-menu-wrapper {
   margin-left: -20px;
   margin-right: -20px;
@@ -562,65 +626,17 @@ header {
     margin-top: 40px;
     margin-bottom: 20px;
   }
+}
 
-  .admin-menu {
-    margin-left: -20px;
-    margin-right: -20px;
-    font-size: 14px;
+.navbar-spacing {
+  height: 300px;
+}
 
-    ul, li {
-      margin: 0;
-      padding: 0;
-    }
+.navbar-bottom-widget {
+  position: absolute;
+  bottom: 0;
+  width: 260px;
 
-    li {
-      list-style: none;
-      position: relative;
-    }
-
-    a {
-      color: #FFF;
-      display: block;
-      font-weight: 300;
-    }
-
-    .menu-icon {
-      font-size: 18px;
-      width: 24px;
-      height: 22px;
-      line-height: 20px;
-      float: left;
-      display: block;
-      margin-right: 15px;
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .menu-badge {
-      float: right;
-    }
-
-    & > ul > li {
-      & > a {
-        padding: 8px 20px;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        border-bottom: 1px solid rgba(0,0,0,0.15);
-        position: relative;
-
-        &:hover {
-          background: rgba(255,255,255,0.15);
-        }
-      }
-
-      &:first-child a {
-          border-top: none;
-      }
-
-      &:last-child {
-        border-bottom: 1px solid rgba(255,255,255,0.2);
-      }
-    }
-  }
 }
 
 /* Right sidebar
