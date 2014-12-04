@@ -108,9 +108,9 @@
     // Mobile/Tablet CSS and JavaScript files to load
     filesToLoad = {
       // CSS file that is loaded when in development mode
-      "dev-css": "/assets/admin/mobile.css",
+      "dev-css": "/assets/admin/client/mobile.css",
       // CSS file that is loaded when in production mode
-      "prod-css": "/assets/admin/mobile.min.css",
+      "prod-css": "/assets/admin/client/mobile.min.css",
       // Require.js configuration file that is loaded when in development mode
       "dev-js": { 
         "data-main": "/assets/admin/app/config/config.js", 
@@ -131,9 +131,9 @@
     // Desktop CSS and JavaScript files to load
     filesToLoad = {
       // CSS file that is loaded when in development mode
-      "dev-css": "/assets/admin/desktop.css",
+      "dev-css": "/assets/admin/client/desktop.css",
       // CSS file that is loaded when in production mode
-      "prod-css": "/assets/admin/desktop.min.css",
+      "prod-css": "/assets/admin/client/desktop.min.css",
       // Require.js configuration file that is also loaded when in development mode
       "dev-js": { 
         "data-main": "/assets/admin/app/config/config.js", 

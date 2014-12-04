@@ -7,13 +7,13 @@ module FoodStore::AuthModule
       raise CanCan::AccessDenied
     else
       scope = Devise::Mapping.find_scope!(:user)
-      session["#{scope}_return_to"] = new_user_session_path(:locale => I18n.locale) # if localized...
-      redirect_to new_user_session_path
+      session["#{scope}_return_to"] = admin_login_path(:locale => I18n.locale) # if localized...
+      redirect_to admin_login_path
     end
   end
 
   def account_url
-    return new_user_session_url unless user_signed_in?
+    return admin_login_path unless user_signed_in?
     case current_user.class.name
     when "Customer"
       customer_root_url
@@ -34,6 +34,18 @@ module FoodStore::AuthModule
   def access_denied(exception)
     redirect_to admin_root_path, :alert => exception.message
   end
+
+
+  # store last url - this is needed for post-login redirect 
+  # to whatever the user last visited.
+  def store_location
+    return unless request.get? 
+    if request.format == "text/html" || request.content_type == "text/html"
+      session[:previous_url] = request.fullpath
+      session[:last_request_time] = Time.now.utc.to_i
+    end
+  end
+
 
   protected
 

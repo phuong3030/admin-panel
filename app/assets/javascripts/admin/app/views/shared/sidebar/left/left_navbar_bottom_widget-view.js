@@ -17,9 +17,25 @@ define(
       template: navbarBottomWidget,
       tagName: 'ul',
 
-      // View Event Handlers
       events: {
+        'click a': 'logout'
+      },
 
+      logout: function(e) {
+
+        $.ajax({
+          url: '/user/logout',
+          type: 'delete',
+          statusCode: {
+            204: function() {
+
+              // Return to login page
+              window.location.href = '/admin/login';
+            }
+          }
+        });
+
+        return false;
       }
     });
   }

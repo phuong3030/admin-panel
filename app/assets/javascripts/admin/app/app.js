@@ -62,6 +62,13 @@ define(
 
     App.mobile = isMobile();
 
+    // Init ajax csrf token
+    $.ajaxSetup({
+      headers: {
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
+    });
+
     return App;
   }
 );
