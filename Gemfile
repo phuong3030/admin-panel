@@ -29,6 +29,9 @@ gem 'grape'
 # View engine
 gem 'slim-rails'
 
+# Form
+gem 'simple_form'
+
 # Fuzzy search and filter gem
 gem 'ransack'
 

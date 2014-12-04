@@ -1,0 +1,51 @@
+= content_for :page_spec do
+  = stylesheet_link_tag 'admin/logout', media: 'all', \
+    'data-turbolinks-track' => true
+
+.admin_body
+  /! Header Start
+  /! Header Ends
+  .content
+
+    .container-fluid
+      /! Middle Content Start
+      .content-wrapper style="min-height: 8px;" 
+        .admin_container style="min-height: 8px;" 
+          .content.clearfix
+            .content-section.clearfix
+              .register-page
+                .heading.clearfix
+                  .logo
+                    h2
+                      img alt="logo" src="/img/logo.png"
+
+                .panel.widget
+                  .panel-body
+                    .login-icon
+                      i.fa.fa-sign-out
+
+                    h1.font-semibold.text-center style="font-size:52px" 
+                      | You Have Been Logged Out
+
+                    form.form-horizontal action="#" role="form" 
+                      .form-group
+                        .col-md-12
+                          h4.text-center.mgbt-xs-20 
+                            | Thank you for using our website
+                          p.text-center
+                            | Please 
+                            a href="/admin/login" click here 
+                            | to login back to our site
+                      #login-error.alert.alert-danger.hidden
+                        i.fa.fa-exclamation-circle.fa-fw
+                        | Please fill the necessary field
+
+                /! Panel Widget
+                .register-panel.text-center.font-semibold
+                  a href="/" Home
+                  span.mgl-10.mgr-10.soft-grey |
+                  a href="/about" About
+                  span.mgl-10.mgr-10.soft-grey |
+                  a href="/faq" FAQ
+                  span.mgl-10.mgr-10.soft-grey |
+                  a href="/contact" Contact

@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
     get '/admin' => 'admin/core#index', :as => 'admin_root'
     get '/admin/login' => 'admin/core#login', :as => 'admin_login'
+    get '/admin/logout' => 'admin/core#logout', :as => 'admin_logout'
       
     comfy_route :cms_admin, :path => '/admin/cms'
 

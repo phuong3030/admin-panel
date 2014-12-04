@@ -3,7 +3,7 @@ module Admin
 
     layout 'admin'
 
-    before_action :authenticate_admin, :except => [:login]
+    before_action :authenticate_admin, :except => [:login, :logout]
 
     # GET /admin
     def index
@@ -11,6 +11,11 @@ module Admin
 
     # GET /admin/login
     def login
+      @user = Core::User.new
+    end
+
+    # GET /admin/logout
+    def logout
     end
 
     private

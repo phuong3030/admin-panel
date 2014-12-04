@@ -63,8 +63,8 @@ module.exports = function(grunt) {
           compass: false
         },
         files: {
-          'stylesheets/admin/desktop.css': 'stylesheets/admin/desktop.scss',
-          'stylesheets/admin/mobile.css': 'stylesheets/admin/mobile.scss'
+          'stylesheets/admin/client/desktop.css': 'stylesheets/admin/client/desktop.scss',
+          'stylesheets/admin/client/mobile.css': 'stylesheets/admin/client/mobile.scss'
         }
       },
       dist: {
@@ -73,8 +73,8 @@ module.exports = function(grunt) {
           compass: false
         },
         files: {
-          'stylesheets/admin/desktop.min.css': 'stylesheets/admin/desktop.scss',
-          'stylesheets/admin/mobile.min.css': 'stylesheets/admin/mobile.scss'
+          'stylesheets/admin/client/desktop.min.css': 'stylesheets/admin/client/desktop.scss',
+          'stylesheets/admin/client/mobile.min.css': 'stylesheets/admin/client/mobile.scss'
         }
       }
     },
@@ -91,7 +91,7 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: ['stylesheets/admin/*.scss'],
+        files: ['stylesheets/admin/client/*.scss'],
         tasks: ['sass:dev'],
         options: {
           spawn: false
