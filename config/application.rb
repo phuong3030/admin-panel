@@ -14,5 +14,10 @@ module FoodStore
     # config.i18n.default_locale = :de
 
     config.railties_order = [ :all, ComfortableMexicanSofa::Engine ]
+
+    config.generators do |g|
+      g.test_framework :rspec
+      g.integration_tool :rspec
+    end
   end
 end

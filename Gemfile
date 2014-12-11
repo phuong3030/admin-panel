@@ -35,15 +35,21 @@ gem 'ransack'
 # Nice url
 gem 'friendly_id'
 
-# Web server gem 
-gem 'thin'
-
-group :development do
+group :development, :test do
   gem 'sqlite3'
-  gem 'rspec'
+  gem 'database_cleaner'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'rspec-rails', '~> 2.6'
+  gem 'spork-rails'
+  gem 'guard-rspec', :require => false
+  gem 'guard-spork'
   gem 'pry'
 end
 
 group :production do
   gem 'capistrano'
+
+  # Web server gem 
+  gem 'thin'
 end
