@@ -40,15 +40,22 @@ gem 'friendly_id'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'database_cleaner'
-  gem 'cucumber'
-  gem 'cucumber-rails', :require => false
-  gem 'capybara'
   gem 'rspec-rails', '~> 2.6'
   gem 'spork-rails', github: 'sporkrb/spork-rails'
   gem 'guard-rspec', :require => false
   gem 'guard-spork'
   gem 'pry'
+end
+
+group :test do
+  gem 'cucumber'
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+  gem 'capybara-screenshot'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
 end
 
 group :production do

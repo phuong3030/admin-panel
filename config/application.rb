@@ -13,6 +13,8 @@ module FoodStore
     config.generators do |g|
       g.test_framework :rspec
       g.integration_tool :rspec
+      g.fixture_replacement :factory_girl, :dir => 'spec/factories'
+      g.template_engine :slim
     end
     
     # Grape API

@@ -37,6 +37,7 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    addressable (2.3.6)
     ancestry (2.1.0)
       activerecord (>= 3.0.0)
     arel (5.0.1.20140414130214)
@@ -62,12 +63,17 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-screenshot (1.0.3)
+      capybara (>= 1.0, < 3)
+      colored
+      launchy
     celluloid (0.16.0)
       timers (~> 4.0.0)
     childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
     climate_control (0.0.3)
       activesupport (>= 3.0)
+    cliver (0.3.2)
     cocaine (0.5.5)
       climate_control (>= 0.0.3, < 1.0)
     codemirror-rails (4.8)
@@ -82,6 +88,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    colored (1.2)
     colorize (0.7.4)
     comfortable_mexican_sofa (1.12.2)
       active_link_to (>= 1.0.0)
@@ -127,6 +134,11 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.2.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     ffi (1.9.6)
     formatador (0.2.5)
     friendly_id (5.0.4)
@@ -187,6 +199,8 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kramdown (1.5.0)
+    launchy (2.4.3)
+      addressable (~> 2.3)
     libv8 (3.16.14.7)
     listen (2.8.3)
       celluloid (>= 0.15.2)
@@ -213,6 +227,11 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
+    poltergeist (1.5.1)
+      capybara (~> 2.1)
+      cliver (~> 0.3.1)
+      multi_json (~> 1.0)
+      websocket-driver (>= 0.2.0)
     polyamorous (1.1.0)
       activerecord (>= 3.0)
     pry (0.10.1)
@@ -278,12 +297,18 @@ GEM
       rspec-mocks (~> 2.99.0)
     ruby_parser (3.1.3)
       sexp_processor (~> 4.1)
+    rubyzip (1.1.6)
     sass (3.2.19)
     sass-rails (4.0.5)
       railties (>= 4.0.0, < 5.0)
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 3.0)
       sprockets-rails (~> 2.0)
+    selenium-webdriver (2.44.0)
+      childprocess (~> 0.5)
+      multi_json (~> 1.0)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     sexp_processor (4.4.4)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -341,6 +366,8 @@ GEM
       equalizer (~> 0.0, >= 0.0.9)
     warden (1.2.3)
       rack (>= 1.0)
+    websocket (1.2.1)
+    websocket-driver (0.4.0)
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -352,11 +379,13 @@ DEPENDENCIES
   cancancan
   capistrano
   capybara
+  capybara-screenshot
   comfortable_mexican_sofa (= 1.12.2)
   cucumber
   cucumber-rails
   database_cleaner
   devise
+  factory_girl_rails
   friendly_id
   grape
   guard-rspec
@@ -364,11 +393,13 @@ DEPENDENCIES
   jquery-rails
   kaminari
   paperclip
+  poltergeist
   pry
   rails (= 4.1.6)
   ransack
   rspec-rails (~> 2.6)
   sass-rails
+  selenium-webdriver
   simple_form
   slim-rails
   spork-rails!
