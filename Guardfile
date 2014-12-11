@@ -9,7 +9,7 @@ guard :spork, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS
   watch(%r{features/support/}) { :cucumber }
 end
 
-guard :rspec, :version => 2, :cmd => "rspec --drb", :all_on_start => false, :all_after_pass => false do
+guard :rspec, :cmd => "rspec --drb", :all_on_start => false, :all_after_pass => false do
   require "ostruct"
 
   # Generic Ruby apps
@@ -56,5 +56,4 @@ guard :rspec, :version => 2, :cmd => "rspec --drb", :all_on_start => false, :all
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
-
 end
