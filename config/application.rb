@@ -9,6 +9,11 @@ module FoodStore
 
     # Ensure order of CMS route for application
     config.railties_order = [ :all, ComfortableMexicanSofa::Engine ]
+
+    config.generators do |g|
+      g.test_framework :rspec
+      g.integration_tool :rspec
+    end
     
     # Grape API
     config.paths.add "app/api", glob: "**/*.rb"
