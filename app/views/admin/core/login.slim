@@ -1,0 +1,84 @@
+= content_for :page_spec
+  = stylesheet_link_tag 'admin/logout', media: 'all', \
+    'data-turbolinks-track' => true
+
+.admin_body
+  .content
+    .container-fluid
+      /! Middle Content Start
+      .content-wrapper style="min-height: 8px;"
+        .admin_container style="min-height: 8px;"
+          .content.clearfix
+            .content-section.clearfix
+              .login-page
+                .heading.clearfix
+                  .logo
+                    h2.mgbt-xs-5
+                      img alt="logo" src="/img/logo.png" 
+                  h4.text-center.font-semibold.grey LOGIN TO YOUR ACCOUNT
+
+                .panel.widget
+                  .panel-body
+                    .login-icon.entypo-icon
+                      i.fa.fa-lock
+
+                    = simple_form_for( \
+                        @user, \
+                        { \
+                          :html => { \
+                            :method => :post, \
+                            :id => 'login_form', \
+                            :class => 'form-horizontal', \
+                          }, \
+                          :url => user_session_path \
+                        } \
+                      ) do |f|
+                        .alert.alert-danger.hidden
+                          button.close aria-hidden="true" data-dismiss="alert" type="button" 
+                            i.fa.fa-close
+                          span.alert-icon
+                            i.fa.fa-exclamation-circle.red
+                          strong Oh snap! 
+                          | Change a few things up and try submitting again.
+
+                        .alert.alert-success.hidden
+                          button.close aria-hidden="true" data-dismiss="alert" type="button" 
+                            i.fa.fa-close
+                          span.alert-icon
+                            i.fa.fa-check-circle.green
+                          strong Well done!
+
+                        .form-group.mgbt-xs-20
+                          .col-md-12
+                            .label-wrapper.sr-only
+                              label.control-label for='email'  
+                            #username-input-wrapper.input-wrapper
+                              span.menu-icon
+                                i.fa.fa-envelope
+                              = f.input_field :email, :label => false,\
+                                :placeholder => 'Email', :id => 'email',\
+                                :name => 'user[email]', :required => true
+                            .label-wrapper
+                              label.control-label.sr-only for="password" Password
+                            #password-input-wrapper.input-wrapper
+                              span.menu-icon
+                                i.fa.fa-key
+                              = f.input_field :password, :label => false,\
+                              :placeholder => 'Password', :name => 'user[password]'
+
+                        #login-error.alert.alert-danger.hidden
+                          i.fa.fa-exclamation-circle.fa-fw
+                          | Please fill the necessary field
+
+                        .form-group.submit-area
+                          .col-md-12.text-center.mgbt-xs-5
+                            = f.button :submit, 'Login', :id => 'login-submit',\
+                              :class => 'btn bg_green white width-100'
+                        .form-group
+                          .col-md-12
+                            .row
+                              .col-xs-6
+                                .checkbox
+                                  = f.input_field :remember_me, :as => :boolean,\
+                                  :label => false, :inline_label => true, \
+                                  :id => 'checkbox-1', :name => 'user[remember_me]'

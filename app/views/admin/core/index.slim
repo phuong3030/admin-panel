@@ -1,5 +1,3 @@
-div data-role="page" 
-  header data-role="header" 
-  #main.container-fluid data-role="content" 
-  footer.footer.navbar.navbar-fixed-bottom data-role="footer" 
-    p Welcome Backbone administrator's page
+= content_for :page_spec do
+  = javascript_include_tag 'admin/admin', 'data-turbolinks-track' => true
+.admin_body 

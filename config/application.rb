@@ -6,18 +6,18 @@ Bundler.require(*Rails.groups)
 
 module FoodStore
   class Application < Rails::Application
-    # Set Time.zone default to the specified zone and make Active Record auto-convert to this zone.
-    # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
-    # config.time_zone = 'Central Time (US & Canada)'
-    # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
-    # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
-    # config.i18n.default_locale = :de
 
+    # Ensure order of CMS route for application
     config.railties_order = [ :all, ComfortableMexicanSofa::Engine ]
 
     config.generators do |g|
       g.test_framework :rspec
       g.integration_tool :rspec
     end
+    
+    # Grape API
+    config.paths.add "app/api", glob: "**/*.rb"
+    config.autoload_paths += Dir["#{Rails.root}/app"]
   end
 end
+

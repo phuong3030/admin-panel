@@ -11,7 +11,7 @@
    * ---------------
    * Tip: Set to true to turn on "production" mode
    */
-  var production = true,
+  var production = false,
       filesToLoad,
       boilerplateMVC = { //BoilerplateMVC Helper Methods
 
@@ -108,20 +108,20 @@
     // Mobile/Tablet CSS and JavaScript files to load
     filesToLoad = {
       // CSS file that is loaded when in development mode
-      "dev-css": "/assets/admin/mobile.css",
+      "dev-css": "/assets/admin/client/mobile.css",
       // CSS file that is loaded when in production mode
-      "prod-css": "/assets/admin/mobile.min.css",
+      "prod-css": "/assets/admin/client/mobile.min.css",
       // Require.js configuration file that is loaded when in development mode
       "dev-js": { 
         "data-main": "/assets/admin/app/config/config.js", 
         "src": "/assets/admin/libs/require.js" 
       },
       // JavaScript initialization file that is also loaded when in development mode
-      "dev-init": "/assets/admin/app/init/MobileInit.js",
+      "dev-init": "/assets/admin/app/init/mobile-init.js",
       // JavaScript file that is loaded when in production mode
-      "prod-init": "/assets/admin/app/init/MobileInit.min.js",
+      "prod-init": "/assets/admin/app/init/mobile-init.min.js",
       "prod-js": { 
-        "data-main": "/assets/admin/app/config/config.js", 
+        "data-main": "/assets/admin/app/config/config.min.js", 
         "src": "/assets/admin/libs/require.js" 
       }
     };
@@ -131,20 +131,20 @@
     // Desktop CSS and JavaScript files to load
     filesToLoad = {
       // CSS file that is loaded when in development mode
-      "dev-css": "/assets/admin/desktop.css",
+      "dev-css": "/assets/admin/client/desktop.css",
       // CSS file that is loaded when in production mode
-      "prod-css": "/assets/admin/desktop.min.css",
+      "prod-css": "/assets/admin/client/desktop.min.css",
       // Require.js configuration file that is also loaded when in development mode
       "dev-js": { 
         "data-main": "/assets/admin/app/config/config.js", 
         "src": "/assets/admin/libs/require.js" 
       },
       // JavaScript initialization file that is loaded when in development mode
-      "dev-init": "/assets/admin/app/init/DesktopInit.js",
+      "dev-init": "/assets/admin/app/init/desktop-init.js",
       // JavaScript file that is loaded when in production mode
-      "prod-init": "/assets/admin/app/init/DesktopInit.min.js",
+      "prod-init": "/assets/admin/app/init/desktop-init.min.js",
       "prod-js": { 
-        "data-main": "/assets/admin/app/config/config.js", 
+        "data-main": "/assets/admin/app/config/config.min.js", 
         "src": "/assets/admin/libs/require.js" 
       }
     };
