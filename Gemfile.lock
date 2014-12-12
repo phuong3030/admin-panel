@@ -381,7 +381,6 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   comfortable_mexican_sofa (= 1.12.2)
-  cucumber
   cucumber-rails
   database_cleaner
   devise
