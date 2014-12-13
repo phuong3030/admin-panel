@@ -31,7 +31,6 @@ Rails.application.routes.draw do
 
     # Make sure this routeset is defined last
     comfy_route :cms, :path => '/', :sitemap => false
-
   #end
 
   #get '', :to => redirect("/#{I18n.default_locale}")

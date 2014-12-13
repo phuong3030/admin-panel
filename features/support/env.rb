@@ -7,6 +7,8 @@ Spork.prefork do
   require 'rspec/expectations'
   require 'capybara/cucumber'
   require 'capybara/poltergeist'
+  require 'factory_girl'
+  require "#{Rails.root}/spec/support/deferred_garbage_collection.rb"
 
   Capybara.default_driver = :poltergeist
   Capybara.javascript_driver = :poltergeist
@@ -28,8 +30,27 @@ Spork.prefork do
     require 'database_cleaner'
     require 'database_cleaner/cucumber'
     DatabaseCleaner.strategy = :truncation
+    #DatabaseCleaner.clean_with(:truncation)
   rescue NameError
     raise "You need to add database_cleaner to your Gemfile (in the :test group) if you wish to use it."
+  end
+
+  Before do
+    DeferredGarbageCollection.start
+    DatabaseCleaner.start
+  end
+
+  After do
+    DeferredGarbageCollection.reconsider
+    FactoryGirl.factories.clear
+    FactoryGirl.sequences.clear
+    FactoryGirl.traits.clear
+    FactoryGirl.find_definitions
+    DatabaseCleaner.clean
+  end
+
+  Around do |scenario, block|
+    DatabaseCleaner.cleaning(&block)
   end
 
   Cucumber::Rails::Database.javascript_strategy = :truncation
