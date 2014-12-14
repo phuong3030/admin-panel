@@ -6,23 +6,32 @@ Spork.prefork do
   require 'cucumber/rails'
   require 'rspec/expectations'
   require 'capybara/cucumber'
-  require 'capybara/poltergeist'
+  #require 'capybara/poltergeist'
+  require 'selenium-webdriver'
   require 'factory_girl'
   require "#{Rails.root}/spec/support/deferred_garbage_collection.rb"
 
-  Capybara.default_driver = :poltergeist
-  Capybara.javascript_driver = :poltergeist
-  Capybara.register_driver :poltergeist do |app|
-    options = {
-      :js_errors => true,
-      :timeout => 120,
-      :debug => false,
-      :phantomjs_options => ['--load-images=no', '--disk-cache=false'],
-      :inspector => true,
-    }
-    Capybara::Poltergeist::Driver.new(app, options)
-  end
+  Capybara.default_selector = :css
+  Capybara.ignore_hidden_elements = false 
+  Capybara.default_wait_time = 20
+  #Capybara.register_driver :poltergeist do |app|
+    #options = {
+      #:js_errors => true,
+      #:timeout => 120,
+      #:debug => false,
+      #:phantomjs_options => ['--load-images=no', '--disk-cache=false'],
+      #:inspector => true,
+    #}
+    #Capybara::Poltergeist::Driver.new(app, options)
+  #end
 
+  Capybara.register_driver :selenium do |app| 
+    profile = Selenium::WebDriver::Firefox::Profile.new 
+    Capybara::Selenium::Driver.new( app, :browser => :firefox, :profile => profile ) 
+  end
+  Capybara.default_driver = :selenium
+  Capybara.javascript_driver = :culerity
+  
   ActionController::Base.allow_rescue = false
   Cucumber::Rails::World.use_transactional_fixtures = false
   

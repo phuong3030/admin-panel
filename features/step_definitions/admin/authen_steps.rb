@@ -3,9 +3,10 @@ def create_admin_user
   admin_user = FactoryGirl.create(:user_admin_role)
 end
 
-def login
-  fill_in 'email', with: 'email1@example.com'
-  fill_in 'password', with: 'password'
+# Default is valid credentials
+def login(user = FactoryGirl.create(:user_admin_role))
+  fill_in 'email', with: user.email
+  fill_in 'password', with: user.password
   page.find('#login-submit').click
 end
 
@@ -16,7 +17,7 @@ Given(/^I exist as a admin user$/) do
 end
 
 Given(/^I'm not logged in$/) do
-  page.driver.browser.reset
+  #page.driver.browser.clear_cookies
 end
 
 Given(/^I'm logged in$/) do
@@ -35,19 +36,24 @@ When(/^I login with the valid credentials$/) do
 end
 
 When(/^I login with a wrong email$/) do
-    pending # express the regexp above with the code you wish you had
+  pending
+  visit admin_login_path
+  login({ :email => 'abc@email.com', :password => 'password' })
 end
 
 When(/^I login with a wrong password$/) do
-    pending # express the regexp above with the code you wish you had
+  pending
+  login({ :email => 'email1@email.com', :password => 'password1' })
 end
 
 When(/^I sign out$/) do
-    pending # express the regexp above with the code you wish you had
+  page.has_css?('.navbar-bottom-widget a')
+  find('.navbar-bottom-widget a').click
 end
 
 ### THEN ###
-Then(/^I should be redirected to \/admin\/login$/) do
+Then(/^I should be redirected to \/admin\/login page$/) do
+  sleep 2
   expect(current_path).to eq(admin_login_path)
 end
 
@@ -58,11 +64,7 @@ Then(/^I should be redirected to admin area$/) do
     #end
   #end
   #puts page.driver.cookies
-  expect(current_path).to eq(admin_root_path)
-end
-
-Then(/^I should be redirected to \/admin\/login page$/) do
-    pending # express the regexp above with the code you wish you had
+  response.should redirect_to(admin_root_path)
 end
 
 Then(/^I see an invalid login message$/) do
@@ -70,5 +72,5 @@ Then(/^I see an invalid login message$/) do
 end
 
 Then(/^I should see \/admin\/logout page$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(current_path).to eq(admin_logout_path)
 end

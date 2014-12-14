@@ -6,7 +6,7 @@ Feature: Authentication
   Scenario: Redirect to /admin/login path if not logged in
     Given I'm not logged in
     When I try to visit to /admin area
-    Then I should be redirected to /admin/login
+    Then I should be redirected to /admin/login page
 
   Scenario: User logins successful
     Given I exist as a admin user 
@@ -28,7 +28,7 @@ Feature: Authentication
     Then I should be redirected to /admin/login page
     And I see an invalid login message
 
-  Scenario: User signs out
+  Scenario: User signs out 
     Given I exist as a admin user 
     And I'm logged in
     When I sign out
