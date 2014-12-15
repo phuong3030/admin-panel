@@ -22,6 +22,7 @@ define(
       },
 
       logout: function(e) {
+        console.log('logout clicked!');
 
         $.ajax({
           url: '/user/logout',
@@ -29,8 +30,10 @@ define(
           statusCode: {
             204: function() {
 
+              console.log(window.location.origin + '/admin/logout');
               // Return to login page
-              window.location.href = '/admin/login';
+              window.location.assign(window.location.origin + '/admin/logout');
+              console.log(window.location);
             }
           }
         });

@@ -1,13 +1,6 @@
-require 'factory_girl'
-
 FactoryGirl.define do
-  sequence :email do |n|
-    "email#{n}@example.com"
-  end
-
-  sequence :username do |n|
-    "name#{n}"
-  end
+  sequence(:email) { |n| "email#{n}@example.com" }
+  sequence(:username) { |n| "name#{n}" }
 
   factory :role, :class => Core::Role do
     name 'admin'
