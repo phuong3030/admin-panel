@@ -20,16 +20,14 @@ Rails.application.routes.draw do
     # Mount API
     mount API::Base => '/api' 
 
-    get '/admin' => 'admin/core#index', :as => 'admin_root'
-    get '/admin/login' => 'admin/core#login', :as => 'admin_login'
-    get '/admin/logout' => 'admin/core#logout', :as => 'admin_logout'
+    namespace :admin do
+      get '/' => 'core#index', :as => 'root'
+      get '/login' => 'core#login', :as => 'login'
+      get '/logout' => 'core#logout', :as => 'logout'
+    end
       
-    comfy_route :cms_admin, :path => '/admin/cms'
-
-    # Root for render page from CMS system
-    root :to => 'comfy/cms/content#show'
-
     # Make sure this routeset is defined last
+    comfy_route :cms_admin, :path => '/admin/cms'
     comfy_route :cms, :path => '/', :sitemap => false
   #end
 
