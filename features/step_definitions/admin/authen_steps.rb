@@ -1,17 +1,4 @@
-### UTILITY METHODS ###
-def create_admin_user
-  admin_user = FactoryGirl.create(:user_admin_role)
-end
-
-# Default is valid credentials
-def login(user = FactoryGirl.create(:user_admin_role))
-  fill_in 'email', with: user.email
-  fill_in 'password', with: user.password
-  page.find('#login-submit').click
-end
-
 ### GIVEN ###
-
 Given(/^I exist as a admin user$/) do 
   create_admin_user
 end
@@ -22,7 +9,7 @@ end
 
 Given(/^I'm logged in$/) do
   visit admin_login_path
-  login
+  login(@admin_user)
 end
 
 ### WHEN ###
@@ -32,18 +19,23 @@ end
 
 When(/^I login with the valid credentials$/) do
   visit admin_login_path
-  login
+  login(@admin_user)
 end
 
 When(/^I login with a wrong email$/) do
-  pending
   visit admin_login_path
-  login({ :email => 'abc@email.com', :password => 'password' })
+  @admin_user.email = 'wrongemail@email.com'
+  login(@admin_user)
 end
 
 When(/^I login with a wrong password$/) do
-  pending
-  login({ :email => 'email1@email.com', :password => 'password1' })
+  visit admin_login_path
+  login(
+    Core::User.new(
+      :email => @admin_user.email,
+      :password => 'wrongpass'
+    )
+  )
 end
 
 When(/^I sign out$/) do
@@ -68,9 +60,11 @@ Then(/^I should be redirected to admin area$/) do
 end
 
 Then(/^I see an invalid login message$/) do
-    pending # express the regexp above with the code you wish you had
+  expect(current_path).to eq(admin_login_path)
+  page.should have_content('Oh snap! Change a few things up and try submitting again.')
 end
 
 Then(/^I should see \/admin\/logout page$/) do
+  sleep 1
   expect(current_path).to eq(admin_logout_path)
 end

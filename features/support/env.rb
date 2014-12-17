@@ -11,6 +11,8 @@ Spork.prefork do
   require 'factory_girl'
   require "#{Rails.root}/spec/support/deferred_garbage_collection.rb"
 
+  Dir["#{Rails.root}/features/support/**/*.rb"].each {|file| require file }
+
   Capybara.default_selector = :css
   Capybara.ignore_hidden_elements = false 
   Capybara.default_wait_time = 20
