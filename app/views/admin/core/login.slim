@@ -2,6 +2,10 @@
   = stylesheet_link_tag 'admin/logout', media: 'all', \
     'data-turbolinks-track' => true
 
+= content_for :page_script
+  = javascript_include_tag 'admin/core/logout', \
+    'data-turbolinks-track' => true
+
 .admin_body
   .content
     .container-fluid
@@ -33,13 +37,16 @@
                           :url => user_session_path \
                         } \
                       ) do |f|
-                        .alert.alert-danger.hidden
-                          button.close aria-hidden="true" data-dismiss="alert" type="button" 
-                            i.fa.fa-close
-                          span.alert-icon
-                            i.fa.fa-exclamation-circle.red
-                          strong Oh snap! 
-                          | Change a few things up and try submitting again.
+                        - if flash[:alert].blank?
+                          .alert.alert-danger.hidden
+                        - else
+                          .alert.alert-danger
+                            button.close aria-hidden="true" data-dismiss="alert" type="button" 
+                              i.fa.fa-close
+                            span.alert-icon
+                              i.fa.fa-exclamation-circle.red
+                            strong Oh snap! 
+                            | Change a few things up and try submitting again.
 
                         .alert.alert-success.hidden
                           button.close aria-hidden="true" data-dismiss="alert" type="button" 
