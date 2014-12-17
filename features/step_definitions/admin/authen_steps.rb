@@ -64,7 +64,7 @@ Then(/^I should be redirected to admin area$/) do
     #end
   #end
   #puts page.driver.cookies
-  response.should redirect_to(admin_root_path)
+  expect(current_path).to eq(admin_root_path)
 end
 
 Then(/^I see an invalid login message$/) do
