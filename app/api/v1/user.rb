@@ -5,9 +5,9 @@ module API
       include API::V1::Defaults
       helpers API::Auth
 
-      #before do
-        #authenticated_user
-      #end
+      before do
+        authenticated_user
+      end
 
       resource :user do
         desc 'Get current user information'

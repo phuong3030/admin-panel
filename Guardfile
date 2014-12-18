@@ -1,15 +1,4 @@
-guard :spork, :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
-  watch('config/application.rb')
-  watch('config/environment.rb')
-  watch('config/environments/test.rb')
-  watch(%r{^config/initializers/.+\.rb$})
-  watch('Gemfile.lock')
-  watch('spec/spec_helper.rb') { :rspec }
-  watch('test/test_helper.rb') { :test_unit }
-  watch(%r{features/support/}) { :cucumber }
-end
-
-guard :rspec, :cmd => "rspec --drb", :all_on_start => false, :all_after_pass => false do
+guard :rspec, :cmd => "spring rspec", :all_on_start => false, :all_after_pass => false do
   require "ostruct"
 
   # Generic Ruby apps
@@ -55,5 +44,14 @@ guard :rspec, :cmd => "rspec --drb", :all_on_start => false, :all_after_pass => 
   watch(%r{^spec/acceptance/(.+)\.feature$})
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
+  end
+end
+
+guard 'cucumber', :command_prefix => 'spring', :bundler => false, :all_on_start => false, :all_after_pass => false do
+  watch(%r{^features/.+\.feature$})
+  watch(%r{^features/support/.+$})          { "features" }
+
+  watch(%r{^features/step_definitions/(.+)_steps\.rb$}) do |m|
+    Dir[File.join("**/#{m[1]}.feature")][0] || "features"
   end
 end

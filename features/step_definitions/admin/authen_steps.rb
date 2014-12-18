@@ -50,12 +50,6 @@ Then(/^I should be redirected to \/admin\/login page$/) do
 end
 
 Then(/^I should be redirected to admin area$/) do
-  #page.driver.network_traffic.each do |request|
-    #request.response_parts.uniq(&:url).each do |response|
-      #puts "\n Responce URL #{response.url}: \n Status #{response.status}"
-    #end
-  #end
-  #puts page.driver.cookies
   expect(current_path).to eq(admin_root_path)
 end
 
