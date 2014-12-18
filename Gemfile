@@ -44,6 +44,7 @@ group :development, :test do
   gem 'spring-commands-rspec'
   gem 'spring-commands-cucumber'
   gem 'rspec-rails'
+  gem 'rspec-activemodel-mocks'
   gem 'guard-spring'
   gem 'guard-rspec', :require => false
   gem 'guard-cucumber'

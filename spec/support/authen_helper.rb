@@ -1,17 +1,14 @@
 module AuthenHelper
-  def sign_in(user = double('user'))
-    if user.nil?
-      allow(request.env['warden']).to receive(:authenticate!).and_throw(:warden, {:scope => :user})
-      allow(controller).to receive(:current_user).and_return(nil)
-    else
-      allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-      allow(controller).to receive(:current_user).and_return(user)
-    end
-  end
+  def stub_authenticate!
+    API::V1::User.helpers do
+      def current_user
+        FactoryGirl.create(:user_admin_role)
+      end
 
-  def sign_in_as_admin(user = double('user'))
-    allow(user).to receive(:role?).with('admin').and_return(true)
-    allow(request.env['warden']).to receive(:authenticate!).and_return(user)
-    allow(controller).to receive(:current_user).and_return(user)
+      def authenticated_user
+        true
+      end
+    end
+
   end
 end
