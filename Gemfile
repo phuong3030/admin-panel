@@ -40,10 +40,13 @@ gem 'friendly_id'
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '~> 2.6'
-  gem 'spork-rails', github: 'sporkrb/spork-rails'
+  gem 'spring'
+  gem 'spring-commands-rspec'
+  gem 'spring-commands-cucumber'
+  gem 'rspec-rails'
+  gem 'guard-spring'
   gem 'guard-rspec', :require => false
-  gem 'guard-spork'
+  gem 'guard-cucumber'
   gem 'pry'
 end
 
