@@ -13,6 +13,7 @@ Feature: Authentication
     And I'm not logged in
     When I login with the valid credentials
     Then I should be redirected to admin area
+    And I see my info in header bar
 
   Scenario: User enters wrong email
     Given I exist as a admin user

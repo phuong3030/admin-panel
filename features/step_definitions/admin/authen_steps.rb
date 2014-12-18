@@ -59,6 +59,10 @@ Then(/^I should be redirected to admin area$/) do
   expect(current_path).to eq(admin_root_path)
 end
 
+Then(/^I see my info in header bar$/) do
+  page.should have_content(@admin_user.username)
+end
+
 Then(/^I see an invalid login message$/) do
   expect(current_path).to eq(admin_login_path)
   page.should have_content('Oh snap! Change a few things up and try submitting again.')
