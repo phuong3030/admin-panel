@@ -9,17 +9,17 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 
 RSpec.configure do |config|
   config.expect_with :rspec
-
   config.mock_with :rspec
-
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
-  config.use_transactional_fixtures = false
-
   config.order = :random
+  config.color = true
+  config.use_transactional_fixtures = false
+  config.infer_spec_type_from_file_location!
+
+  config.include AuthenHelper
 
   Kernel.srand config.seed
-
   config.before(:suite) do
     DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean_with(:truncation)

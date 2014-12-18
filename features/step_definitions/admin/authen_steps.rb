@@ -1,5 +1,5 @@
 ### GIVEN ###
-Given(/^I exist as a admin user$/) do 
+Given(/^I exist as an admin user$/) do 
   create_admin_user
 end
 

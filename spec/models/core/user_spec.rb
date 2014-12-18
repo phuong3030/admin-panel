@@ -1,7 +1,6 @@
-require 'spec_helper'
-
-describe Core::User do
-  it "must be false" do 
-    expect(false).to be_false
-  end
+describe Core::User, :type => :model do
+  it { should respond_to(:role_array) }
+  it { should respond_to(:role?) }
+  it { should respond_to(:add_role) }
+  it { should respond_to(:remove_role) }
 end
