@@ -96,6 +96,10 @@ module.exports = function(grunt) {
         options: {
           spawn: false
         }
+      },
+      js: {
+        files: ['Gruntfile.js', 'javascripts/admin/app/**/*.js', '!javascripts/admin/app/**/*min.js'],
+        tasks: ['jshint']
       }
     },
     uglify: {
