@@ -11,7 +11,7 @@
    * ---------------
    * Tip: Set to true to turn on "production" mode
    */
-  var production = true,
+  var production = false,
       filesToLoad,
       boilerplateMVC = { //BoilerplateMVC Helper Methods
 
