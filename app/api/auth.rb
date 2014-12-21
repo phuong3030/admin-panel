@@ -1,7 +1,7 @@
 module API
   module Auth
     def warden
-      request.env['warden']
+      env['warden']
     end
 
     def authenticated

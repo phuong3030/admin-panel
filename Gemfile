@@ -24,7 +24,7 @@ gem 'paperclip'
 gem 'ancestry'
 
 # API
-gem 'grape'
+gem 'grape', '~> 0.9.0'
 
 # View engine
 gem 'slim-rails'
@@ -43,6 +43,7 @@ group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-commands-cucumber'
+  gem 'commands'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'guard-spring'
