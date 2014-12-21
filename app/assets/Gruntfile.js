@@ -89,19 +89,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    watch: {
-      css: {
-        files: ['stylesheets/admin/client/*.scss'],
-        tasks: ['sass:dev'],
-        options: {
-          spawn: false
-        }
-      },
-      js: {
-        files: ['Gruntfile.js', 'javascripts/admin/app/**/*.js', '!javascripts/admin/app/**/*min.js'],
-        tasks: ['jshint']
-      }
-    },
     uglify: {
       dist: {
         options: {
@@ -112,6 +99,46 @@ module.exports = function(grunt) {
           'javascripts/admin/app/config/config.min.js': ['javascripts/admin/app/config/config.js']
         }
       }
+    },
+    connect: {
+      test : {
+        port : 8000
+      }
+    },
+    jasmine: {
+      desktop: {
+        src: './javascripts/admin/app/admin.js', 
+        options: {
+          specs: './javascripts/admin/test/**/*_spec.js',
+          helpers: './javascripts/admin/test/config/*_helper.js',
+          host: 'http://127.0.0.1:8000/',
+          template: require('grunt-template-jasmine-requirejs'),
+          templateOptions: {
+            requireConfigFile: './javascripts/admin/app/config/config.js',
+            requireConfig: {
+              baseUrl: './javascripts/admin/app'
+            }
+          }
+        }
+      }
+    },
+    watch: {
+      css: {
+        files: ['stylesheets/admin/client/*.scss'],
+        tasks: ['sass:dev'],
+        options: {
+          spawn: false
+        }
+      },
+      js: {
+        files: [
+          'Gruntfile.js', 
+          'javascripts/admin/app/**/*.js', 
+          'javascripts/admin/test/**/*.js',
+          '!javascripts/admin/app/**/*min.js'
+        ],
+        tasks: ['jshint', 'connect', 'jasmine']
+      }
     }
   });
 
@@ -120,6 +147,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-sass');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('test', ['jshint', 'sass:dev']);
   grunt.registerTask('build', ['uglify:dist', 'requirejs:desktopJS', 'requirejs:mobileJS', 'sass:dist']);
