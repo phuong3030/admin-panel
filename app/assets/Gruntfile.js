@@ -134,7 +134,7 @@ module.exports = function(grunt) {
           'javascripts/admin/test/**/*.js',
           '!javascripts/admin/app/**/*min.js'
         ],
-        tasks: ['jshint', 'jasmine']
+        tasks: ['jshint', 'connect', 'jasmine']
       }
     }
   });
@@ -145,6 +145,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-jasmine');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('test', ['jshint', 'sass:dev']);
   grunt.registerTask('build', ['uglify:dist', 'requirejs:desktopJS', 'requirejs:mobileJS', 'sass:dist']);
