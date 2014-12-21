@@ -107,14 +107,17 @@ module.exports = function(grunt) {
     },
     jasmine: {
       desktop: {
-        src: 'javascripts/admin/app/**/*.js', 
+        src: './javascripts/admin/app/admin.js', 
         options: {
-          specs: 'javascripts/admin/test/**/*_spec.js',
-          helpers: 'javascripts/admin/test/config/*_helper.js',
+          specs: './javascripts/admin/test/**/*_spec.js',
+          helpers: './javascripts/admin/test/config/*_helper.js',
           host: 'http://127.0.0.1:8000/',
           template: require('grunt-template-jasmine-requirejs'),
           templateOptions: {
-            requireConfigFile: 'javascripts/admin/app/config/config.js'
+            requireConfigFile: './javascripts/admin/app/config/config.js',
+            requireConfig: {
+              baseUrl: './javascripts/admin/app'
+            }
           }
         }
       }

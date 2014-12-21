@@ -8,6 +8,7 @@ define(
 
         expect(true).toBeTruthy();
       });
+
     });
   }
 );
