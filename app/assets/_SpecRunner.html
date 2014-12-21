@@ -1,0 +1,256 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner</title>
+
+  
+  <link rel="stylesheet" type="text/css" href=".grunt/grunt-contrib-jasmine/jasmine.css">
+  
+
+  <script src=".grunt/grunt-contrib-jasmine/require.js"></script>
+  <script>
+    require.onError = function(error) {
+      var message = error.requireType + ': ';
+      if (error.requireType === 'scripterror' || error.requireType === 'notloaded' && error.requireModules) {
+        message += 'Illegal path or script error: ' + '[\'' + error.requireModules.join("', '") + '\']';
+      } else {
+        message += error.message;
+      }
+
+      throw Error(message);
+    };
+  </script>
+
+  
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/jasmine-html.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/json2.js"></script>
+  
+  <script src=".grunt/grunt-contrib-jasmine/boot.js"></script>
+  
+  
+
+  <script>
+    
+
+    
+      require.config({
+  "baseUrl": "/assets/admin/app",
+  "paths": {
+    "jquery": "../libs/jquery",
+    "jqueryui": "../libs/jqueryui",
+    "jquerymobile": "../libs/jquery.mobile",
+    "underscore": "../libs/lodash",
+    "backbone": "../libs/backbone",
+    "marionette": "../libs/backbone.marionette",
+    "handlebars": "../libs/handlebars",
+    "hbs": "../libs/hbs",
+    "i18nprecompile": "../libs/i18nprecompile",
+    "json2": "../libs/json2",
+    "jasmine": "../libs/jasmine",
+    "jasmine-html": "../libs/jasmine-html",
+    "backbone.validateAll": "../libs/plugins/Backbone.validateAll",
+    "backbone.routefilter": "../libs/plugins/backbone.routefilter",
+    "bootstrap": "../libs/plugins/bootstrap",
+    "text": "../libs/plugins/text",
+    "jasminejquery": "../libs/plugins/jasmine-jquery"
+  },
+  "shim": {
+    "bootstrap": [
+      "jquery"
+    ],
+    "jqueryui": [
+      "jquery"
+    ],
+    "jquerymobile": [
+      "jqueryui"
+    ],
+    "backbone": {
+      "deps": [
+        "underscore",
+        "jquery"
+      ],
+      "exports": "Backbone"
+    },
+    "marionette": {
+      "deps": [
+        "underscore",
+        "backbone",
+        "jquery"
+      ],
+      "exports": "Marionette"
+    },
+    "handlebars": {
+      "exports": "Handlebars"
+    },
+    "backbone.validateAll": [
+      "backbone"
+    ],
+    "jasmine": {
+      "exports": "jasmine"
+    },
+    "jasmine-html": {
+      "deps": [
+        "jasmine"
+      ],
+      "exports": "jasmine"
+    }
+  },
+  "hbs": {
+    "templateExtension": "html",
+    "helperDirectory": "templates/helpers/",
+    "i18nDirectory": "templates/i18n/",
+    "compileOptions": {}
+  }
+});
+    
+  </script>
+
+  <script>
+    // Delay onLoad function until we are ready
+    var startTests = window.onload;
+    window.onload = null;
+
+    function launchTest() {
+    require([
+      
+        
+        'javascripts/admin/app/app' ,
+      
+        
+        'javascripts/admin/app/collections/Collection' ,
+      
+        
+        'javascripts/admin/app/config/config.min' ,
+      
+        
+        'javascripts/admin/app/controllers/desktop-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/mobile-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/header/header-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/header/mega_menu-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/header/menu_search-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/header/panel_header-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/left/left_navbar_bottom-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/left/left_navbar_menu-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/left/left_navbar_tabs_menu-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/left/left_sidebar-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/right/right_navbar_menu-controller' ,
+      
+        
+        'javascripts/admin/app/controllers/shared/sidebar/right/right_navbar_tabs_menu-controller' ,
+      
+        
+        'javascripts/admin/app/init/desktop-init' ,
+      
+        
+        'javascripts/admin/app/init/desktop-init.min' ,
+      
+        
+        'javascripts/admin/app/init/mobile-init' ,
+      
+        
+        'javascripts/admin/app/init/mobile-init.min' ,
+      
+        
+        'javascripts/admin/app/models/taxon' ,
+      
+        
+        'javascripts/admin/app/models/user' ,
+      
+        
+        'javascripts/admin/app/modules/shared/header' ,
+      
+        
+        'javascripts/admin/app/modules/shared/left_sidebar' ,
+      
+        
+        'javascripts/admin/app/modules/shared/right_sidebar' ,
+      
+        
+        'javascripts/admin/app/modules/taxonomy' ,
+      
+        
+        'javascripts/admin/app/routers/router' ,
+      
+        
+        'javascripts/admin/app/routers/taxonomy-router' ,
+      
+        
+        'javascripts/admin/app/templates/helpers/yeller' ,
+      
+        
+        'javascripts/admin/app/views/layouts/header-layout' ,
+      
+        
+        'javascripts/admin/app/views/layouts/left_sidebar-layout' ,
+      
+        
+        'javascripts/admin/app/views/layouts/main-layout' ,
+      
+        
+        'javascripts/admin/app/views/shared/header/mega_menu-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/header/menu_search-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/header/panel_header-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/sidebar/left/left_navbar_bottom_widget-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/sidebar/left/left_navbar_menu-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/sidebar/left/left_navbar_tabs_menu-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/sidebar/right/right_navbar_menu-view' ,
+      
+        
+        'javascripts/admin/app/views/shared/sidebar/right/right_navbar_tabs_menu-view' 
+      
+    ],
+    function(){
+      require(['javascripts/admin/test/specs/models/user_spec.js','.grunt/grunt-contrib-jasmine/reporter.js'], function(){
+        startTests();
+      });
+    }
+    )
+  }
+  </script>
+
+  
+  <script>
+  launchTest();
+  </script>
+  
+</head>
+<body>
+</body>
+</html>
