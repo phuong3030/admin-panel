@@ -127,7 +127,8 @@ module.exports = function(grunt) {
         files: ['stylesheets/admin/client/*.scss'],
         tasks: ['sass:dev'],
         options: {
-          spawn: false
+          spawn: false,
+          livereload: true
         }
       },
       js: {
@@ -137,7 +138,16 @@ module.exports = function(grunt) {
           'javascripts/admin/test/**/*.js',
           '!javascripts/admin/app/**/*min.js'
         ],
-        tasks: ['jshint', 'connect', 'jasmine']
+        options: {
+          livereload: true
+        },
+        tasks: [
+          'jshint', 
+          'requirejs:desktopJS', 
+          'sass:dist',
+          'connect', 
+          'jasmine'
+        ]
       }
     }
   });
@@ -151,6 +161,14 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.registerTask('test', ['jshint', 'sass:dev']);
-  grunt.registerTask('build', ['uglify:dist', 'requirejs:desktopJS', 'requirejs:mobileJS', 'sass:dist']);
+  grunt.registerTask(
+    'build', 
+    [
+      'uglify:dist', 
+      'requirejs:desktopJS', 
+      'requirejs:mobileJS', 
+      'sass:dist'
+    ]
+  );
   grunt.registerTask('default', ['test', 'build']);
 };
