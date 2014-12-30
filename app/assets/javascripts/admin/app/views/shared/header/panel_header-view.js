@@ -16,10 +16,21 @@ define(
     return Backbone.Marionette.ItemView.extend( {
       template: panelHeaderTemplate,
       className: 'panel-header',
+      ui: {
+        mediumButton: '.nav-medium-button',
+        smallButton: '.nav-small-button' 
+      },
 
-      // View Event Handlers
+      // View Event Handlers declaration
       events: {
+        'click @ui.mediumButton': 'resizeSidebar',
+        'click @ui.smallButton': 'resizeSidebar'
+      },
 
+      // Event handlers
+      resizeSidebar: function (e) {
+
+        console.log(e);
       }
     });
   }

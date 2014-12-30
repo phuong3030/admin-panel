@@ -47,7 +47,7 @@ guard :rspec, :cmd => "spring rspec", :all_on_start => false, :all_after_pass =>
   end
 end
 
-guard 'cucumber', :command_prefix => 'spring', :bundler => false, :all_on_start => false, :all_after_pass => false do
+guard 'cucumber', :command_prefix => 'spring', :bundler => false, :all_on_start => false, :all_after_pass => false, :focus_on => 'dev' do
   watch(%r{^features/.+\.feature$})
   watch(%r{^features/support/.+$})          { "features" }
 
