@@ -124,7 +124,9 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: ['stylesheets/admin/client/*.scss'],
+        files: [
+          'stylesheets/admin/client/*.scss'
+        ],
         options: {
           spawn: false,
           livereload: true
@@ -136,7 +138,6 @@ module.exports = function(grunt) {
       },
       buildjs: {
         files: [
-          'Gruntfile.js', 
           'javascripts/admin/app/**/*.js'
         ],
         options: {
@@ -152,7 +153,6 @@ module.exports = function(grunt) {
           'javascripts/admin/test/**/*.js'
         ],
         tasks: [
-          'jshint',
           'connect', 
           'jasmine'
         ]

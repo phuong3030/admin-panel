@@ -8,7 +8,8 @@ define(
   ],
   function (App, Backbone, Marionette, $, panelHeaderTemplate) {
 
-    describe('Send command to resize command to application', function () {
+    describe('Resize left sidebar', function () {
+      it('should be send resize command to application'); 
     });
 
   }
