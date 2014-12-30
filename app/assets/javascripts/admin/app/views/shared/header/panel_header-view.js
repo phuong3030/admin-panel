@@ -30,7 +30,13 @@ define(
       // Event handlers
       resizeSidebar: function (e) {
 
-        console.log('fired');
+        if (e.currentTarget == this.ui.mediumButton[0]) {
+
+          App.vent.trigger('leftSidebar', 'medium');
+        } else {
+
+          App.vent.trigger('leftSidebar', 'small');
+        }
       }
     });
   }

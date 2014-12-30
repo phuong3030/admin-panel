@@ -16,9 +16,6 @@ define(
 
       beforeEach(function () {
 
-        _resizeSidebar = PanelHeader.prototype.resizeSidebar;
-        spyOn(PanelHeader.prototype, 'resizeSidebar');
-
         panelHeader = new PanelHeader();
         panelHeaderTemplate = panelHeader.template();
         panelHeader.render();
@@ -36,13 +33,26 @@ define(
 
       it('should be called resizeSidebar', function () {
 
-        panelHeader.ui.mediumButton.trigger('click');
+        // Re-create panelheader instance with spied listener method
+        spyOn(PanelHeader.prototype, 'resizeSidebar');
+        panelHeader = new PanelHeader();
+        panelHeader.render();
+
+        panelHeader.ui.mediumButton.click();
         expect(panelHeader.resizeSidebar).toHaveBeenCalled();
       });
 
       it('should be send resize sidebar message to application', function (){
 
-        PanelHeader.prototype.resizeSidebar = _resizeSidebar;
+        spyOn(App.vent, 'trigger');
+
+        panelHeader.ui.smallButton.click();
+
+        expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', 'small');
+
+        panelHeader.ui.mediumButton.click();
+
+        expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', 'medium');
       });
     });
   }
