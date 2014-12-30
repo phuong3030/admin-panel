@@ -9,13 +9,11 @@ When(/^I click to "(.*?)" button$/) do |button_class|
 end
 
 Then(/^I should see left sidebar change to medium size$/) do
-  pending # express the regexp above with the code you wish you had
   page.should have_css('.left-sidebar-medium')
 end
 
 Then(/^I should see top mega list collapsed$/) do
-  pending # express the regexp above with the code you wish you had
-  # todo: top mega list must be hidden and can be slide to right
+  page.should have_css('.mega-menu-wrapper.hidden.slide')
 end
 
 Then(/^I should see left sidebar change to small size$/) do
