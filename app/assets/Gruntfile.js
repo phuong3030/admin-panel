@@ -79,7 +79,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'javascripts/admin/app/**/*.js', '!javascripts/admin/app/**/*min.js'],
+      files: [
+        'Gruntfile.js', 
+        'javascripts/admin/app/**/*.js', 
+        '!javascripts/admin/app/**/*min.js'
+      ],
       options: {
         globals: {
           jQuery: true,
@@ -138,7 +142,8 @@ module.exports = function(grunt) {
       },
       buildjs: {
         files: [
-          'javascripts/admin/app/**/*.js'
+          'javascripts/admin/app/**/*.js',
+          '!javascripts/admin/app/**/*min.js'
         ],
         options: {
           livereload: true

@@ -16,6 +16,7 @@ define(
     return Backbone.Marionette.ItemView.extend( {
       template: panelHeaderTemplate,
       className: 'panel-header',
+
       ui: {
         mediumButton: '.nav-medium-button',
         smallButton: '.nav-small-button' 
@@ -23,8 +24,8 @@ define(
 
       // View Event Handlers declaration
       events: {
-        'click @ui.mediumButton': 'resizeSidebar',
-        'click @ui.smallButton': 'resizeSidebar'
+        'click .nav-medium-button': 'resizeSidebar',
+        'click .nav-small-button': 'resizeSidebar'
       },
 
       // Event handlers
