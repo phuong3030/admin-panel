@@ -13,10 +13,9 @@ define(
   ],
   function (App, Backbone, Marionette, $, panelHeaderTemplate) {
 
-    return Backbone.Marionette.ItemView.extend( {
+    return Backbone.Marionette.ItemView.extend({
       template: panelHeaderTemplate,
       className: 'panel-header',
-
       ui: {
         mediumButton: '.nav-medium-button',
         smallButton: '.nav-small-button' 
@@ -24,14 +23,14 @@ define(
 
       // View Event Handlers declaration
       events: {
-        'click .nav-medium-button': 'resizeSidebar',
-        'click .nav-small-button': 'resizeSidebar'
+        'click @ui.mediumButton': 'resizeSidebar',
+        'click @ui.smallButton': 'resizeSidebar'
       },
 
       // Event handlers
       resizeSidebar: function (e) {
 
-        console.log(e);
+        console.log('fired');
       }
     });
   }
