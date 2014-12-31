@@ -158,6 +158,7 @@ module.exports = function(grunt) {
           'javascripts/admin/test/**/*.js'
         ],
         tasks: [
+          'jshint',
           'connect', 
           'jasmine'
         ]

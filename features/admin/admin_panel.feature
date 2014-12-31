@@ -6,19 +6,19 @@ Feature: Admin header and sidebar function
   @dev
   Scenario Outline: Change left sidebar size to medium/small/none
     Given I'm logged in as admin user
-    Given Left sidebar is on <state> 
+    Given Sidebar is on <state> 
     When I click to <button>
-    Then I should find <display> left sidebar class
+    Then I should find <display> sidebar class
     And I should find <display1> top mega list class
 
   Examples:
-    |  state     |  button                |  display  |  display1  |
-    |  "normal"  |  ".nav-small-button"   |  "small"  |  "hidden"  |
-    |  "normal"  |  ".nav-medium-button"  |  "medium" |  "hidden"  |
-    |  "small"   |  ".nav-small-button"   |  "normal" |  ""        |
-    |  "small"   |  ".nav-medium-button"  |  "medium" |  "hidden"  |
-    |  "medium"  |  ".nav-small-button"   |  "small"  |  "hidden"  |
-    |  "medium"  |  ".nav-medium-button"  |  "normal" |  ""        |
+    |  state     |  button                |  display   |  display1   |
+    |  "normal"  |  ".nav-small-button"   |  ".small"  |  ".hidden"  |
+    |  "normal"  |  ".nav-medium-button"  |  ".medium" |  ".hidden"  |
+    |  "small"   |  ".nav-small-button"   |  ".normal" |  ""         |
+    |  "small"   |  ".nav-medium-button"  |  ".medium" |  ".hidden"  |
+    |  "medium"  |  ".nav-small-button"   |  ".small"  |  ".hidden"  |
+    |  "medium"  |  ".nav-medium-button"  |  ".normal" |  ""         |
 
   Scenario Outline: Show/hide left sidebar and header 
     Given I'm logged in as admin user

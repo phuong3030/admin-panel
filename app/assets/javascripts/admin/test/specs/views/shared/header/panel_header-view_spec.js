@@ -1,4 +1,4 @@
-define(
+require(
   [
     'app', 
     'backbone', 
