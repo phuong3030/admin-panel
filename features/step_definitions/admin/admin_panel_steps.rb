@@ -4,29 +4,39 @@ Given(/^I'm logged in as admin user$/) do
   login(@admin_user)
 end
 
-When(/^I click to "(.*?)" button$/) do |button_class|
-  page.find(button_class).click
+Given(/^Left sidebar is on "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see left sidebar change to medium size$/) do
-  page.should have_css('.left-sidebar-medium')
+When(/^I click to "(.*?)"$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see top mega list collapsed$/) do
-  page.should have_css('.mega-menu-wrapper.hidden.slide')
+Then(/^I should find "(.*?)" left sidebar class$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I should see left sidebar change to small size$/) do
-  pending
-  page.should have_css('.left-sidebar-small')
+Then(/^I should find "(.*?)" top mega list class$/) do |arg1|
+  pending # express the regexp above with the code you wish you had
 end
 
-Then(/^I shouldn't see left sidebar$/) do
-  pending
-  page.should have_css('.left-sidebar-hide')
+#####
+Given(/^Sidebar is "(.*?)"$/) do |state|
+  pending # express the regexp above with the code you wish you
 end
 
-Then(/^I shouldn't see top header$/) do
-  pending
-  page.should have_css('.header-hide')
+Given(/^Header is "(.*?)"$/) do |state1|
+  pending # express the regexp above with the code you wish you
+end
+
+When(/^I click to "(.*?)" button$/) do |button|
+  pending # express the regexp above with the code you wish you
+end
+
+Then(/^I should see "(.*?)" sidebar class$/) do |sidebar_class|
+  pending # express the regexp above with the code you wish you
+end
+
+Then(/^I should see "(.*?)" header class$/) do |header_class|
+  pending # express the regexp above with the code you wish you
 end

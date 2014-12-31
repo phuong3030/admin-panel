@@ -4,30 +4,41 @@ Feature: Admin header and sidebar function
   Should be able to use items effect in header and sidebar
 
   @dev
-  Scenario: Resize to medium left sidebar effect
+  Scenario Outline: Change left sidebar size to medium/small/none
     Given I'm logged in as admin user
-    When I click to ".nav-medium-button" button
-    Then I should see left sidebar change to medium size
-    And I should see top mega list collapsed
+    Given Left sidebar is on <state> 
+    When I click to <button>
+    Then I should find <display> left sidebar class
+    And I should find <display1> top mega list class
 
-  Scenario: Resize small left sidebar effect 
-    Given I'm logged in as admin user
-    When I click to ".nav-small-button" button
-    Then I should see left sidebar change to small size 
-    And I should see top mega list collapsed
+  Examples:
+    |  state     |  button                |  display  |  display1  |
+    |  "normal"  |  ".nav-small-button"   |  "small"  |  "hidden"  |
+    |  "normal"  |  ".nav-medium-button"  |  "medium" |  "hidden"  |
+    |  "small"   |  ".nav-small-button"   |  "normal" |  ""        |
+    |  "small"   |  ".nav-medium-button"  |  "medium" |  "hidden"  |
+    |  "medium"  |  ".nav-small-button"   |  "small"  |  "hidden"  |
+    |  "medium"  |  ".nav-medium-button"  |  "normal" |  ""        |
 
-  Scenario: Hide left sidebar
+  Scenario Outline: Show/hide left sidebar and header 
     Given I'm logged in as admin user
-    When I click to ".remove-sidebar" button
-    Then I shouldn't see left sidebar
+    Given Sidebar is <state>
+    Given Header is <state1>
+    When I click to <button> button
+    Then I should see <display> sidebar class
+    And I should see <display1> header class
 
-  Scenario: Hide top header
-    Given I'm logged in as admin user
-    When I click to ".remove-header" button
-    Then I shouldn't see top header
-  
-  Scenario: Hide left sidebar and header
-    Given I'm logged in as admin user
-    When I click to ".remove-all" button
-    Then I shouldn't see left sidebar
-    And I shouldn't see top header
+  Examples: 
+    |  state                |  state1              |  button             |  display              |  display1            |
+    |  ""                   |  ""                  |  ".remove-sidebar"  |  "collapsed-sidebar"  |  ""                  |
+    |  ""                   |  ""                  |  ".remove-header"   |  ""                   |  "collapsed-header"  |
+    |  ""                   |  ""                  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-sidebar"  |  ""                   |  ""                  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-header"   |  "collapsed-sidebar"  |  "collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-sidebar"  |  "collapsed-sidebar"  |  "collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-header"   |  ""                   |  ""                  |
+    |  ""                   |  "collapsed-header"  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-sidebar"  |  ""                   |  "collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-header"   |  "collapsed-sidebar"  |  ""                  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-all"      |  ""                   |  ""                  |
