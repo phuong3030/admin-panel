@@ -12,7 +12,17 @@ define(
 
       var panelHeader,
           _resizeSidebar,
+          _resizeMessage,
           panelHeaderTemplate;
+
+      _resizeMessage = [
+        { current: 'none', input: 'smallButton', output: 'small' },
+        { current: 'none', input: 'mediumButton', output: 'medium' },
+        { current: 'small', input: 'smallButton', output: 'none' },
+        { current: 'small', input: 'mediumButton', output: 'medium' },
+        { current: 'medium', input: 'smallButton', output: 'small' },
+        { current: 'medium', input: 'mediumButton', output: 'none' }
+      ];
 
       beforeEach(function () {
 
@@ -42,18 +52,33 @@ define(
         expect(panelHeader.resizeSidebar).toHaveBeenCalled();
       });
 
-      it('should be send resize sidebar message to application', function (){
+      /**
+       * Function _resizeSidebarMessage
+       *
+       * Unit test for each case in send sidebar message with various 
+       * input case.
+       *
+       * Arguments:
+       *   - tabular { current, input, output }
+       **/
+      function _resizeSidebarMessage (tabular) {
 
-        spyOn(App.vent, 'trigger');
+        it('should be send resize sidebar message [O]: ' + tabular.output + 
+            ' with [I]: ' + tabular.input + ', [C]: ' + tabular.current, 
+          function () {
 
-        panelHeader.ui.smallButton.click();
+            spyOn(App.vent, 'trigger');
+            panelHeader._currentActived = tabular.current;
+            (panelHeader.ui)[tabular.input].click();
 
-        expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', 'small');
+            expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', tabular.output); 
+          }
+        );
+      }
 
-        panelHeader.ui.mediumButton.click();
-
-        expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', 'medium');
-      });
+      for (var i = 0; i < _resizeMessage.length; i++) {
+        _resizeSidebarMessage(_resizeMessage[i]);
+      }
     });
   }
 );

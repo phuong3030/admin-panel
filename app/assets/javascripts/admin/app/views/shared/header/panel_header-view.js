@@ -21,6 +21,8 @@ define(
         smallButton: '.nav-small-button' 
       },
 
+      _currentActived: 'none',      
+
       // View Event Handlers declaration
       events: {
         'click @ui.mediumButton': 'resizeSidebar',
@@ -29,13 +31,17 @@ define(
 
       // Event handlers
       resizeSidebar: function (e) {
+        
+        var clickedButton = e.currentTarget === this.ui.mediumButton[0] ? 'medium' : 'small';
 
-        if (e.currentTarget == this.ui.mediumButton[0]) {
+        if (this._currentActived !== clickedButton) {
 
-          App.vent.trigger('leftSidebar', 'medium');
+          this._currentActived = clickedButton;
+          App.vent.trigger('leftSidebar', clickedButton);
         } else {
 
-          App.vent.trigger('leftSidebar', 'small');
+          this._currentActived = 'none';
+          App.vent.trigger('leftSidebar', 'none');
         }
       }
     });
