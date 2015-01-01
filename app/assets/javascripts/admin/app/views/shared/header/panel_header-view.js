@@ -34,9 +34,13 @@ define(
         
         var clickedButton = e.currentTarget === this.ui.mediumButton[0] ? 'medium' : 'small';
 
+        // Remove actived css class in menu button
+        this.$('.menu').removeClass('actived');
+
         if (this._currentActived !== clickedButton) {
 
           this._currentActived = clickedButton;
+          this.$(e.currentTarget).addClass('actived');
           App.vent.trigger('leftSidebar', clickedButton);
         } else {
 

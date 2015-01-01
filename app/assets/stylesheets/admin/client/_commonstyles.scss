@@ -201,6 +201,10 @@ img {
   background: #F0F0F0 !important
 }
 
+.sidebar, .admin-container, .expand-menu, .menu, a, header, .mega-menu>ul>li {
+  transition: all .3s ease 0s;
+}
+
 /* Header 
 *****************************************/
 header {
@@ -250,6 +254,13 @@ header {
         color: #fff;
         background: rgba(0,0,0,0.5);
         border-color: rgba(0,0,0,0.1)
+      }
+
+      &.actived {
+        margin-top: 1px;
+        color: #1fae66;
+        background: #0E0E0E;
+        border-color: #000 #333 #333 #000;
       }
     }
   }
@@ -486,7 +497,6 @@ header {
 }
 
 .sidebar {
-  width: 260px;
   padding-left: 20px;
   padding-right: 20px;
   position: absolute;
@@ -495,6 +505,18 @@ header {
   box-shadow: -5px 0 5px -5px #999 inset;
   background-color: #1fae66;
   color: #fff;
+
+  &.normal {
+    width: 260px;
+  }
+
+  &.small {
+    width: 50px;
+  }
+
+  &.medium {
+    width: 140px;
+  }
 }
 
 .navbar-tabs-menu {
