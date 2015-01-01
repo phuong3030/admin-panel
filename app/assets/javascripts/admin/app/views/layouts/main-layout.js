@@ -23,7 +23,7 @@ define(
       },
       resizeSidebar: function (type) {
 
-        console.log(type); 
+        this.$('#left-sidebar-wrapper').removeClass().addClass('sidebar ' + type);
       }
     });
   }
