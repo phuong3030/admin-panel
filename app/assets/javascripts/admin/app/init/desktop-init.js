@@ -29,6 +29,12 @@ require(
       App.applicationLayout = new ApplicationLayout();
       App.applicationRegion.show(App.applicationLayout);
       App.start();
+
+      // Listen resize sidebar message 
+      App.vent.on('leftSidebar', function (type) {
+        
+        App.applicationLayout.resizeSidebar(type);
+      });
     });
   }
 );

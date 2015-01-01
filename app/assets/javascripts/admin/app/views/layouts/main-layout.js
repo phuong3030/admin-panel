@@ -20,6 +20,10 @@ define(
       // Listener for handle resize button event
       events: {
 
+      },
+      resizeSidebar: function (type) {
+
+        console.log(type); 
       }
     });
   }

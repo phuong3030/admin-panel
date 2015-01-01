@@ -10,15 +10,6 @@ define(
 
     describe('Left Sidebar layout', function () {
 
-      it('should be', function () {
-      
-        expect(true).toBeTruthy();
-      });
-
-      it('should', function () {
-
-        expect(false).toBeFalsy();
-      });
     });
   }
 );
