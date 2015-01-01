@@ -16,12 +16,12 @@ define(
           panelHeaderTemplate;
 
       _resizeMessage = [
-        { current: 'none', input: 'smallButton', output: 'small' },
-        { current: 'none', input: 'mediumButton', output: 'medium' },
-        { current: 'small', input: 'smallButton', output: 'none' },
+        { current: 'normal', input: 'smallButton', output: 'small' },
+        { current: 'normal', input: 'mediumButton', output: 'medium' },
+        { current: 'small', input: 'smallButton', output: 'normal' },
         { current: 'small', input: 'mediumButton', output: 'medium' },
         { current: 'medium', input: 'smallButton', output: 'small' },
-        { current: 'medium', input: 'mediumButton', output: 'none' }
+        { current: 'medium', input: 'mediumButton', output: 'normal' }
       ];
 
       beforeEach(function () {

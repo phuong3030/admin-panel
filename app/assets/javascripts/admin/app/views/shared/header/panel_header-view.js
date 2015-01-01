@@ -21,7 +21,7 @@ define(
         smallButton: '.nav-small-button' 
       },
 
-      _currentActived: 'none',      
+      _currentActived: 'normal',      
 
       // View Event Handlers declaration
       events: {
@@ -40,8 +40,8 @@ define(
           App.vent.trigger('leftSidebar', clickedButton);
         } else {
 
-          this._currentActived = 'none';
-          App.vent.trigger('leftSidebar', 'none');
+          this._currentActived = 'normal';
+          App.vent.trigger('leftSidebar', 'normal');
         }
       }
     });
