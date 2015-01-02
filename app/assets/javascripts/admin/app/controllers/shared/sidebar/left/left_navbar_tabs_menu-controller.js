@@ -20,7 +20,7 @@ define(
         
         App.vent.on('leftSidebar', function (type) {
 
-          that.navbarTabsMenu.resizeMenu(type); 
+          that.navbarTabsMenu.resizeMenu(); 
         });
       }
     });
