@@ -14,13 +14,13 @@ define(
         App.leftSidebarLayout.tabsMenuRegion.show(this.navbarTabsMenu);
       },
 
-      bindViewEvent: function () {
+      bindEvent: function () {
 
         var that = this;
         
         App.vent.on('leftSidebar', function (type) {
 
-          that.navbarTabsMenu.resizeMenu(); 
+          that.navbarTabsMenu.resizeMenu(type); 
         });
       }
     });

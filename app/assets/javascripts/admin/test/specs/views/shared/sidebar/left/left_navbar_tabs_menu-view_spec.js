@@ -7,7 +7,27 @@ define(
 
     describe('Navbar tabs menu view', function () {
 
-      it('should be hidden mega menu when receive resizing sidebar to collapsed message');
+      var tabsMenuView;
+
+      beforeEach(function () {
+      
+        tabsMenuView = new NavbarTabsMenuView();
+        tabsMenuView.render();
+      });
+
+      it('should be hidden mega menu when collapse sidebar', function () {
+
+        tabsMenuView.resizeMenu('medium'); 
+
+        expect(tabsMenuView.$('.menu-container').hasClass('hidden')).toBeTruthy();
+      });
+
+      it('should be show expand menu when collapse sidebar', function () {
+
+        tabsMenuView.resizeMenu('small'); 
+
+        expect(tabsMenuView.$('.expand-menu').hasClass('show')).toBeTruthy();
+      });
     });
   }
 );

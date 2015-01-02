@@ -19,7 +19,7 @@ define(
         spyOn(App.vent, 'on');
         tabsMenuController.navbarTabsMenu = { resizeMenu: function () {} };
 
-        tabsMenuController.bindViewEvent();
+        tabsMenuController.bindEvent();
         App.vent.trigger('leftSidebar', 'small');
 
         expect(App.vent.on).toHaveBeenCalled();
