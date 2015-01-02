@@ -205,6 +205,41 @@ img {
   transition: all .3s ease 0s;
 }
 
+@mixin collapsedSidebarItem ($width, $linkPadding, $menuTextDisplay, $iconFontSize, $iconHeight, $iconLineHeight) {
+  width: $width; 
+
+  .panel-menu, .menu-title {
+    display: none !important;
+  }
+
+  .menu-badge {
+    float: none;
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  .admin-menu > ul > li > a {
+    font-size: 12px;
+    text-align: center;
+    padding: $linkPadding;
+
+    .menu-text {
+      display: $menuTextDisplay;
+      line-height: 1.6;
+    }
+  }
+
+  .admin-menu .menu-icon {
+    font-size: $iconFontSize;
+    margin-right: 0;
+    width: 100%;
+    height: $iconHeight;
+    line-height: $iconLineHeight;
+    float: none;
+  }
+}
+
 /* Header 
 *****************************************/
 header {
@@ -511,11 +546,15 @@ header {
   }
 
   &.small {
-    width: 50px;
+    @include collapsedSidebarItem (50px, 10px 5px, none, 18px, 24px, 22px);
+
+    .expand-menu .menu-icon {
+      font-size: 18px;
+    }
   }
 
   &.medium {
-    width: 140px;
+    @include collapsedSidebarItem (140px, 12px 20px, inline-block, 36px, 40px, 38px);
   }
 }
 
@@ -526,6 +565,12 @@ header {
   padding-bottom: 5px;
   height: 60px;
   background-color: #393d41;
+
+  .badge {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
 
   .expand-menu {
     position: relative;
@@ -590,7 +635,7 @@ header {
   a {
     color: #FFF;
     display: block;
-    font-weight: 300;
+    font-weight: 400;
   }
 
   .menu-icon {
