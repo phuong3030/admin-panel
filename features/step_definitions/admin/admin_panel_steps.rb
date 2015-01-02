@@ -5,17 +5,14 @@ Given(/^I'm logged in as admin user$/) do
 end
 
 Given(/^Sidebar is on "(.*?)"$/) do |state|
-  page.execute_script("$('#left-sidebar-wrapper').addClass('#{state}');")
-  page.execute_script("console.log($('#left-sidebar-wrapper')); console.log('#{state}');")
+  find(".nav-#{state}-button").click unless state == 'normal'
 end
 
 When(/^I click to "(.*?)"$/) do |button|
-  sleep 1
   find(button).click
 end
 
 Then(/^I should find "(.*?)" sidebar class$/) do |sidebar_class|
-  sleep 1
   page.should have_css("#left-sidebar-wrapper#{sidebar_class}")
 end
 
