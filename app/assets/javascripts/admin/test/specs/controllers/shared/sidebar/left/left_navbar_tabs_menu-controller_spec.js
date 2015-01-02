@@ -17,10 +17,12 @@ define(
       it('should be handle resize sidebar message', function () {
 
         spyOn(App.vent, 'on');
+        tabsMenuController.navbarTabsMenu = { resizeMenu: function () {} };
+
         tabsMenuController.bindViewEvent();
         App.vent.trigger('leftSidebar', 'small');
 
-        Expect(App.vent.on).toHaveBeenCalled();
+        expect(App.vent.on).toHaveBeenCalled();
       });
     });
   }
