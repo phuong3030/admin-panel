@@ -3,7 +3,6 @@ Feature: Admin header and sidebar function
   A admin user
   Should be able to use items effect in header and sidebar
 
-  @dev
   Scenario Outline: Change left sidebar size to medium/small/none
     Given I'm logged in as admin user
     Given Sidebar is on <state> 
@@ -20,6 +19,7 @@ Feature: Admin header and sidebar function
     |  "medium"  |  ".nav-small-button"   |  ".small"  |  ".hidden"  |
     |  "medium"  |  ".nav-medium-button"  |  ".normal" |  ""         |
 
+  @dev
   Scenario Outline: Show/hide left sidebar and header 
     Given I'm logged in as admin user
     Given Sidebar is <state>
@@ -29,16 +29,16 @@ Feature: Admin header and sidebar function
     And I should see <display1> header class
 
   Examples: 
-    |  state                |  state1              |  button             |  display              |  display1            |
-    |  ""                   |  ""                  |  ".remove-sidebar"  |  "collapsed-sidebar"  |  ""                  |
-    |  ""                   |  ""                  |  ".remove-header"   |  ""                   |  "collapsed-header"  |
-    |  ""                   |  ""                  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-sidebar"  |  ""                   |  ""                  |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-header"   |  "collapsed-sidebar"  |  "collapsed-header"  |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
-    |  ""                   |  "collapsed-header"  |  ".remove-sidebar"  |  "collapsed-sidebar"  |  "collapsed-header"  |
-    |  ""                   |  "collapsed-header"  |  ".remove-header"   |  ""                   |  ""                  |
-    |  ""                   |  "collapsed-header"  |  ".remove-all"      |  "collapsed-sidebar"  |  "collapsed-header"  |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-sidebar"  |  ""                   |  "collapsed-header"  |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-header"   |  "collapsed-sidebar"  |  ""                  |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-all"      |  ""                   |  ""                  |
+    |  state                |  state1              |  button             |  display               |  display1             |
+    |  ""                   |  ""                  |  ".remove-sidebar"  |  ".collapsed-sidebar"  |  ""                   |
+    |  ""                   |  ""                  |  ".remove-header"   |  ""                    |  ".collapsed-header"  |
+    |  ""                   |  ""                  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-sidebar"  |  ""                    |  ""                   |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-header"   |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-sidebar"  |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-header"   |  ""                    |  ""                   |
+    |  ""                   |  "collapsed-header"  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-sidebar"  |  ""                    |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-header"   |  ".collapsed-sidebar"  |  ""                   |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-all"      |  ""                    |  ""                   |

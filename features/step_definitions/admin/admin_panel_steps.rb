@@ -22,21 +22,21 @@ end
 
 #####
 Given(/^Sidebar is "(.*?)"$/) do |state|
-  pending # express the regexp above with the code you wish you
+  find('.remove-sidebar').click unless state.empty?
 end
 
 Given(/^Header is "(.*?)"$/) do |state1|
-  pending # express the regexp above with the code you wish you
+  find('.remove-header').click unless state1.empty?
 end
 
 When(/^I click to "(.*?)" button$/) do |button|
-  pending # express the regexp above with the code you wish you
+  find(button).click
 end
 
 Then(/^I should see "(.*?)" sidebar class$/) do |sidebar_class|
-  pending # express the regexp above with the code you wish you
+  page.should have_css(".sidebar#{sidebar_class}")
 end
 
 Then(/^I should see "(.*?)" header class$/) do |header_class|
-  pending # express the regexp above with the code you wish you
+  page.should have_css("header#{header_class}")
 end
