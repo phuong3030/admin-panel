@@ -9,14 +9,6 @@ define(
       },
       
       genBreadcrumb: function (route) {
-      },
-      
-      bindEvents: function () {
-      
-        App.vent.on('collapseUI', function (item) {
-
-          this.headSectionView.collapseUI(item);
-        });
       }
     });
   }
