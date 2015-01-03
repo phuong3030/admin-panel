@@ -37,7 +37,7 @@ require(
       });
 
       // Listen collapse header & sidebar message
-      App.vent.on('CollapseUI', function (type) {
+      App.vent.on('collapseUI', function (type) {
 
         App.applicationLayout.collapseUI(type);
       });
