@@ -21,7 +21,7 @@ define(
       headerRegion: 'header',
       leftSidebarRegion: '#left-sidebar-wrapper',
       rightSidebarRegion: '#right-sidebar-wrapper',
-      headSectionReion: '#head-section',
+      headSectionRegion: '#head-section',
       headTitleRegion: '#title-section',
       contentRegion: '#content-section'
     });
