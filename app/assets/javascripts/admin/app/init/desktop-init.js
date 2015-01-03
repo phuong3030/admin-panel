@@ -35,6 +35,12 @@ require(
         
         App.applicationLayout.resizeSidebar(type);
       });
+
+      // Listen collapse header & sidebar message
+      App.vent.on('CollapseUI', function (type) {
+
+        App.applicationLayout.collapseUI(type);
+      });
     });
   }
 );

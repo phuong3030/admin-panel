@@ -21,12 +21,10 @@ Then(/^I should find "(.*?)" top mega list class$/) do |mega_class|
 end
 
 #####
-Given(/^Sidebar is "(.*?)"$/) do |state|
-  find('.remove-sidebar').click unless state.empty?
-end
-
-Given(/^Header is "(.*?)"$/) do |state1|
-  find('.remove-header').click unless state1.empty?
+Given(/^Collapse items: "(.*?)"$/) do |state|
+  find('.remove-header-button').click if state == 'header'
+  find('.remove-sidebar-button').click if state == 'sidebar'
+  find('.fullscreen-button').click if state == 'fullscreen'
 end
 
 When(/^I click to "(.*?)" button$/) do |button|
