@@ -13,7 +13,6 @@ require(
     'jquery', 
     'backbone', 
     'marionette', 
-    'jqueryui', 
     'bootstrap', 
     'backbone.validateAll',
     'backbone.routefilter'

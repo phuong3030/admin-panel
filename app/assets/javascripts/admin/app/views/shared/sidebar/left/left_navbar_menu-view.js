@@ -17,6 +17,12 @@ define(
       template: navbarMenuTemplate,
       className: 'navbar-menu',
 
+      onShow: function () {
+   
+        // Bind tooltip events
+        $('[data-toggle="tooltip"]').tooltip();
+      },
+
       // View Event Handlers
       events: {
 

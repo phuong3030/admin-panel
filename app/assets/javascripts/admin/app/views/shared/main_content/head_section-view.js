@@ -20,6 +20,12 @@ define(
         collapseAllButton: '.fullscreen-button'
       },
 
+      onShow: function () {
+
+        // Bind tooltip event
+        this.$('[data-toggle="tooltip"]').tooltip();
+      },
+
       events: {
         'click @ui.collapseHeaderButton': 'collapseUI',
         'click @ui.collapseSidebarButton': 'collapseUI',

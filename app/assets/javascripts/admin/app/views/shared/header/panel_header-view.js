@@ -23,6 +23,12 @@ define(
 
       _currentActived: 'normal',      
 
+      onShow: function () {
+        
+        // Bind tooltip event
+        this.$('[data-toggle="tooltip"]').tooltip();
+      },
+
       // View Event Handlers declaration
       events: {
         'click @ui.mediumButton': 'resizeSidebar',
