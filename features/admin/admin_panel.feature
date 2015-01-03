@@ -38,6 +38,6 @@ Feature: Admin header and sidebar function
     |  "header"      |  ".remove-sidebar-button"  |  ".collapsed-sidebar"  |  ""                   |
     |  "header"      |  ".remove-header-button"   |  ""                    |  ""                   |
     |  "header"      |  ".fullscreen-button"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  "fullscreen"  |  ".remove-sidebar-button"  |  ".collapse-sidebar"   |  ""                   |
+    |  "fullscreen"  |  ".remove-sidebar-button"  |  ".collapsed-sidebar"   |  ""                   |
     |  "fullscreen"  |  ".remove-header-button"   |  ""                    |  ".collapsed-header"  |
     |  "fullscreen"  |  ".fullscreen-button"      |  ""                    |  ""                   |
