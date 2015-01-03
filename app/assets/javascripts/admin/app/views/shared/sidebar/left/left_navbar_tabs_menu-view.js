@@ -20,6 +20,19 @@ define(
       // View Event Handlers
       events: {
 
+      },
+
+      resizeMenu: function (type) {
+
+        if (type !== 'normal') {
+
+          this.$('.menu-container').addClass('hidden');
+          this.$('.expand-menu').addClass('show');
+        } else {
+
+          this.$('.menu-container').removeClass('hidden');
+          this.$('.expand-menu').removeClass('show');
+        }
       }
     });
   }

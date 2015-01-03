@@ -9,10 +9,10 @@ require(
     'modules/shared/header',
     'modules/shared/left_sidebar',
     'modules/shared/right_sidebar',
+    'modules/shared/main_content',
     'jquery', 
     'backbone', 
     'marionette', 
-    'jqueryui', 
     'bootstrap', 
     'backbone.validateAll',
     'backbone.routefilter'
@@ -29,6 +29,18 @@ require(
       App.applicationLayout = new ApplicationLayout();
       App.applicationRegion.show(App.applicationLayout);
       App.start();
+
+      // Listen resize sidebar message 
+      App.vent.on('leftSidebar', function (type) {
+        
+        App.applicationLayout.resizeSidebar(type);
+      });
+
+      // Listen collapse header & sidebar message
+      App.vent.on('collapseUI', function (type) {
+
+        App.applicationLayout.collapseUI(type);
+      });
     });
   }
 );

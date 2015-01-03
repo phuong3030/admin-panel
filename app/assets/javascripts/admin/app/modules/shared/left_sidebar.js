@@ -24,6 +24,9 @@ define(
           tabsMenuController.createNavbarTabsMenu();
           menuController.createNavbarMenu();
           bottomWidgetController.createBottomWidget();
+
+          // Listen application event and send to correct view
+          tabsMenuController.bindEvent();
         }
       );
     

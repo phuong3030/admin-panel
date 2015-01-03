@@ -6,7 +6,7 @@ require 'rspec/expectations'
 require 'capybara/cucumber'
 #require 'capybara/poltergeist'
 require 'selenium-webdriver'
-require 'factory_girl'
+require 'factory_girl_rails'
 require "#{Rails.root}/spec/support/deferred_garbage_collection.rb"
 
 Dir["#{Rails.root}/features/support/**/*.rb"].each {|file| require file }

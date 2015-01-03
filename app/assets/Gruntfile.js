@@ -79,7 +79,11 @@ module.exports = function(grunt) {
       }
     },
     jshint: {
-      files: ['Gruntfile.js', 'javascripts/admin/app/**/*.js', '!javascripts/admin/app/**/*min.js'],
+      files: [
+        'Gruntfile.js', 
+        'javascripts/admin/app/**/*.js', 
+        '!javascripts/admin/app/**/*min.js'
+      ],
       options: {
         globals: {
           jQuery: true,
@@ -124,27 +128,37 @@ module.exports = function(grunt) {
     },
     watch: {
       css: {
-        files: ['stylesheets/admin/client/*.scss'],
-        tasks: ['sass:dev'],
+        files: [
+          'stylesheets/admin/client/*.scss'
+        ],
         options: {
           spawn: false,
           livereload: true
-        }
+        },
+        tasks: [
+          'sass:dev',
+          'sass:dist'
+        ]
       },
-      js: {
+      buildjs: {
         files: [
-          'Gruntfile.js', 
-          'javascripts/admin/app/**/*.js', 
-          'javascripts/admin/test/**/*.js',
+          'javascripts/admin/app/**/*.js',
           '!javascripts/admin/app/**/*min.js'
         ],
         options: {
           livereload: true
         },
         tasks: [
-          'jshint', 
-          'requirejs:desktopJS', 
-          'sass:dist',
+          'jshint',
+          'requirejs:desktopJS' 
+        ]
+      },
+      testjs: {
+        files: [
+          'javascripts/admin/test/**/*.js'
+        ],
+        tasks: [
+          'jshint',
           'connect', 
           'jasmine'
         ]
