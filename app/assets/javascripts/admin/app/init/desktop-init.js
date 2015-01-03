@@ -9,6 +9,7 @@ require(
     'modules/shared/header',
     'modules/shared/left_sidebar',
     'modules/shared/right_sidebar',
+    'modules/shared/main_content',
     'jquery', 
     'backbone', 
     'marionette', 

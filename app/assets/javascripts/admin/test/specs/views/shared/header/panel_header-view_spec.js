@@ -69,7 +69,7 @@ define(
 
             spyOn(App.vent, 'trigger');
             panelHeader._currentActived = tabular.current;
-            (panelHeader.ui)[tabular.input].click();
+            panelHeader.ui[tabular.input].click();
 
             expect(App.vent.trigger).toHaveBeenCalledWith('leftSidebar', tabular.output); 
           }

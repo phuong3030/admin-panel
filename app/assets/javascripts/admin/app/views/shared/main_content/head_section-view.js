@@ -8,15 +8,38 @@ define(
   ],
   function (App, Backbone, Marionette, $, titleTemplate) {
 
-    return Backbone.Marionette.View.extend({
+    return Backbone.Marionette.ItemView.extend({
       template: titleTemplate,
       className: 'panel-header',
 
-      ui: {
+      _currentCollapsedItem: 'none', // Store currentCollapse ui state
 
+      ui: {
+        collapseHeaderButton: '.remove-header-button',
+        collapseSidebarButton: '.remove-sidebar-button',
+        collapseAllButton: '.fullscreen-button'
       },
 
       events: {
+        'click @ui.collapseHeaderButton': 'collapseUI',
+        'click @ui.collapseSidebarButton': 'collapseUI',
+        'click @ui.collapseAllButton': 'collapseUI'
+      },
+      
+      collapseUI: function (e) {
+        
+        var collapseMessage = e.currentTarget.dataset.target;
+        
+        // User click to 'another' collapsed button
+        if(collapseMessage !== this._currentCollapsedItem) {
+
+          this._currentCollapsedItem = collapseMessage;
+          App.vent.trigger('collapseUI', collapseMessage);
+        } else { // User re-click to old collapsed button
+
+          this._currentCollapsedItem = 'none';
+          App.vent.trigger('collapseUI', 'none');
+        }
       }
     });
   }

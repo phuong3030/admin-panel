@@ -29,16 +29,16 @@ Feature: Admin header and sidebar function
     And I should see <display1> header class
 
   Examples: 
-    |  state                |  state1              |  button             |  display               |  display1             |
-    |  ""                   |  ""                  |  ".remove-sidebar"  |  ".collapsed-sidebar"  |  ""                   |
-    |  ""                   |  ""                  |  ".remove-header"   |  ""                    |  ".collapsed-header"  |
-    |  ""                   |  ""                  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-sidebar"  |  ""                    |  ""                   |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-header"   |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  "collapsed-sidebar"  |  ""                  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  ""                   |  "collapsed-header"  |  ".remove-sidebar"  |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  ""                   |  "collapsed-header"  |  ".remove-header"   |  ""                    |  ""                   |
-    |  ""                   |  "collapsed-header"  |  ".remove-all"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-sidebar"  |  ""                    |  ".collapsed-header"  |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-header"   |  ".collapsed-sidebar"  |  ""                   |
-    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-all"      |  ""                    |  ""                   |
+    |  state                |  state1              |  button                    |  display               |  display1             |
+    |  ""                   |  ""                  |  ".remove-sidebar-button"  |  ".collapsed-sidebar"  |  ""                   |
+    |  ""                   |  ""                  |  ".remove-header-button"   |  ""                    |  ".collapsed-header"  |
+    |  ""                   |  ""                  |  ".fullscreen-button"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-sidebar-button"  |  ""                    |  ""                   |
+    |  "collapsed-sidebar"  |  ""                  |  ".remove-header-button"   |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  ""                  |  ".fullscreen-button"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-sidebar-button"  |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  ""                   |  "collapsed-header"  |  ".remove-header-button"   |  ""                    |  ""                   |
+    |  ""                   |  "collapsed-header"  |  ".fullscreen-button"      |  ".collapsed-sidebar"  |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-sidebar-button"  |  ""                    |  ".collapsed-header"  |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".remove-header-button"   |  ".collapsed-sidebar"  |  ""                   |
+    |  "collapsed-sidebar"  |  "collapsed-header"  |  ".fullscreen-button"      |  ""                    |  ""                   |
