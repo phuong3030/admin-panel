@@ -216,6 +216,10 @@ img {
     margin-left: -$width;
   }
 
+  .navbar-bottom-widget {
+    width: $width;
+  }
+
   .panel-menu, .menu-title {
     display: none !important;
   }
@@ -238,13 +242,34 @@ img {
     }
   }
 
-  .admin-menu .menu-icon {
-    font-size: $iconFontSize;
-    margin-right: 0;
-    width: 100%;
-    height: $iconHeight;
-    line-height: $iconLineHeight;
-    float: none;
+  .admin-menu {
+    .menu-icon {
+      font-size: $iconFontSize;
+      margin-right: 0;
+      width: 100%;
+      height: $iconHeight;
+      line-height: $iconLineHeight;
+      float: none;
+    }
+
+    ul li .child-menu {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      z-index: 10;
+      width: 240px;
+      background: rgba(0,0,0,0.8);
+      border-top: 4px solid #000000;
+
+      a {
+        text-align: left;
+        padding: 3px 20px 5px;
+
+        &:hover {
+          background: #1fae66;
+        }
+      }
+    }
   }
 }
 
@@ -542,6 +567,27 @@ header {
   background-color: #1fae66;
   color: #fff;
 
+  .admin-menu ul li .child-menu {
+    background: rgba(0,0,0,0.55);
+    border-top: #3A3A3A solid 1px;
+    padding: 5px 20px 15px;
+    font-size: 12.5px;
+    display: none;
+
+    ul li {
+      margin-left: -20px;
+      margin-right: -20px;
+
+      a {
+        padding: 3px 20px 5px;
+
+        &:hover {
+          background: rgba(255,255,255,0.2);
+        }
+      }
+    }
+  }
+
   &.normal {
     width: 260px;
 
@@ -555,6 +601,10 @@ header {
 
     .expand-menu .menu-icon {
       font-size: 18px;
+    }
+
+    .admin-menu>ul>li>a>.menu-text {
+      display: none;
     }
   }
 
