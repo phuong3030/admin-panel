@@ -8974,6 +8974,10 @@ ul {
   padding: 0;
 }
 
+a {
+  color: #1fae66;
+}
+
 a:hover, a:focus {
   text-decoration: none;
   color: #0D9C54;
@@ -9155,7 +9159,7 @@ img {
 }
 
 /* Header 
-*****************************************/
+ *****************************************/
 header {
   height: 63px;
   z-index: 999;
@@ -9408,7 +9412,7 @@ header .header-container {
 }
 
 /* Left sidebar
-**********************************************/
+ **********************************************/
 #left-sidebar-wrapper {
   left: 0;
 }
@@ -9622,14 +9626,14 @@ header .header-container {
 }
 
 /* Right sidebar
-**********************************************/
+ **********************************************/
 #right-sidebar-wrapper {
   right: 0;
   margin-right: -260px;
 }
 
 /* Main Content 
-**********************************************/
+ **********************************************/
 .content {
   position: relative;
 }
@@ -9637,6 +9641,37 @@ header .header-container {
   position: relative;
 }
 
+.admin-container .head-section {
+  margin-right: -15px;
+  background-color: #f0f0f0;
+  border-bottom: 1px solid #F8F8F8;
+  padding: 0 20px;
+}
+.admin-container .head-section .panel-header {
+  position: relative;
+}
+.admin-container .head-section .panel-menu .menu {
+  color: #666;
+  border: none;
+  width: 30px;
+  height: 29px;
+  line-height: 29px;
+  border-right: 1px solid #DDDDDD;
+  -webkit-box-shadow: 1px 0 0 rgba(255, 255, 255, 0.5) inset;
+  box-shadow: 1px 0 0 rgba(255, 255, 255, 0.5) inset;
+  margin-right: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.admin-container .head-section .panel-menu .menu:hover, .admin-container .head-section .panel-menu .menu.active {
+  background-color: #666;
+  border-right-color: #EEE;
+  color: #FFF;
+}
+.admin-container .head-section .panel-menu .menu:first-child {
+  border-left: 1px solid #DDDDDD;
+}
 .admin-container.normal {
   margin-left: 245px;
 }
@@ -9648,6 +9683,20 @@ header .header-container {
 }
 .admin-container.expanded {
   margin-left: 0px;
+}
+
+.breadcrumb {
+  background: none;
+  padding: 3px 0px;
+  font-weight: normal;
+  font-size: 11px;
+  margin-bottom: 0;
+}
+.breadcrumb > .active {
+  color: #555;
+}
+.breadcrumb > li + li:before {
+  color: #aaa;
 }
 
 /*# sourceMappingURL=desktop.css.map */

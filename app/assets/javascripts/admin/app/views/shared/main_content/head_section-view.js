@@ -35,10 +35,14 @@ define(
       collapseUI: function (e) {
         
         var collapseMessage = e.currentTarget.dataset.target;
-        
+
+        // Remove actived button class
+        this.$('[data-toggle="tooltip"]').removeClass('active');
+
         // User click to 'another' collapsed button
         if(collapseMessage !== this._currentCollapsedItem) {
 
+          this.$(e.currentTarget).addClass('active');
           this._currentCollapsedItem = collapseMessage;
           App.vent.trigger('collapseUI', collapseMessage);
         } else { // User re-click to old collapsed button

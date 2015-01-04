@@ -29,6 +29,10 @@ ul {
   padding: 0;
 }
 
+a {
+  color: #1fae66;
+}
+
 a:hover, a:focus {
   text-decoration: none;
   color: #0D9C54;
@@ -245,7 +249,7 @@ img {
 }
 
 /* Header 
-*****************************************/
+ *****************************************/
 header {
   height: 63px;
   z-index: 999;
@@ -412,7 +416,7 @@ header {
   width: 100%;
   position: relative;
   z-index: 3;
-  
+
   .mega-ul {
     margin: 0;
     padding: 0;
@@ -427,7 +431,7 @@ header {
   }
 
   .mega-li {
-        list-style: none;
+    list-style: none;
 
     a {
       color: #ccc;
@@ -523,7 +527,7 @@ header {
 }
 
 /* Left sidebar
-**********************************************/
+ **********************************************/
 #left-sidebar-wrapper {
   left: 0;
 }
@@ -708,7 +712,7 @@ header {
 }
 
 /* Right sidebar
-**********************************************/
+ **********************************************/
 #right-sidebar-wrapper {
   right: 0;
   margin-right: -260px;
@@ -716,7 +720,7 @@ header {
 
 
 /* Main Content 
-**********************************************/
+ **********************************************/
 .content { 
   position: relative;
 
@@ -726,6 +730,42 @@ header {
 }
 
 .admin-container {
+  .head-section { 
+    margin-right: -15px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #F8F8F8;
+    padding: 0 20px;
+
+    .panel-header {
+      position: relative;
+    }
+
+   .panel-menu .menu {
+      color: #666;
+      border: none;
+      width: 30px;
+      height: 29px;
+      line-height: 29px;
+      border-right: 1px solid #DDDDDD;
+      -webkit-box-shadow: 1px 0 0 rgba(255,255,255,0.5) inset;
+      box-shadow: 1px 0 0 rgba(255,255,255,0.5) inset;
+      margin-right: 0;
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+
+      &:hover, &.active {
+        background-color: #666;
+        border-right-color: #EEE;
+        color: #FFF;
+      }
+    }
+
+    .panel-menu .menu:first-child {
+      border-left: 1px solid #DDDDDD;
+    }
+  }
+
   &.normal {
     margin-left: 245px;
   }
@@ -740,5 +780,21 @@ header {
 
   &.expanded {
     margin-left: 0px;
+  }
+}
+
+.breadcrumb {
+  background: none;
+  padding: 3px 0px;
+  font-weight: normal;
+  font-size: 11px;
+  margin-bottom: 0;
+
+  & > .active {
+    color: #555;
+  }
+
+  & > li + li:before {
+    color: #aaa;
   }
 }
