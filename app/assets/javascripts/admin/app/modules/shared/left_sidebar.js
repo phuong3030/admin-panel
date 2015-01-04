@@ -27,6 +27,7 @@ define(
 
           // Listen application event and send to correct view
           tabsMenuController.bindEvent();
+          menuController.bindEvent();
         }
       );
     

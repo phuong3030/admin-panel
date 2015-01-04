@@ -9,10 +9,30 @@ define(
       // Create right header menu
       createNavbarMenu: function () {
       
-        var navbarMenu = new NavbarMenuView();
+        this.navbarMenu = new NavbarMenuView();
 
-        App.leftSidebarLayout.navbarMenuRegion.show(navbarMenu); 
-      }   
+        App.leftSidebarLayout.navbarMenuRegion.show(this.navbarMenu); 
+      },
+
+      _closeAllToggleMenu: function () {
+
+        this.navbarMenu.closeAllMenu();
+      },
+
+      bindEvent: function () {
+
+        var that = this;
+
+        App.vent.on('collapseUI', function (type) {
+        
+          that._closeAllToggleMenu();
+        });
+
+        App.vent.on('leftSidebar', function (type) {
+
+          that._closeAllToggleMenu();
+        });
+      }
     });
   }
 );

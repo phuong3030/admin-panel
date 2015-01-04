@@ -9253,6 +9253,13 @@ header .header-container {
   color: #1fae66;
   cursor: pointer;
 }
+.panel-menu .menu.expanded {
+  -webkit-transform: rotate(-180deg);
+  -moz-transform: rotate(-180deg);
+  -ms-transform: rotate(-180deg);
+  -o-transform: rotate(-180deg);
+  transform: rotate(-180deg);
+}
 
 .menu-search {
   width: 300px;

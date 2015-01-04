@@ -390,6 +390,10 @@ header {
       color: #1fae66;
       cursor: pointer;
     }
+
+    &.expanded { 
+      @include transform(rotate(-180deg));
+    }
   }
 }
 
