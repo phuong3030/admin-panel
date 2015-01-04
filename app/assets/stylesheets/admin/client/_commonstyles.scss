@@ -220,6 +220,20 @@ img {
     width: $width;
   }
 
+  .menu-container {
+    left: $width;
+    height: 61px;
+    width: 260px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    top: 0;
+    background-color: #393d41;
+    display: none;
+    border-bottom: 1px solid #dcdcdc;
+    z-index: 998;
+  }
+
   .panel-menu, .menu-title {
     display: none !important;
   }
@@ -620,6 +634,7 @@ header {
   padding-bottom: 5px;
   height: 60px;
   background-color: #393d41;
+  @include box-shadow(-5px 0 5px -5px #999 inset);
 
   .badge {
     position: absolute;
@@ -759,6 +774,15 @@ header {
   bottom: 0;
   width: 260px;
 
+  & > ul > li {
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-bottom: none !important;
+
+    a {
+      border-top: 1px solid rgba(255,255,255,0.2) !important;
+      border-bottom: none;
+    }
+  }
 }
 
 /* Right sidebar
