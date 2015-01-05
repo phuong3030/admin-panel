@@ -1,7 +1,8 @@
 define(
   [
     'app',
-    'views/shared/sidebar/left/left_navbar_tabs_menu-view'
+    'views/shared/sidebar/left/left_navbar_tabs_menu-view',
+    'jasminejquery'
   ],
   function (App, NavbarTabsMenuView) {
 
@@ -19,14 +20,24 @@ define(
 
         tabsMenuView.resizeMenu('medium'); 
 
-        expect(tabsMenuView.$('.menu-container').hasClass('hidden')).toBeTruthy();
+        expect(tabsMenuView.ui.menuContainer).toHaveClass('resized-tabs-menu');
+        expect(tabsMenuView.ui.menuContainer).toHaveCss({ display: 'none' });
       });
 
       it('should be show expand menu when collapse sidebar', function () {
 
         tabsMenuView.resizeMenu('small'); 
 
-        expect(tabsMenuView.$('.expand-menu').hasClass('show')).toBeTruthy();
+        expect(tabsMenuView.ui.btnExpandMenu).toHaveClass('show');
+      });
+
+      it('should show menu-container when click to expand-menu button and sidebar is collapsed', function () {
+
+        tabsMenuView.resizeMenu('medium'); 
+        tabsMenuView.ui.btnExpandMenu.click();
+
+        expect(tabsMenuView.ui.menuContainer).toHaveClass('show-tabs-menu');
+        expect(tabsMenuView.ui.menuContainer).toHaveCss({ display: 'block' });
       });
     });
   }

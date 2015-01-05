@@ -206,7 +206,7 @@ img {
 }
 
 .sidebar, .admin-container, .expand-menu, .menu, a, header, .mega-menu>ul>li {
-  transition: all .3s ease 0s;
+  @include transition(all .3s ease 0s);
 }
 
 @mixin collapsedSidebarItem ($width, $linkPadding, $menuTextDisplay, $iconFontSize, $iconHeight, $iconLineHeight) {
@@ -214,6 +214,36 @@ img {
 
   &.collapsed-sidebar {
     margin-left: -$width;
+  }
+
+  .navbar-bottom-widget {
+    width: $width;
+  }
+
+  .menu-container {
+    left: $width;
+    height: 61px;
+    width: 260px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: absolute;
+    top: 0;
+    background-color: #393d41;
+    display: none;
+    border-bottom: 1px solid #dcdcdc;
+    z-index: 998;
+    overflow: hidden;
+    @include transition(all .3s ease-in-out);
+
+    &.resized-tabs-menu {
+      opacity: 0;
+      width: 0px;
+
+      &.show-tabs-menu {
+        opacity: 1;
+        width: 260px;
+      }
+    }
   }
 
   .panel-menu, .menu-title {
@@ -238,13 +268,34 @@ img {
     }
   }
 
-  .admin-menu .menu-icon {
-    font-size: $iconFontSize;
-    margin-right: 0;
-    width: 100%;
-    height: $iconHeight;
-    line-height: $iconLineHeight;
-    float: none;
+  .admin-menu {
+    .menu-icon {
+      font-size: $iconFontSize;
+      margin-right: 0;
+      width: 100%;
+      height: $iconHeight;
+      line-height: $iconLineHeight;
+      float: none;
+    }
+
+    ul li .child-menu {
+      position: absolute;
+      left: 100%;
+      top: 0;
+      z-index: 10;
+      width: 240px;
+      background: rgba(0,0,0,0.8);
+      border-top: 4px solid #000000;
+
+      a {
+        text-align: left;
+        padding: 3px 20px 5px;
+
+        &:hover {
+          background: #1fae66;
+        }
+      }
+    }
   }
 }
 
@@ -350,6 +401,10 @@ header {
       background-color: #fff;
       color: #1fae66;
       cursor: pointer;
+    }
+
+    &.expanded { 
+      @include transform(rotate(-180deg));
     }
   }
 }
@@ -542,6 +597,27 @@ header {
   background-color: #1fae66;
   color: #fff;
 
+  .admin-menu ul li .child-menu {
+    background: rgba(0,0,0,0.55);
+    border-top: #3A3A3A solid 1px;
+    padding: 5px 20px 15px;
+    font-size: 12.5px;
+    display: none;
+
+    ul li {
+      margin-left: -20px;
+      margin-right: -20px;
+
+      a {
+        padding: 3px 20px 5px;
+
+        &:hover {
+          background: rgba(255,255,255,0.2);
+        }
+      }
+    }
+  }
+
   &.normal {
     width: 260px;
 
@@ -555,6 +631,10 @@ header {
 
     .expand-menu .menu-icon {
       font-size: 18px;
+    }
+
+    .admin-menu>ul>li>a>.menu-text {
+      display: none;
     }
   }
 
@@ -570,6 +650,7 @@ header {
   padding-bottom: 5px;
   height: 60px;
   background-color: #393d41;
+  @include box-shadow(-5px 0 5px -5px #999 inset);
 
   .badge {
     position: absolute;
@@ -584,6 +665,7 @@ header {
     display: none;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 
     .menu-icon {
       font-size: 28px;
@@ -709,6 +791,15 @@ header {
   bottom: 0;
   width: 260px;
 
+  & > ul > li {
+    border-top: 1px solid rgba(0,0,0,0.15);
+    border-bottom: none !important;
+
+    a {
+      border-top: 1px solid rgba(255,255,255,0.2) !important;
+      border-bottom: none;
+    }
+  }
 }
 
 /* Right sidebar
