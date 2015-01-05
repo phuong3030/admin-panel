@@ -233,7 +233,7 @@ img {
     border-bottom: 1px solid #dcdcdc;
     z-index: 998;
     overflow: hidden;
-    @include transition(all .5s ease-in-out);
+    @include transition(all .3s ease-in-out);
 
     &.resized-tabs-menu {
       opacity: 0;

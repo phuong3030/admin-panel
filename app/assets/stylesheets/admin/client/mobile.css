@@ -9482,10 +9482,10 @@ header .header-container {
   border-bottom: 1px solid #dcdcdc;
   z-index: 998;
   overflow: hidden;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .sidebar.small .menu-container.resized-tabs-menu {
   opacity: 0;
@@ -9565,10 +9565,10 @@ header .header-container {
   border-bottom: 1px solid #dcdcdc;
   z-index: 998;
   overflow: hidden;
-  -webkit-transition: all 0.5s ease-in-out;
-  -moz-transition: all 0.5s ease-in-out;
-  -o-transition: all 0.5s ease-in-out;
-  transition: all 0.5s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .sidebar.medium .menu-container.resized-tabs-menu {
   opacity: 0;

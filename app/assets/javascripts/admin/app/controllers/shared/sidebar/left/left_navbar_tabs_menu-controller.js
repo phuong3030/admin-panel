@@ -22,6 +22,14 @@ define(
 
           that.navbarTabsMenu.resizeMenu(type); 
         });
+
+        App.vent.on('collapseUI', function (type) {
+        
+          if (type !== 'none' && type !== 'header') {
+
+            that.navbarTabsMenu.removeTabsMenu();
+          }
+        });
       },
 
       unbindEvents: function () {
