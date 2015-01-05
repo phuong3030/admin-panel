@@ -14,7 +14,7 @@ define(
         App.leftSidebarLayout.tabsMenuRegion.show(this.navbarTabsMenu);
       },
 
-      bindEvent: function () {
+      bindEvents: function () {
 
         var that = this;
         
@@ -22,6 +22,13 @@ define(
 
           that.navbarTabsMenu.resizeMenu(type); 
         });
+      },
+
+      unbindEvents: function () {
+
+        var that = this;
+
+        App.vent.off('leftSidebar');
       }
     });
   }

@@ -26,8 +26,8 @@ define(
           bottomWidgetController.createBottomWidget();
 
           // Listen application event and send to correct view
-          tabsMenuController.bindEvent();
-          menuController.bindEvent();
+          tabsMenuController.bindEvents();
+          menuController.bindEvents();
         }
       );
     

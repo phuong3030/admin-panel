@@ -19,19 +19,28 @@ define(
         this.navbarMenu.closeAllMenu();
       },
 
-      bindEvent: function () {
+      bindEvents: function () {
+        
+        var that = this;
+
+        App.vent.on('collapseUI', function () {
+
+          that._closeAllToggleMenu();
+        });
+
+        App.vent.on('leftSidebar', function () {
+
+          that._closeAllToggleMenu();
+        });
+      },
+
+      unbindEvents: function () {
 
         var that = this;
 
-        App.vent.on('collapseUI', function (type) {
-        
-          that._closeAllToggleMenu();
-        });
+        App.vent.off('collapseUI');
 
-        App.vent.on('leftSidebar', function (type) {
-
-          that._closeAllToggleMenu();
-        });
+        App.vent.off('leftSidebar');
       }
     });
   }

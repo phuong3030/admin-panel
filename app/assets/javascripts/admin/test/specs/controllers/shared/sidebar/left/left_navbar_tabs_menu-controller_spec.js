@@ -14,12 +14,17 @@ define(
         tabsMenuController = new TabsMenuController();
       }); 
 
+      afterEach(function () {
+
+        tabsMenuController.unbindEvents();
+      });
+
       it('should be handle resize sidebar message', function () {
 
         spyOn(App.vent, 'on');
         tabsMenuController.navbarTabsMenu = { resizeMenu: function () {} };
 
-        tabsMenuController.bindEvent();
+        tabsMenuController.bindEvents();
         App.vent.trigger('leftSidebar', 'small');
 
         expect(App.vent.on).toHaveBeenCalled();
