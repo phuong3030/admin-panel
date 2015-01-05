@@ -17,22 +17,35 @@ define(
       template: navbarTabsMenuTemplate,
       className: 'navbar-tabs-menu-container',
 
-      // View Event Handlers
-      events: {
+      ui: {
+        btnExpandMenu: '.expand-menu',
+        menuContainer: '.menu-container'
+      },
 
+      events: {
+        'click @ui.btnExpandMenu': 'showTabsMenu'
       },
 
       resizeMenu: function (type) {
 
         if (type !== 'normal') {
 
-          this.$('.menu-container').addClass('hidden');
-          this.$('.expand-menu').addClass('show');
+          this.ui.menuContainer.addClass('resized-tabs-menu');
+          this.ui.menuContainer.hide();
+          this.ui.btnExpandMenu.addClass('show');
         } else {
 
-          this.$('.menu-container').removeClass('hidden');
-          this.$('.expand-menu').removeClass('show');
+          this.ui.menuContainer.removeClass('resized-tabs-menu');
+          this.ui.menuContainer.show();
+          this.ui.btnExpandMenu.removeClass('show');
         }
+      },
+
+      // Show tabs menu effect when sidebar resized
+      showTabsMenu: function () {
+
+        this.ui.menuContainer.toggle();
+        this.ui.menuContainer.toggleClass('show-tabs-menu');
       }
     });
   }
