@@ -206,7 +206,7 @@ img {
 }
 
 .sidebar, .admin-container, .expand-menu, .menu, a, header, .mega-menu>ul>li {
-  transition: all .3s ease 0s;
+  @include transition(all .3s ease 0s);
 }
 
 @mixin collapsedSidebarItem ($width, $linkPadding, $menuTextDisplay, $iconFontSize, $iconHeight, $iconLineHeight) {
@@ -232,6 +232,18 @@ img {
     display: none;
     border-bottom: 1px solid #dcdcdc;
     z-index: 998;
+    overflow: hidden;
+    @include transition(all .5s ease-in-out);
+
+    &.resized-tabs-menu {
+      opacity: 0;
+      width: 0px;
+
+      &.show-tabs-menu {
+        opacity: 1;
+        width: 260px;
+      }
+    }
   }
 
   .panel-menu, .menu-title {
@@ -653,6 +665,7 @@ header {
     display: none;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 
     .menu-icon {
       font-size: 28px;
