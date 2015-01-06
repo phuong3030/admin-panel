@@ -53,7 +53,7 @@ define(
       if (Backbone.history) {
 
         // Init all subapp router before start hash change listener
-        require(['routers/taxonomy-router'], function () {
+        require(['routers/room-router'], function () {
 
           Backbone.history.start();
         });
