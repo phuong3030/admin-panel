@@ -19,7 +19,6 @@ Feature: Admin header and sidebar function
     |  "medium"  |  ".nav-small-button"   |  ".small"  |  ".hidden"  |
     |  "medium"  |  ".nav-medium-button"  |  ".normal" |  ""         |
 
-  @dev
   Scenario Outline: Show/hide left sidebar and header 
     Given I'm logged in as admin user
     Given Collapse items: <state>
@@ -41,3 +40,16 @@ Feature: Admin header and sidebar function
     |  "fullscreen"  |  ".remove-sidebar-button"  |  ".collapsed-sidebar"   |  ""                   |
     |  "fullscreen"  |  ".remove-header-button"   |  ""                    |  ".collapsed-header"  |
     |  "fullscreen"  |  ".fullscreen-button"      |  ""                    |  ""                   |
+
+  @dev
+  Scenario Outline: Main heading of page
+    Given I'm logged in as admin user
+    When I go to <page>
+    Then I should see <heading>
+
+  Examples: 
+  |  page                |  heading            |
+  |  "!rooms-list"       |  "Rooms list"       |
+  |  "!room-type-list"   |  "Room Type list"   |
+  |  "!amenities-list"   |  "Amenities list"   |
+      
