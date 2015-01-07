@@ -12,7 +12,7 @@ define(
         this.route.fetch();
         this.titleSectionView = new TitleSectionView({ model: this.route });
 
-        //App.titleSectionRegion.show(this.titleSectionView);
+        App.titleSectionRegion.show(this.titleSectionView);
       },
       
       bindEvents: function () {
