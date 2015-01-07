@@ -36,6 +36,12 @@ define(['app', 'routers/room-router'], function (App) {
       );
     });
 
-    it('should be triggered change heading message in after router filter');
+    it('should be start sub application before every route', function () {
+
+      spyOn(App, 'startSubApp');
+      RoomRouter.prototype.before();
+
+      expect(App.startSubApp).toHaveBeenCalledWith('Room');
+    });
   });
 });
