@@ -22,7 +22,7 @@ define(
       leftSidebarRegion: '#left-sidebar-wrapper',
       rightSidebarRegion: '#right-sidebar-wrapper',
       headSectionRegion: '#head-section',
-      headTitleRegion: '#title-section',
+      titleSectionRegion: '#title-section',
       contentRegion: '#content-section'
     });
 
@@ -53,7 +53,7 @@ define(
       if (Backbone.history) {
 
         // Init all subapp router before start hash change listener
-        require(['routers/taxonomy-router'], function () {
+        require(['routers/room-router'], function () {
 
           Backbone.history.start();
         });
