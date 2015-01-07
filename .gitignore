@@ -18,4 +18,4 @@
 /app/assets/node_modules
 /app/assets/node_modules/*.*
 
-app/assets/.sass-cache/*.*
+/app/assets/.sass-cache/*.*
