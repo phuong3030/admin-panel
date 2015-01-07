@@ -44,7 +44,7 @@ define(
 
       removeTabsMenu: function () {
 
-        this.ui.menuContainer.removeClass('show-tabs-menu').hide();
+        this.ui.menuContainer.removeClass('show-tabs-menu');
       },
 
       // Show tabs menu effect when sidebar resized
@@ -56,12 +56,12 @@ define(
         if (this.ui.menuContainer.is(":visible")) {
 
           // toggleClass method doesn't have oncompleted callback
-          this.ui.menuContainer.toggleClass('show-tabs-menu').delay(250).toggle(0);
+          this.ui.menuContainer.removeClass('show-tabs-menu').delay(250).hide(0);
         } else { // show first and css3 effect later
 
-          this.ui.menuContainer.toggle(0, function () {
+          this.ui.menuContainer.show(0, function () {
 
-            that.ui.menuContainer.toggleClass('show-tabs-menu');
+            that.ui.menuContainer.addClass('show-tabs-menu');
           });
         }
       }

@@ -30,8 +30,8 @@ define(
 
       resizeSidebar: function (type) {
 
-        this.ui.leftSidebar.removeClass().addClass('sidebar ' + type);
-        this.ui.mainContent.removeClass().addClass('admin-container ' + type);
+        this.ui.leftSidebar.removeClass('medium small normal').addClass('sidebar ' + type);
+        this.ui.mainContent.removeClass('medium small normal').addClass('admin-container ' + type);
       },
 
       collapseUI: function (type) {
