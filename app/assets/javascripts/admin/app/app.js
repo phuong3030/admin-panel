@@ -22,7 +22,7 @@ define(
       leftSidebarRegion: '#left-sidebar-wrapper',
       rightSidebarRegion: '#right-sidebar-wrapper',
       headSectionRegion: '#head-section',
-      headTitleRegion: '#title-section',
+      titleSectionRegion: '#title-section',
       contentRegion: '#content-section'
     });
 

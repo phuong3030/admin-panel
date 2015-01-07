@@ -2,13 +2,17 @@ define(['app'], function (App) {
 
   App.module('Room', function (RoomApp) {
   
+    RoomApp.startWithParent = false;
+
     this.showRoomList = function () {
     };
 
-    this.showRoomType = function () {
+    this.showRoomTypeList = function () {
     };
 
-    this.ShowAmenitiesList = function () {
+    this.showAmenitiesList = function () {
     };
   });
+
+  return App.module('Room');
 });
