@@ -19,15 +19,6 @@ define(['app', 'modules/room'], function (App, RoomApp) {
         
         // Change heading page title by creating message in app vent
         // todo: will inheritance from super router
-      },
-
-      showRoomList: function () {
-      },
-
-      showRoomTypeList: function () {
-      },
-
-      showAmenitiesList: function () {
       }
     });
   });
