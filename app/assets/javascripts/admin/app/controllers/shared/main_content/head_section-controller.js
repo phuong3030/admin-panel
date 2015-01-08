@@ -8,7 +8,22 @@ define(
         App.headSectionRegion.show(this.headSectionView);
       },
       
-      genBreadcrumb: function (route) {
+      _genBreadcrumb: function (route) {
+      },
+
+      bindEvents: function () {
+
+        var that = this;
+
+        App.vent.on('changeHeading', function (route) {
+        
+          that._genBreadcrumb(route);
+        });
+      },
+
+      unbindEvents: function () {
+
+        App.vent.off('changeHeading');
       }
     });
   }

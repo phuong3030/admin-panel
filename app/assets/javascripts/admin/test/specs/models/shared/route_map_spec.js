@@ -1,6 +1,6 @@
-define(['models/shared/route'], function (Route) {
+define(['models/shared/route_map'], function (Route) {
 
-  describe('Route model', function () {
+  describe('Route map model', function () {
 
     var route;
 
