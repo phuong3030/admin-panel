@@ -1,6 +1,10 @@
 define(
-  ['app', 'controllers/shared/main_content/head_section-controller'],
-  function (App, HeadSectionController) {
+  [
+    'app', 
+    'controllers/shared/main_content/head_section-controller',
+    'models/shared/breadcrumb'
+  ],
+  function (App, HeadSectionController, Breadcrumb) {
 
     describe('Head section controller', function () {
 
@@ -27,9 +31,14 @@ define(
 
       it('should be split route change breadcrumb model', function () {
 
+        headSectionController.model = new Breadcrumb();
+        App.routeMap = {
+          '!room-type-list': 'room type',
+          '!rooms-list': 'room'
+        };
         headSectionController._genBreadcrumb('!room-type-list/rooms-list');
 
-        expect(headSectionController.model.get('breads').length()).toEqual(2);
+        expect(headSectionController.model.get('breads').length).toEqual(2);
       });
     });
   }

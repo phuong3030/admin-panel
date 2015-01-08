@@ -1,14 +1,32 @@
 define(
-  ['app', 'views/shared/main_content/head_section-view'],
-  function (App, HeadSectionView) {
+  [
+    'app', 
+    'views/shared/main_content/head_section-view',
+    'models/shared/breadcrumb'
+  ],
+  function (App, HeadSectionView, Breadcrumb) {
     return Backbone.Marionette.Controller.extend({
       createHeadSection: function () {
 
-        this.headSectionView = new HeadSectionView();
+        this.model = new Breadcrumb();
+        this.headSectionView = new HeadSectionView({ model: this.model });
         App.headSectionRegion.show(this.headSectionView);
       },
       
       _genBreadcrumb: function (route) {
+
+        var i, temp, breads = [],
+            routes = route.substring(1, route.length).split('/');
+
+        for (i = 0; i < routes.length; i++) {
+          temp = '!' + routes[i];
+          breads.push({
+            path: temp,
+            pathName: App.routeMap[temp]
+          });
+        }
+
+        this.model.set('breads', breads);
       },
 
       bindEvents: function () {
