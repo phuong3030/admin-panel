@@ -2,26 +2,24 @@ define(
   [
     'app', 
     'views/shared/main_content/title_section-view',
-    'models/shared/route'
+    'models/shared/route_map'
   ],
-  function (App, TitleSectionView, RouteModel) {
+  function (App, TitleSectionView, RouteMap) {
     return Backbone.Marionette.Controller.extend({
       createTitleSection: function () {
 
-        this.route = new RouteModel();
-        this.route.fetch();
-        this.titleSectionView = new TitleSectionView({ model: this.route });
+        App.routeMap = new RouteMap();
+        App.routeMap.fetch();
+        this.titleSectionView = new TitleSectionView({ model: App.routeMap });
 
         App.titleSectionRegion.show(this.titleSectionView);
       },
       
       bindEvents: function () {
 
-        var that = this;
-
         App.vent.on('changeHeading', function (route) { 
         
-          that.route.set('current', that.route.get(route));
+          App.routeMap.set('current', App.routeMap.get(route));
         });
       },
 

@@ -1,6 +1,9 @@
 <ul class="breadcrumb">
-  <li><a href="index.php">Home</a></li>
-  <li class="active">Dashboard</li>
+  <li><a href="#!">Home</a></li>
+  {{#each breads}}
+    <li><a href="{{path}}">{{pathName}}</a><li>
+  {{/each}}
+  <li class='active'>{{last.pathName}}</li>
 </ul>
 
 <div class="panel-menu hidden-sm hidden-xs">

@@ -31,6 +31,10 @@ define(
         'click @ui.collapseSidebarButton': 'collapseUI',
         'click @ui.collapseAllButton': 'collapseUI'
       },
+
+      modelEvents: {
+        'sync change': 'render'
+      },
       
       collapseUI: function (e) {
         

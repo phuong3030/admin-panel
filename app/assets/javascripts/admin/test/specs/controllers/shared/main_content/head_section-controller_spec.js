@@ -1,6 +1,10 @@
 define(
-  ['app', 'controllers/shared/main_content/head_section-controller'],
-  function (App, HeadSectionController) {
+  [
+    'app', 
+    'controllers/shared/main_content/head_section-controller',
+    'models/shared/breadcrumb'
+  ],
+  function (App, HeadSectionController, Breadcrumb) {
 
     describe('Head section controller', function () {
 
@@ -10,8 +14,40 @@ define(
 
         headSectionController = new HeadSectionController();
       });
+
+      afterEach(function () {
+
+        headSectionController.unbindEvents();
+      });
     
-      it('should call head section view to re-render new breadcrumb when hash changed'); 
+      it('should call head section view to re-render new breadcrumb when hash changed', function () {
+
+        spyOn(HeadSectionController.prototype, '_genBreadcrumb');
+        headSectionController.bindEvents();
+        App.vent.trigger('changeHeading', '!rooms-list');
+
+        expect(headSectionController._genBreadcrumb).toHaveBeenCalledWith('!rooms-list');
+      }); 
+
+      it('should be split route change breadcrumb model', function () {
+
+        // Manually create model to test
+        headSectionController.model = new Breadcrumb();
+        App.routeMap = {
+          '!room-type-list': 'room type',
+          '!rooms-list': 'rooms'
+        };
+        headSectionController._genBreadcrumb('!room-type-list/rooms-list');
+
+        expect(headSectionController.model.get('breads').length).toEqual(1);
+        expect(headSectionController.model.get('breads')).toEqual([
+          { path: '!room-type-list', pathName: 'room type' }
+        ]);
+        expect(headSectionController.model.get('last')).toEqual({ 
+          path: '!rooms-list', 
+          pathName: 'rooms' 
+        });
+      });
     });
   }
 );

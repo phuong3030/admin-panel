@@ -1,5 +1,6 @@
 {
   "current": "Dashboard",
+  "!": "Dashboard",
   "index": "Dashboard",
   "!rooms-list": "Rooms List",
   "!amenities-list": "Amenities List",

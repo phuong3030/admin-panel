@@ -4,7 +4,7 @@ define(
     'backbone', 
     'marionette', 
     'jquery', 
-    'models/shared/route',
+    'models/shared/route_map',
     'hbs!templates/shared/main_content/title_section'
   ],
   function (App, Backbone, Marionette, $, RouteModel, titleTemplate) {
@@ -14,8 +14,7 @@ define(
       className: 'panel-header',
 
       modelEvents: {
-        'sync': 'render',
-        'change': 'render'
+        'sync change': 'render'
       }
     });
   }
