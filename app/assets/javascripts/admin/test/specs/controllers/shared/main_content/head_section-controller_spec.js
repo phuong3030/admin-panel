@@ -31,6 +31,7 @@ define(
 
       it('should be split route change breadcrumb model', function () {
 
+        // Manually create model to test
         headSectionController.model = new Breadcrumb();
         App.routeMap = {
           '!room-type-list': 'room type',
@@ -39,6 +40,10 @@ define(
         headSectionController._genBreadcrumb('!room-type-list/rooms-list');
 
         expect(headSectionController.model.get('breads').length).toEqual(2);
+        expect(headSectionController.model.get('breads')).toEqual([
+          { path: '!room-type-list', pathName: 'room type' },
+          { path: '!rooms-list', pathName: 'room' }
+        ]);
       });
     });
   }
