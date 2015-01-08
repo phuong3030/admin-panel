@@ -49,7 +49,6 @@ Feature: Admin header and sidebar function
 
   Examples: 
   |  page                |  heading            |
-  |  "!rooms-list"       |  "Rooms list"       |
-  |  "!room-type-list"   |  "Room Type list"   |
-  |  "!amenities-list"   |  "Amenities list"   |
-      
+  |  "!rooms-list"       |  "Rooms List"       |
+  |  "!room-type-list"   |  "Room Type List"   |
+  |  "!amenities-list"   |  "Amenities List"   |

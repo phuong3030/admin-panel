@@ -41,6 +41,7 @@ end
 
 ##### 
 When(/^I go to "(.*?)"$/) do |page|
+  sleep 1
   visit admin_root_path(:anchor => page)
 end
 
