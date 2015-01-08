@@ -35,15 +35,18 @@ define(
         headSectionController.model = new Breadcrumb();
         App.routeMap = {
           '!room-type-list': 'room type',
-          '!rooms-list': 'room'
+          '!rooms-list': 'rooms'
         };
         headSectionController._genBreadcrumb('!room-type-list/rooms-list');
 
-        expect(headSectionController.model.get('breads').length).toEqual(2);
+        expect(headSectionController.model.get('breads').length).toEqual(1);
         expect(headSectionController.model.get('breads')).toEqual([
-          { path: '!room-type-list', pathName: 'room type' },
-          { path: '!rooms-list', pathName: 'room' }
+          { path: '!room-type-list', pathName: 'room type' }
         ]);
+        expect(headSectionController.model.get('last')).toEqual({ 
+          path: '!rooms-list', 
+          pathName: 'rooms' 
+        });
       });
     });
   }

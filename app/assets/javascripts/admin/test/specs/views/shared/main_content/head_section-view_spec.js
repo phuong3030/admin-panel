@@ -1,6 +1,10 @@
 define(
-  ['app', 'views/shared/main_content/head_section-view'],
-  function (App, HeadSectionView) {
+  [
+    'app', 
+    'views/shared/main_content/head_section-view',
+    'models/shared/breadcrumb' 
+  ],
+  function (App, HeadSectionView, Breadcrumb) {
 
     describe('Head section view', function () {
 
@@ -24,7 +28,7 @@ define(
 
       beforeEach(function () {
       
-        headSection = new HeadSectionView();
+        headSection = new HeadSectionView({ model: new Breadcrumb() });
         headSection.render();
       });
     

@@ -14,8 +14,7 @@ define(
       className: 'panel-header',
 
       modelEvents: {
-        'sync': 'render',
-        'change': 'render'
+        'sync change': 'render'
       }
     });
   }

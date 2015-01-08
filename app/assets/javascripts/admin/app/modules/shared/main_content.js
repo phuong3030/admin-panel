@@ -19,6 +19,7 @@ define(
         this.titleSectionController.createTitleSection();
 
         this.titleSectionController.bindEvents();
+        this.headSectionController.bindEvents();
       });
     });
   }
