@@ -9,10 +9,35 @@ define(
       // Create right header menu
       createNavbarTabsMenu: function () {
       
-        var navbarTabsMenu = new NavbarTabsMenuView();
+        this.navbarTabsMenu = new NavbarTabsMenuView();
         
-        App.leftSidebarLayout.tabsMenuRegion.show(navbarTabsMenu);
-      }   
+        App.leftSidebarLayout.tabsMenuRegion.show(this.navbarTabsMenu);
+      },
+
+      bindEvents: function () {
+
+        var that = this;
+        
+        App.vent.on('leftSidebar', function (type) {
+
+          that.navbarTabsMenu.resizeMenu(type); 
+        });
+
+        App.vent.on('collapseUI', function (type) {
+        
+          if (type !== 'none' && type !== 'header') {
+
+            that.navbarTabsMenu.removeTabsMenu();
+          }
+        });
+      },
+
+      unbindEvents: function () {
+
+        var that = this;
+
+        App.vent.off('leftSidebar');
+      }
     });
   }
 );

@@ -17,9 +17,9 @@ define(['app', 'views/layouts/left_sidebar-layout'], function (App, LeftSidebarL
           
           var leftSidebarLayout = new LeftSidebarLayout();
 
-          // Initialize header html structure
+          // Initialize left sidebar html structure
           App.leftSidebarRegion.show(leftSidebarLayout); 
-          // Store header pointer to create header's items later
+          // Store sidebar pointer to create sidebar's items later
           App.leftSidebarLayout = leftSidebarLayout;
         }
       });
@@ -27,10 +27,10 @@ define(['app', 'views/layouts/left_sidebar-layout'], function (App, LeftSidebarL
       LeftSidebarController.addInitializer(function () {
         
         /*
-        * Always init header layout immediately to
-        * ensure it exisits before it's item
-        */ 
-        var leftSidebarController  = new LeftSidebarController.Controller();
+         * Always init sidebar layout immediately to
+         * ensure it existed before it's item
+         */ 
+        var leftSidebarController = new LeftSidebarController.Controller();
 
         leftSidebarController.createLeftSidebarLayout();
       });
