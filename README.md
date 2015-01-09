@@ -3,7 +3,11 @@
 #### Feature list:
 
  * Responsive admin panel
- * Front website demo - food store 
+ * Front demo website - food store 
+
+#### Milestones:
+ * First phrase: Build responsive admin panel with BackboneJS + GrapeAPI
+ * Second phrase: Create front demo site
 
 #### Dependencies:
 
