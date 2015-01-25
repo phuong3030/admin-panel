@@ -1,26 +1,22 @@
-# SQLite version 3.x
-#   gem install sqlite3
-#
-#   Ensure the SQLite 3 gem is defined in your Gemfile
-#   gem 'sqlite3'
-#
 default: &default
-  adapter: sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: unicode
+  pool: 25
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: food_development
 
-test: &test
+test:
   <<: *default
-  #database: db/test.sqlite3
-  database: db/test<%= ENV['TEST_ENV_NUMBER'] %>.sqlite3
+  database: food_test
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  database: food_production
+  host: localhost
+  username: phuong3030
+  password: <%= ENV['QUOTE_DATABASE_PASSWORD'] %>
 
 cucumber:
-  <<: *test
+  <<: *default

@@ -38,8 +38,13 @@ gem 'ransack'
 # Nice url
 gem 'friendly_id'
 
+# Application enviroment variables
+gem 'figaro'
+
+# Postgres gem
+gem 'pg'
+
 group :development, :test do
-  gem 'sqlite3'
   gem 'spring'
   gem 'spring-commands-rspec'
   gem 'spring-commands-cucumber'
@@ -64,6 +69,7 @@ end
 
 group :production do
   gem 'capistrano'
+  gem 'rvm-capistrano'
 
   # Web server gem 
   gem 'thin'
