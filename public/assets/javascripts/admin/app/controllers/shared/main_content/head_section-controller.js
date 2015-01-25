@@ -16,22 +16,32 @@ define(
       _genBreadcrumb: function (route) {
 
         var i, temp, last = {}, breads = [],
-            routes = route.substring(1, route.length).split('/');
+            routes = route.substring(1, route.length).split('/'),
+            lastPath = routes[routes.length -1];
 
         for (i = 0; i < routes.length - 1; i++) {
           temp = '!' + routes[i];
+
           breads.push({
             path: temp,
             pathName: App.routeMap.get(temp)
           });
         }
 
-        this.model.set('breads', breads);
         last = {
-          path: '!' + routes[routes.length - 1], 
-          pathName: App.routeMap.get('!' + routes[routes.length -1])
+          path: route, 
+          pathName: App.routeMap.get(lastPath)
         };
-        this.model.set('last', last);
+
+        if (lastPath === ':id') {
+
+          last.pathName = route.params[0];
+        }
+
+        this.model.set({ 
+          'breads': breads,
+          'last': last
+        });
       },
 
       bindEvents: function () {

@@ -10,7 +10,7 @@ define(['app'], function (App) {
     
     after: function (route, param) {
 
-      App.vent.trigger('changeHeading', route);
+      App.vent.trigger('changeHeading', { 'route': route, 'params': param });
     }
   });
 });

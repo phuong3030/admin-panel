@@ -19,7 +19,7 @@ define(
 
         App.vent.on('changeHeading', function (route) { 
         
-          App.routeMap.set('current', App.routeMap.get(route));
+          App.routeMap.set('current', App.routeMap.get(route.route));
         });
       },
 

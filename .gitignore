@@ -15,7 +15,15 @@
 /log/*.log
 /tmp
 
-/app/assets/node_modules
-/app/assets/node_modules/*.*
+/public/assets/node_modules/
+/public/assets/node_modules/*.*
 
-/app/assets/.sass-cache/*.*
+/public/assets/.sass-cache/
+/public/assets/.sass-cache/*.*
+
+/public/assets/.grunt/
+/public/assets/.grunt/*.*
+
+
+# Ignore application configuration
+/config/application.yml
