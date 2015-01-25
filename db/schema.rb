@@ -13,17 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20141120145325) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comfy_cms_blocks", force: true do |t|
-    t.string   "identifier",                      null: false
-    t.text     "content",        limit: 16777215
+    t.string   "identifier",     null: false
+    t.text     "content"
     t.integer  "blockable_id"
     t.string   "blockable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comfy_cms_blocks", ["blockable_id", "blockable_type"], name: "index_comfy_cms_blocks_on_blockable_id_and_blockable_type"
-  add_index "comfy_cms_blocks", ["identifier"], name: "index_comfy_cms_blocks_on_identifier"
+  add_index "comfy_cms_blocks", ["blockable_id", "blockable_type"], name: "index_comfy_cms_blocks_on_blockable_id_and_blockable_type", using: :btree
+  add_index "comfy_cms_blocks", ["identifier"], name: "index_comfy_cms_blocks_on_identifier", using: :btree
 
   create_table "comfy_cms_categories", force: true do |t|
     t.integer "site_id",          null: false
@@ -31,7 +34,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.string  "categorized_type", null: false
   end
 
-  add_index "comfy_cms_categories", ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_cat_type_and_label", unique: true
+  add_index "comfy_cms_categories", ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_cat_type_and_label", unique: true, using: :btree
 
   create_table "comfy_cms_categorizations", force: true do |t|
     t.integer "category_id",      null: false
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.integer "categorized_id",   null: false
   end
 
-  add_index "comfy_cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true
+  add_index "comfy_cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true, using: :btree
 
   create_table "comfy_cms_files", force: true do |t|
     t.integer  "site_id",                                    null: false
@@ -54,57 +57,57 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "comfy_cms_files", ["site_id", "block_id"], name: "index_comfy_cms_files_on_site_id_and_block_id"
-  add_index "comfy_cms_files", ["site_id", "file_file_name"], name: "index_comfy_cms_files_on_site_id_and_file_file_name"
-  add_index "comfy_cms_files", ["site_id", "label"], name: "index_comfy_cms_files_on_site_id_and_label"
-  add_index "comfy_cms_files", ["site_id", "position"], name: "index_comfy_cms_files_on_site_id_and_position"
+  add_index "comfy_cms_files", ["site_id", "block_id"], name: "index_comfy_cms_files_on_site_id_and_block_id", using: :btree
+  add_index "comfy_cms_files", ["site_id", "file_file_name"], name: "index_comfy_cms_files_on_site_id_and_file_file_name", using: :btree
+  add_index "comfy_cms_files", ["site_id", "label"], name: "index_comfy_cms_files_on_site_id_and_label", using: :btree
+  add_index "comfy_cms_files", ["site_id", "position"], name: "index_comfy_cms_files_on_site_id_and_position", using: :btree
 
   create_table "comfy_cms_layouts", force: true do |t|
-    t.integer  "site_id",                                     null: false
+    t.integer  "site_id",                    null: false
     t.integer  "parent_id"
     t.string   "app_layout"
-    t.string   "label",                                       null: false
-    t.string   "identifier",                                  null: false
-    t.text     "content",    limit: 16777215
-    t.text     "css",        limit: 16777215
-    t.text     "js",         limit: 16777215
-    t.integer  "position",                    default: 0,     null: false
-    t.boolean  "is_shared",                   default: false, null: false
+    t.string   "label",                      null: false
+    t.string   "identifier",                 null: false
+    t.text     "content"
+    t.text     "css"
+    t.text     "js"
+    t.integer  "position",   default: 0,     null: false
+    t.boolean  "is_shared",  default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comfy_cms_layouts", ["parent_id", "position"], name: "index_comfy_cms_layouts_on_parent_id_and_position"
-  add_index "comfy_cms_layouts", ["site_id", "identifier"], name: "index_comfy_cms_layouts_on_site_id_and_identifier", unique: true
+  add_index "comfy_cms_layouts", ["parent_id", "position"], name: "index_comfy_cms_layouts_on_parent_id_and_position", using: :btree
+  add_index "comfy_cms_layouts", ["site_id", "identifier"], name: "index_comfy_cms_layouts_on_site_id_and_identifier", unique: true, using: :btree
 
   create_table "comfy_cms_pages", force: true do |t|
-    t.integer  "site_id",                                         null: false
+    t.integer  "site_id",                        null: false
     t.integer  "layout_id"
     t.integer  "parent_id"
     t.integer  "target_page_id"
-    t.string   "label",                                           null: false
+    t.string   "label",                          null: false
     t.string   "slug"
-    t.string   "full_path",                                       null: false
-    t.text     "content_cache",  limit: 16777215
-    t.integer  "position",                        default: 0,     null: false
-    t.integer  "children_count",                  default: 0,     null: false
-    t.boolean  "is_published",                    default: true,  null: false
-    t.boolean  "is_shared",                       default: false, null: false
+    t.string   "full_path",                      null: false
+    t.text     "content_cache"
+    t.integer  "position",       default: 0,     null: false
+    t.integer  "children_count", default: 0,     null: false
+    t.boolean  "is_published",   default: true,  null: false
+    t.boolean  "is_shared",      default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comfy_cms_pages", ["parent_id", "position"], name: "index_comfy_cms_pages_on_parent_id_and_position"
-  add_index "comfy_cms_pages", ["site_id", "full_path"], name: "index_comfy_cms_pages_on_site_id_and_full_path"
+  add_index "comfy_cms_pages", ["parent_id", "position"], name: "index_comfy_cms_pages_on_parent_id_and_position", using: :btree
+  add_index "comfy_cms_pages", ["site_id", "full_path"], name: "index_comfy_cms_pages_on_site_id_and_full_path", using: :btree
 
   create_table "comfy_cms_revisions", force: true do |t|
-    t.string   "record_type",                  null: false
-    t.integer  "record_id",                    null: false
-    t.text     "data",        limit: 16777215
+    t.string   "record_type", null: false
+    t.integer  "record_id",   null: false
+    t.text     "data"
     t.datetime "created_at"
   end
 
-  add_index "comfy_cms_revisions", ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at"
+  add_index "comfy_cms_revisions", ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at", using: :btree
 
   create_table "comfy_cms_sites", force: true do |t|
     t.string  "label",                       null: false
@@ -115,22 +118,22 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.boolean "is_mirrored", default: false, null: false
   end
 
-  add_index "comfy_cms_sites", ["hostname"], name: "index_comfy_cms_sites_on_hostname"
-  add_index "comfy_cms_sites", ["is_mirrored"], name: "index_comfy_cms_sites_on_is_mirrored"
+  add_index "comfy_cms_sites", ["hostname"], name: "index_comfy_cms_sites_on_hostname", using: :btree
+  add_index "comfy_cms_sites", ["is_mirrored"], name: "index_comfy_cms_sites_on_is_mirrored", using: :btree
 
   create_table "comfy_cms_snippets", force: true do |t|
-    t.integer  "site_id",                                     null: false
-    t.string   "label",                                       null: false
-    t.string   "identifier",                                  null: false
-    t.text     "content",    limit: 16777215
-    t.integer  "position",                    default: 0,     null: false
-    t.boolean  "is_shared",                   default: false, null: false
+    t.integer  "site_id",                    null: false
+    t.string   "label",                      null: false
+    t.string   "identifier",                 null: false
+    t.text     "content"
+    t.integer  "position",   default: 0,     null: false
+    t.boolean  "is_shared",  default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true
-  add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position"
+  add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
+  add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position", using: :btree
 
   create_table "ecommerce_addresses", force: true do |t|
     t.string   "firstname"
@@ -148,8 +151,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_addresses", ["country_id"], name: "index_ecommerce_addresses_on_country_id"
-  add_index "ecommerce_addresses", ["state_id"], name: "index_ecommerce_addresses_on_state_id"
+  add_index "ecommerce_addresses", ["country_id"], name: "index_ecommerce_addresses_on_country_id", using: :btree
+  add_index "ecommerce_addresses", ["state_id"], name: "index_ecommerce_addresses_on_state_id", using: :btree
 
   create_table "ecommerce_assets", force: true do |t|
     t.string   "img_file_name"
@@ -164,7 +167,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_assets", ["viewable_id", "viewable_type"], name: "index_ecommerce_assets_on_viewable_id_and_viewable_type"
+  add_index "ecommerce_assets", ["viewable_id", "viewable_type"], name: "index_ecommerce_assets_on_viewable_id_and_viewable_type", using: :btree
 
   create_table "ecommerce_countries", force: true do |t|
     t.string   "name"
@@ -191,7 +194,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_credit_cards", ["address_id"], name: "index_ecommerce_credit_cards_on_address_id"
+  add_index "ecommerce_credit_cards", ["address_id"], name: "index_ecommerce_credit_cards_on_address_id", using: :btree
 
   create_table "ecommerce_inventory_units", force: true do |t|
     t.string   "state"
@@ -203,10 +206,10 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_inventory_units", ["order_id"], name: "index_ecommerce_inventory_units_on_order_id"
-  add_index "ecommerce_inventory_units", ["return_authorization_id"], name: "index_ecommerce_inventory_units_on_return_authorization_id"
-  add_index "ecommerce_inventory_units", ["shipment_id"], name: "index_ecommerce_inventory_units_on_shipment_id"
-  add_index "ecommerce_inventory_units", ["variant_id"], name: "index_ecommerce_inventory_units_on_variant_id"
+  add_index "ecommerce_inventory_units", ["order_id"], name: "index_ecommerce_inventory_units_on_order_id", using: :btree
+  add_index "ecommerce_inventory_units", ["return_authorization_id"], name: "index_ecommerce_inventory_units_on_return_authorization_id", using: :btree
+  add_index "ecommerce_inventory_units", ["shipment_id"], name: "index_ecommerce_inventory_units_on_shipment_id", using: :btree
+  add_index "ecommerce_inventory_units", ["variant_id"], name: "index_ecommerce_inventory_units_on_variant_id", using: :btree
 
   create_table "ecommerce_line_items", force: true do |t|
     t.integer  "quantity",                           null: false
@@ -217,8 +220,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_line_items", ["order_id"], name: "index_ecommerce_line_items_on_order_id"
-  add_index "ecommerce_line_items", ["variant_id"], name: "index_ecommerce_line_items_on_variant_id"
+  add_index "ecommerce_line_items", ["order_id"], name: "index_ecommerce_line_items_on_order_id", using: :btree
+  add_index "ecommerce_line_items", ["variant_id"], name: "index_ecommerce_line_items_on_variant_id", using: :btree
 
   create_table "ecommerce_option_types", force: true do |t|
     t.string   "name"
@@ -235,8 +238,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_option_types_prototypes", ["option_type_id"], name: "index_ecommerce_option_types_prototypes_on_option_type_id"
-  add_index "ecommerce_option_types_prototypes", ["prototype_id"], name: "index_ecommerce_option_types_prototypes_on_prototype_id"
+  add_index "ecommerce_option_types_prototypes", ["option_type_id"], name: "index_ecommerce_option_types_prototypes_on_option_type_id", using: :btree
+  add_index "ecommerce_option_types_prototypes", ["prototype_id"], name: "index_ecommerce_option_types_prototypes_on_prototype_id", using: :btree
 
   create_table "ecommerce_option_values", force: true do |t|
     t.string   "name"
@@ -247,7 +250,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_option_values", ["option_type_id"], name: "index_ecommerce_option_values_on_option_type_id"
+  add_index "ecommerce_option_values", ["option_type_id"], name: "index_ecommerce_option_values_on_option_type_id", using: :btree
 
   create_table "ecommerce_option_values_variants", id: false, force: true do |t|
     t.integer  "variant_id"
@@ -256,8 +259,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_option_values_variants", ["option_value_id"], name: "index_ecommerce_option_values_variants_on_option_value_id"
-  add_index "ecommerce_option_values_variants", ["variant_id"], name: "index_ecommerce_option_values_variants_on_variant_id"
+  add_index "ecommerce_option_values_variants", ["option_value_id"], name: "index_ecommerce_option_values_variants_on_option_value_id", using: :btree
+  add_index "ecommerce_option_values_variants", ["variant_id"], name: "index_ecommerce_option_values_variants_on_variant_id", using: :btree
 
   create_table "ecommerce_orders", force: true do |t|
     t.string   "number"
@@ -279,10 +282,10 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_orders", ["bill_address_id"], name: "index_ecommerce_orders_on_bill_address_id"
-  add_index "ecommerce_orders", ["ship_address_id"], name: "index_ecommerce_orders_on_ship_address_id"
-  add_index "ecommerce_orders", ["shipping_method_id"], name: "index_ecommerce_orders_on_shipping_method_id"
-  add_index "ecommerce_orders", ["user_id"], name: "index_ecommerce_orders_on_user_id"
+  add_index "ecommerce_orders", ["bill_address_id"], name: "index_ecommerce_orders_on_bill_address_id", using: :btree
+  add_index "ecommerce_orders", ["ship_address_id"], name: "index_ecommerce_orders_on_ship_address_id", using: :btree
+  add_index "ecommerce_orders", ["shipping_method_id"], name: "index_ecommerce_orders_on_shipping_method_id", using: :btree
+  add_index "ecommerce_orders", ["user_id"], name: "index_ecommerce_orders_on_user_id", using: :btree
 
   create_table "ecommerce_payment_methods", force: true do |t|
     t.string   "name"
@@ -307,9 +310,9 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_payments", ["order_id"], name: "index_ecommerce_payments_on_order_id"
-  add_index "ecommerce_payments", ["payment_method_id"], name: "index_ecommerce_payments_on_payment_method_id"
-  add_index "ecommerce_payments", ["source_id", "source_type"], name: "index_ecommerce_payments_on_source_id_and_source_type"
+  add_index "ecommerce_payments", ["order_id"], name: "index_ecommerce_payments_on_order_id", using: :btree
+  add_index "ecommerce_payments", ["payment_method_id"], name: "index_ecommerce_payments_on_payment_method_id", using: :btree
+  add_index "ecommerce_payments", ["source_id", "source_type"], name: "index_ecommerce_payments_on_source_id_and_source_type", using: :btree
 
   create_table "ecommerce_products", force: true do |t|
     t.string   "name"
@@ -325,9 +328,9 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_products", ["shipping_category_id"], name: "index_ecommerce_products_on_shipping_category_id"
-  add_index "ecommerce_products", ["slug"], name: "index_ecommerce_products_on_slug"
-  add_index "ecommerce_products", ["tax_category_id"], name: "index_ecommerce_products_on_tax_category_id"
+  add_index "ecommerce_products", ["shipping_category_id"], name: "index_ecommerce_products_on_shipping_category_id", using: :btree
+  add_index "ecommerce_products", ["slug"], name: "index_ecommerce_products_on_slug", using: :btree
+  add_index "ecommerce_products", ["tax_category_id"], name: "index_ecommerce_products_on_tax_category_id", using: :btree
 
   create_table "ecommerce_products_option_types", force: true do |t|
     t.integer  "position"
@@ -337,8 +340,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_products_option_types", ["option_type_id"], name: "index_ecommerce_products_option_types_on_option_type_id"
-  add_index "ecommerce_products_option_types", ["product_id"], name: "index_ecommerce_products_option_types_on_product_id"
+  add_index "ecommerce_products_option_types", ["option_type_id"], name: "index_ecommerce_products_option_types_on_option_type_id", using: :btree
+  add_index "ecommerce_products_option_types", ["product_id"], name: "index_ecommerce_products_option_types_on_product_id", using: :btree
 
   create_table "ecommerce_products_properties", force: true do |t|
     t.string   "value"
@@ -348,8 +351,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_products_properties", ["product_id"], name: "index_ecommerce_products_properties_on_product_id"
-  add_index "ecommerce_products_properties", ["property_id"], name: "index_ecommerce_products_properties_on_property_id"
+  add_index "ecommerce_products_properties", ["product_id"], name: "index_ecommerce_products_properties_on_product_id", using: :btree
+  add_index "ecommerce_products_properties", ["property_id"], name: "index_ecommerce_products_properties_on_property_id", using: :btree
 
   create_table "ecommerce_products_taxons", id: false, force: true do |t|
     t.integer  "product_id"
@@ -358,8 +361,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_products_taxons", ["product_id"], name: "index_ecommerce_products_taxons_on_product_id"
-  add_index "ecommerce_products_taxons", ["taxon_id"], name: "index_ecommerce_products_taxons_on_taxon_id"
+  add_index "ecommerce_products_taxons", ["product_id"], name: "index_ecommerce_products_taxons_on_product_id", using: :btree
+  add_index "ecommerce_products_taxons", ["taxon_id"], name: "index_ecommerce_products_taxons_on_taxon_id", using: :btree
 
   create_table "ecommerce_properties", force: true do |t|
     t.string   "name"
@@ -375,8 +378,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_properties_prototypes", ["property_id"], name: "index_ecommerce_properties_prototypes_on_property_id"
-  add_index "ecommerce_properties_prototypes", ["prototype_id"], name: "index_ecommerce_properties_prototypes_on_prototype_id"
+  add_index "ecommerce_properties_prototypes", ["property_id"], name: "index_ecommerce_properties_prototypes_on_property_id", using: :btree
+  add_index "ecommerce_properties_prototypes", ["prototype_id"], name: "index_ecommerce_properties_prototypes_on_prototype_id", using: :btree
 
   create_table "ecommerce_prototypes", force: true do |t|
     t.string   "name"
@@ -394,7 +397,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_return_authorizations", ["order_id"], name: "index_ecommerce_return_authorizations_on_order_id"
+  add_index "ecommerce_return_authorizations", ["order_id"], name: "index_ecommerce_return_authorizations_on_order_id", using: :btree
 
   create_table "ecommerce_shipments", force: true do |t|
     t.string   "tracking"
@@ -409,9 +412,9 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_shipments", ["address_id"], name: "index_ecommerce_shipments_on_address_id"
-  add_index "ecommerce_shipments", ["order_id"], name: "index_ecommerce_shipments_on_order_id"
-  add_index "ecommerce_shipments", ["shipping_method_id"], name: "index_ecommerce_shipments_on_shipping_method_id"
+  add_index "ecommerce_shipments", ["address_id"], name: "index_ecommerce_shipments_on_address_id", using: :btree
+  add_index "ecommerce_shipments", ["order_id"], name: "index_ecommerce_shipments_on_order_id", using: :btree
+  add_index "ecommerce_shipments", ["shipping_method_id"], name: "index_ecommerce_shipments_on_shipping_method_id", using: :btree
 
   create_table "ecommerce_shipping_categories", force: true do |t|
     t.string   "name"
@@ -428,8 +431,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_shipping_methods", ["shipping_category_id"], name: "index_ecommerce_shipping_methods_on_shipping_category_id"
-  add_index "ecommerce_shipping_methods", ["zone_id"], name: "index_ecommerce_shipping_methods_on_zone_id"
+  add_index "ecommerce_shipping_methods", ["shipping_category_id"], name: "index_ecommerce_shipping_methods_on_shipping_category_id", using: :btree
+  add_index "ecommerce_shipping_methods", ["zone_id"], name: "index_ecommerce_shipping_methods_on_zone_id", using: :btree
 
   create_table "ecommerce_states", force: true do |t|
     t.string   "name"
@@ -439,7 +442,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_states", ["country_id"], name: "index_ecommerce_states_on_country_id"
+  add_index "ecommerce_states", ["country_id"], name: "index_ecommerce_states_on_country_id", using: :btree
 
   create_table "ecommerce_stock_items", force: true do |t|
     t.integer  "count_on_hand"
@@ -449,8 +452,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_stock_items", ["stock_location_id"], name: "index_ecommerce_stock_items_on_stock_location_id"
-  add_index "ecommerce_stock_items", ["variant_id"], name: "index_ecommerce_stock_items_on_variant_id"
+  add_index "ecommerce_stock_items", ["stock_location_id"], name: "index_ecommerce_stock_items_on_stock_location_id", using: :btree
+  add_index "ecommerce_stock_items", ["variant_id"], name: "index_ecommerce_stock_items_on_variant_id", using: :btree
 
   create_table "ecommerce_stock_locations", force: true do |t|
     t.string   "name"
@@ -459,7 +462,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_stock_locations", ["address_id"], name: "index_ecommerce_stock_locations_on_address_id"
+  add_index "ecommerce_stock_locations", ["address_id"], name: "index_ecommerce_stock_locations_on_address_id", using: :btree
 
   create_table "ecommerce_tax_categories", force: true do |t|
     t.string   "name"
@@ -478,8 +481,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_tax_rates", ["tax_category_id"], name: "index_ecommerce_tax_rates_on_tax_category_id"
-  add_index "ecommerce_tax_rates", ["zone_id"], name: "index_ecommerce_tax_rates_on_zone_id"
+  add_index "ecommerce_tax_rates", ["tax_category_id"], name: "index_ecommerce_tax_rates_on_tax_category_id", using: :btree
+  add_index "ecommerce_tax_rates", ["zone_id"], name: "index_ecommerce_tax_rates_on_zone_id", using: :btree
 
   create_table "ecommerce_taxonomies", force: true do |t|
     t.string   "name"
@@ -497,8 +500,8 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_taxons", ["parent_id"], name: "index_ecommerce_taxons_on_parent_id"
-  add_index "ecommerce_taxons", ["taxonomy_id"], name: "index_ecommerce_taxons_on_taxonomy_id"
+  add_index "ecommerce_taxons", ["parent_id"], name: "index_ecommerce_taxons_on_parent_id", using: :btree
+  add_index "ecommerce_taxons", ["taxonomy_id"], name: "index_ecommerce_taxons_on_taxonomy_id", using: :btree
 
   create_table "ecommerce_variants", force: true do |t|
     t.string   "sku",                                   default: "", null: false
@@ -516,7 +519,7 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "ecommerce_variants", ["product_id"], name: "index_ecommerce_variants_on_product_id"
+  add_index "ecommerce_variants", ["product_id"], name: "index_ecommerce_variants_on_product_id", using: :btree
 
   create_table "ecommerce_zones", force: true do |t|
     t.string   "name"
@@ -558,9 +561,9 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "updated_at"
   end
 
-  add_index "users", ["bill_address_id"], name: "index_users_on_bill_address_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["ship_address_id"], name: "index_users_on_ship_address_id"
+  add_index "users", ["bill_address_id"], name: "index_users_on_bill_address_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["ship_address_id"], name: "index_users_on_ship_address_id", using: :btree
 
 end
