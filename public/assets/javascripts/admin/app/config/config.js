@@ -1,5 +1,5 @@
 require.config({
-  baseUrl:'/assets/admin/app',
+  baseUrl:'/assets/javascripts/admin/app',
   paths:{
     // Core Libraries
     'jquery':'../libs/jquery',
