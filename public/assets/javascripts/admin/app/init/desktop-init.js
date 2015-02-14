@@ -5,11 +5,11 @@ require(
   [
     'app', 
     'routers/router', 
-    'controllers/desktop-controller', 
+    'controllers/application',
     'modules/shared/header',
-    'modules/shared/left_sidebar',
-    'modules/shared/right_sidebar',
-    'modules/shared/main_content',
+    'modules/shared/left-sidebar',
+    'modules/shared/right-sidebar',
+    'modules/shared/main-content',
     'jquery', 
     'backbone', 
     'marionette', 
@@ -24,23 +24,11 @@ require(
     });
 
     // Init application layout view before start app
-    require(['views/layouts/main-layout'], function (ApplicationLayout) {
+    require([], function (ApplicationLayout) {
 
       App.applicationLayout = new ApplicationLayout();
       App.applicationRegion.show(App.applicationLayout);
       App.start();
-
-      // Listen resize sidebar message 
-      App.vent.on('leftSidebar', function (type) {
-        
-        App.applicationLayout.resizeSidebar(type);
-      });
-
-      // Listen collapse header & sidebar message
-      App.vent.on('collapseUI', function (type) {
-
-        App.applicationLayout.collapseUI(type);
-      });
     });
   }
 );
