@@ -27,27 +27,28 @@ require.config({
     'bootstrap':['jquery'],
     'jqueryui':['jquery'],
     'jquerymobile':['jqueryui'],
+    'jasminejquery': ['jquery'],
 
     'backbone':{
-        'deps':['underscore', 'jquery'],
-        'exports':'Backbone'
+      'deps':['underscore', 'jquery'],
+      'exports':'Backbone'
     },
     'marionette':{
-        'deps':['underscore', 'backbone', 'jquery'],
-        'exports':'Marionette'
+      'deps':['underscore', 'backbone', 'jquery'],
+      'exports':'Marionette'
     },
     'handlebars':{
-        'exports':'Handlebars'
+      'exports':'Handlebars'
     },
     'backbone.validateAll':['backbone'],
 
     'jasmine': {
-        'exports': 'jasmine'
+      'exports': 'jasmine'
     },
 
     'jasmine-html': {
-        'deps': ['jasmine'],
-        'exports': 'jasmine'
+      'deps': ['jasmine'],
+      'exports': 'jasmine'
     }
   },
   hbs: {
