@@ -1,6 +1,6 @@
-module Core
+module Admin
   class User < ActiveRecord::Base
-    has_and_belongs_to_many :roles, :class_name => "Core::Role"
+    has_and_belongs_to_many :roles, :class_name => "Admin::Role"
 
     devise :database_authenticatable, 
       :recoverable, :rememberable, :trackable, :validatable

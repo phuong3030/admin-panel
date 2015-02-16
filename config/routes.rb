@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       { 
         :skip => [:registration],
         :controllers => { :sessions => 'devise/session' },
-        :class_name => 'Core::User',
+        :class_name => 'Admin::User',
         :path => 'user',
         :path_names => { :sign_in => 'login', :sign_out => 'logout' }
       }

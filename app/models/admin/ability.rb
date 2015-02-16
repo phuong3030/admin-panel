@@ -1,11 +1,11 @@
-module Core
+module Admin
   class Ability
     include CanCan::Ability
 
     def initialize(user)
       alias_action :create, :update, :index, :show, :to => :crud
 
-      user ||= Core::User.new
+      user ||= Admin::User.new
 
       if user.role? :admin
         can :manage, :all
