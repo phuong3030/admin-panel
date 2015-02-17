@@ -1,13 +1,16 @@
 define(
   [
     'app',
+    'views/shared/sidebar/left/group-function',
     'hbs!templates/shared/sidebar/left/navbar-menu'
-  ], function (App, NavbarMenuTemplate) {
+  ], function (App, GroupFunction, NavbarMenuTemplate) {
 
-    return Backbone.Marionette.LayoutView.extend({
+    return Backbone.Marionette.CompositeView.extend({
       template: NavbarMenuTemplate,
       _previousChildMenu: {},
       _isExpandedAll: false,
+      itemView: GroupFunction,
+      childViewContainer: "ul",
 
       ui: {
         menu: '.toggle-menu',

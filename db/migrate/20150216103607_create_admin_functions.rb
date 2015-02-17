@@ -4,6 +4,7 @@ class CreateAdminFunctions < ActiveRecord::Migration
       t.string :name
       t.string :url
       t.boolean :display
+      t.string :icon
       t.integer :functionable_id
       t.string :functionable_type
 

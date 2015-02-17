@@ -1,7 +1,7 @@
 define(
   [
     'app',
-    'views/sidebar/left/bottom-widget',
+    'views/shared/sidebar/left/bottom-widget',
     'jasminejquery'
   ], function (App, BottomWidget) {
     

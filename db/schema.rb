@@ -533,6 +533,7 @@ ActiveRecord::Schema.define(version: 20150216104507) do
     t.string   "name"
     t.string   "url"
     t.boolean  "display"
+    t.string   "icon"
     t.integer  "functionable_id"
     t.string   "functionable_type"
     t.datetime "created_at"
