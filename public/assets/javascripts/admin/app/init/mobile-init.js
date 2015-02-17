@@ -7,7 +7,6 @@ require(
     'app', 
     'jquery', 
     'routers/router', 
-    'controllers/mobile-controller', 
     'modules/shared/header',
     'backbone', 
     'marionette', 

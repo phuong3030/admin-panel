@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       { 
         :skip => [:registration],
         :controllers => { :sessions => 'devise/session' },
-        :class_name => 'Core::User',
+        :class_name => 'Admin::User',
         :path => 'user',
         :path_names => { :sign_in => 'login', :sign_out => 'logout' }
       }
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
       
     # Make sure this routeset is defined last
-    comfy_route :cms_admin, :path => '/admin/cms'
+    #comfy_route :cms_admin, :path => '/admin/cms'
     comfy_route :cms, :path => '/', :sitemap => false
   #end
 

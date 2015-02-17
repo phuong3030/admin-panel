@@ -1,13 +1,46 @@
 <div class='container-fluid'>
 
   <div class='top-nav'>
+    <div class="panel-header">
+      <div class="logo">
+        <a href="/"><img alt="logo" src="img/logo.png"></a>
+      </div>
+      <!-- logo -->
+      <div class="panel-menu hidden-sm hidden-xs" data-intro="<strong>Minimize Left Navigation</strong><br/>Toggle navigation size to medium or small size. You can set both button or one button only. See full option at documentation." data-step="1">
+        <span class="nav-medium-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Medium Nav Toggle" data-action="nav-left-medium">
+          <i class="fa fa-bars"></i>
+        </span>
+
+        <span class="nav-small-button menu" data-toggle="tooltip" data-placement="bottom" data-original-title="Small Nav Toggle" data-action="nav-left-small">
+          <i class="fa fa-ellipsis-v"></i>
+        </span> 
+
+      </div>
+      <div class="vd_panel-menu left-pos visible-sm visible-xs">
+
+        <span class="menu" data-action="toggle-navbar-left">
+          <i class="fa fa-ellipsis-v"></i>
+        </span>  
+
+
+      </div>
+      <div class="panel-menu visible-sm visible-xs">
+        <span class="menu visible-xs" data-action="submenu">
+          <i class="fa fa-bars"></i>
+        </span>        
+
+        <span class="menu visible-sm visible-xs" data-action="toggle-navbar-right">
+          <i class="fa fa-comments"></i>
+        </span>                   
+
+      </div>                                     
+      <!-- panel-menu -->
+    </div>
   </div>
 
   <div class='header-container'>
     <div class='row'>
       <div class='col-sm-5 col-xs-12'>
-        <div class='menu-search'>
-        </div>
       </div>
 
       <div class='col-sm-7 col-xs-12'>
@@ -16,5 +49,5 @@
       </div>
     </div>
   </div>
-    
+
 </div>

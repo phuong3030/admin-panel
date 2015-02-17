@@ -1,6 +1,16 @@
-Core::User.create! do |user|
+Admin::User.create! do |user|
   user.email      = 'admin@example.com'
-  user.username       = 'Admin'
+  user.username   = 'Admin'
   user.password   = 'password'
-  user.roles << Core::Role.create(:name => 'admin')
+  user.roles << Admin::Role.create(:name => 'admin')
+end
+
+ActiveRecord::Base.transaction do
+  root = Admin::Function.create(:url => '/', :name => 'home', :display => true)
+
+  dashboard = root.children.create(:url => '/dashboard', :name => 'Dashboard', :display => true)
+  parent1 = root.children.create(:url => '/parent1', :name => 'Parent1', :display => true)
+  child1 = parent1.children.create(:url => '/child1', :name => 'Child1', :display => true)
+  child2 = parent1.children.create(:url => '/child2', :name => 'Child2', :display => true)
+  child3 = parent1.children.create(:url => '/child3', :name => 'Child3', :display => true)
 end

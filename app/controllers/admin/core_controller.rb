@@ -11,7 +11,7 @@ class Admin::CoreController < Comfy::Admin::Cms::BaseController
 
   # GET /admin/login
   def login
-    @user = Core::User.new
+    @user = Admin::User.new
   end
 
   # GET /admin/logout
