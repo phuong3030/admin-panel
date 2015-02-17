@@ -5,11 +5,8 @@ require(
   [
     'app', 
     'routers/router', 
-    'controllers/desktop-controller', 
-    'modules/shared/header',
-    'modules/shared/left_sidebar',
-    'modules/shared/right_sidebar',
-    'modules/shared/main_content',
+    'controllers/application',
+    'views/layouts/application',
     'jquery', 
     'backbone', 
     'marionette', 
@@ -17,30 +14,34 @@ require(
     'backbone.validateAll',
     'backbone.routefilter'
   ],
-  function (App, MainRouter, AppController) {
+  function (App, MainRouter, AppController, ApplicationLayout) {
 
-    App.mainRouter = new MainRouter({
-      controller: new AppController()
-    });
+    // Show application layout first
+    App.addInitializer(function() {
+    
+      var that = this;
 
-    // Init application layout view before start app
-    require(['views/layouts/main-layout'], function (ApplicationLayout) {
+      this.applicationLayout = new ApplicationLayout();
 
-      App.applicationLayout = new ApplicationLayout();
-      App.applicationRegion.show(App.applicationLayout);
-      App.start();
+      this.application.show(this.applicationLayout);
 
       // Listen resize sidebar message 
       App.vent.on('leftSidebar', function (type) {
         
-        App.applicationLayout.resizeSidebar(type);
+        that.applicationLayout.resizeSidebar(type);
       });
 
       // Listen collapse header & sidebar message
       App.vent.on('collapseUI', function (type) {
 
-        App.applicationLayout.collapseUI(type);
+        that.applicationLayout.collapseUI(type);
       });
     });
+
+    App.mainRouter = new MainRouter({
+      controller: new AppController()
+    });
+
+    App.start();
   }
 );

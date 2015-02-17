@@ -44,6 +44,9 @@ gem 'figaro'
 # Postgres gem
 gem 'pg'
 
+# Web server gem 
+gem 'puma'
+
 group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -70,7 +73,4 @@ end
 group :production do
   gem 'capistrano'
   gem 'rvm-capistrano'
-
-  # Web server gem 
-  gem 'thin'
 end

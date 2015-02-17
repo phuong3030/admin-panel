@@ -2,7 +2,7 @@ module FoodStore::AuthModule
 
   def authenticate
     if current_user
-      ability = Core::Ability.new(current_user)
+      ability = Admin::Ability.new(current_user)
       return true if ability.can?(:manage, "Cms::Site")
       raise CanCan::AccessDenied
     else
@@ -20,7 +20,7 @@ module FoodStore::AuthModule
     when "Supplier"
       supplier_root_url
     else
-      ability = Core::Ability.new(current_user)
+      ability = Admin::Ability.new(current_user)
       if ability.can?(:manage, :all)
         admin_root_path
       elsif ability.can?(:manage, "Cms:Site")

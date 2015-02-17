@@ -24,6 +24,8 @@
 /public/assets/.grunt/
 /public/assets/.grunt/*.*
 
+/public/assets/_SpecRunner.html 
+
 
 # Ignore application configuration
 /config/application.yml

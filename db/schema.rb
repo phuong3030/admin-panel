@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141120145325) do
+ActiveRecord::Schema.define(version: 20150216104507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -528,6 +528,20 @@ ActiveRecord::Schema.define(version: 20141120145325) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "functions", force: true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.boolean  "display"
+    t.integer  "functionable_id"
+    t.string   "functionable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "ancestry"
+  end
+
+  add_index "functions", ["ancestry"], name: "index_functions_on_ancestry", using: :btree
+  add_index "functions", ["functionable_id"], name: "index_functions_on_functionable_id", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"

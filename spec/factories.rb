@@ -2,11 +2,11 @@ FactoryGirl.define do
   sequence(:email) { |n| "email#{n}@example.com" }
   sequence(:username) { |n| "name#{n}" }
 
-  factory :role, :class => Core::Role do
+  factory :role, :class => Admin::Role do
     name 'admin'
   end
 
-  factory :user, :class => Core::User do
+  factory :user, :class => Admin::User do
     email
     username
     password 'password'
