@@ -12,7 +12,7 @@ define(
     LeftSidebarApp.addInitializer(function () {
 
       this.leftSidebar = new LeftSidebarLayout();
-      App.leftSidebarRegion.show(this.leftSidebar);
+      App.leftSidebar.show(this.leftSidebar);
     });
   });
 });

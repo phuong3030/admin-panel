@@ -30,6 +30,40 @@ define(
         this.getRegion('tabsMenu').show(this.tabsMenu);
         this.getRegion('navbarMenu').show(this.navbarMenu);
         this.getRegion('bottomWidget').show(this.bottomWidget);
+
+        this.bindEvents();
+      },
+
+      _closeAllToggleMenu: function () {
+
+        this.navbarMenu.closeAllMenu();
+      },
+
+      bindEvents: function () {
+
+        var that = this;
+        
+        App.vent.on('leftSidebar', function (type) {
+
+          that.tabsMenu.resizeMenu(type); 
+          that._closeAllToggleMenu();
+        });
+
+        App.vent.on('collapseUI', function (type) {
+        
+          if (type !== 'none' && type !== 'header') {
+
+            that.tabsMenu.removeTabsMenu();
+          }
+
+          that._closeAllToggleMenu();
+        });
+      },
+
+      unbindEvents: function () {
+
+        App.vent.off('collapseUI');
+        App.vent.off('leftSidebar');
       }
     });
   }

@@ -13,7 +13,7 @@ define(
       HeaderApp.addInitializer(function () {
 
         this.headerLayout = new HeaderLayout();
-        App.headerRegion.show(this.headerLayout);
+        App.header.show(this.headerLayout);
       });
     });
   }

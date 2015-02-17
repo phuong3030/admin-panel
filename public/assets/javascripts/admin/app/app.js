@@ -17,13 +17,13 @@ define(
     }
 
     App.addRegions({
-      applicationRegion: 'body',
-      headerRegion: 'header',
-      leftSidebarRegion: '#left-sidebar-wrapper',
-      rightSidebarRegion: '#right-sidebar-wrapper',
-      headSectionRegion: '#head-section',
-      titleSectionRegion: '#title-section',
-      contentRegion: '#content-section'
+      application: 'body',
+      header: 'header',
+      leftSidebar: '#left-sidebar-wrapper',
+      rightSidebar: '#right-sidebar-wrapper',
+      headSection: '#head-section',
+      titleSection: '#title-section',
+      content: '#content-section'
     });
 
     // Start subApp manually when subapp change
