@@ -7,9 +7,10 @@ define(
     'views/shared/sidebar/left/tabs-menu',
     'views/shared/sidebar/left/navbar-menu',
     'views/shared/sidebar/left/bottom-widget',
+    'collections/navbar',
     'hbs!templates/layouts/left-sidebar'
   ],
-  function (App, Backbone, Marionette, $, TabsMenu, NavbarMenu, BottomWidget, leftSidebarTemplate) {
+  function (App, Backbone, Marionette, $, TabsMenu, NavbarMenu, BottomWidget, Navbar, leftSidebarTemplate) {
 
     return Backbone.Marionette.LayoutView.extend({
       template: leftSidebarTemplate,
@@ -23,14 +24,24 @@ define(
       
       onBeforeShow: function () {
 
+        /*
+         * Fetch navbar menu data from server and bind to navbar menu.
+         * Navbar menu data will be different with each user
+         */ 
+        var navbarItems = new Navbar();
+        
+        navbarItems.fetch();
+
+        // Initialize all sub views
         this.tabsMenu = new TabsMenu();
-        this.navbarMenu = new NavbarMenu();
+        this.navbarMenu = new NavbarMenu({ collection: navbarItems });
         this.bottomWidget = new BottomWidget();
 
         this.getRegion('tabsMenu').show(this.tabsMenu);
         this.getRegion('navbarMenu').show(this.navbarMenu);
         this.getRegion('bottomWidget').show(this.bottomWidget);
 
+        // Bind collapse events
         this.bindEvents();
       },
 

@@ -9,7 +9,7 @@ define(
       template: NavbarMenuTemplate,
       _previousChildMenu: {},
       _isExpandedAll: false,
-      itemView: GroupFunction,
+      childView: GroupFunction,
       childViewContainer: "ul",
 
       ui: {
@@ -24,9 +24,19 @@ define(
       },
 
       onShow: function () {
+
+        var that = this,
+            timeout;
    
         // Bind tooltip events
         $('[data-toggle="tooltip"]').tooltip();
+
+        // Re-bind ui hash, childmenus are being appended dynamically
+        timeout = setTimeout(function () {
+        
+          that.bindUIElements();
+          clearTimeout(timeout);
+        }, 1500);
       },
 
       toggleMenu: function (e) {

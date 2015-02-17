@@ -9,10 +9,10 @@ module API
         authenticated_user
       end
 
-      resource :function do
+      resource :functions do
         desc 'Get navbar menu by user role'
         get '/navbar' do
-          { navbar: Admin::Function.first.subtree.arrange_serializable }#.map { |f| { :name => f.name, :url => f.url } } }
+          Admin::Function.first.descendants.arrange_serializable #.map { |f| { :name => f.name, :url => f.url } } }
         end
 
         desc 'Get header menu by user role'
