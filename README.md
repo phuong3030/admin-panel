@@ -1,18 +1,26 @@
-## FOODSTORE
+## Foodstore
 
 #### Feature list:
 
  * Responsive admin panel
+ * Chat system
+ * Mail application
+ * Content management system
  * Front demo website - food store 
 
 #### Milestones:
  * First phrase: Build responsive admin panel with BackboneJS + GrapeAPI
- * Second phrase: Create front demo site
+ * Second pharse: Create chat system using nodejs, backbone marionette module
+ * Third phrase: Email application
+ * Forth phrase: Notification system
+ * Fifth phrase: Content management system
+ * Last pharse: Create front demo site
 
 #### Dependencies:
 
  * Rails 4.1.6
- * Comfortable Mexican Sofa CMS
+ * Grape API
+ * Rewrite CMS gem
  * Backbone, MarionetteJS
  
 #### Continuous testing library:
