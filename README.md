@@ -19,6 +19,7 @@
 #### Dependencies:
 
  * Rails 4.1.6
+ * Nodejs for chat server
  * Grape API
  * Rewrite CMS gem
  * Backbone, MarionetteJS
