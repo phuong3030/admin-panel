@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150216104507) do
+ActiveRecord::Schema.define(version: 20150223004903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -354,16 +354,6 @@ ActiveRecord::Schema.define(version: 20150216104507) do
   add_index "ecommerce_products_properties", ["product_id"], name: "index_ecommerce_products_properties_on_product_id", using: :btree
   add_index "ecommerce_products_properties", ["property_id"], name: "index_ecommerce_products_properties_on_property_id", using: :btree
 
-  create_table "ecommerce_products_taxons", id: false, force: true do |t|
-    t.integer  "product_id"
-    t.integer  "taxon_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ecommerce_products_taxons", ["product_id"], name: "index_ecommerce_products_taxons_on_product_id", using: :btree
-  add_index "ecommerce_products_taxons", ["taxon_id"], name: "index_ecommerce_products_taxons_on_taxon_id", using: :btree
-
   create_table "ecommerce_properties", force: true do |t|
     t.string   "name"
     t.string   "presentation", null: false
@@ -543,6 +533,13 @@ ActiveRecord::Schema.define(version: 20150216104507) do
 
   add_index "functions", ["ancestry"], name: "index_functions_on_ancestry", using: :btree
   add_index "functions", ["functionable_id"], name: "index_functions_on_functionable_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "roles", force: true do |t|
     t.string   "name"

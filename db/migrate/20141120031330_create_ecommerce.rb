@@ -1,4 +1,4 @@
-class CreateEcommerceAddresses < ActiveRecord::Migration
+class CreateEcommerce < ActiveRecord::Migration
   def change
     create_table :ecommerce_addresses do |t|
       t.string :firstname

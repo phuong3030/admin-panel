@@ -1,4 +1,4 @@
-class CreateAdminFunctions < ActiveRecord::Migration
+class CreateFunctions < ActiveRecord::Migration
   def change
     create_table :functions do |t|
       t.string :name

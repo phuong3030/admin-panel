@@ -13,4 +13,7 @@ ActiveRecord::Base.transaction do
   child1 = parent1.children.create(:url => '/child1', :name => 'Child1', :display => true, :icon => 'dashboard')
   child2 = parent1.children.create(:url => '/child2', :name => 'Child2', :display => true, :icon => 'dashboard')
   child3 = parent1.children.create(:url => '/child3', :name => 'Child3', :display => true, :icon => 'dashboard')
+  grandchild1 = child1.children.create(:url => '/grandchild1', :name => 'Grandchild1', :display => true, :icon => 'dashboard')
+  grandchild2 = child1.children.create(:url => '/grandchild2', :name => 'Grandchild2', :display => true, :icon => 'dashboard')
+  grandchild3 = child1.children.create(:url => '/grandchild3', :name => 'Grandchild3', :display => true, :icon => 'dashboard')
 end

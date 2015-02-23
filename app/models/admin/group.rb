@@ -1,10 +1,6 @@
 module Admin
-  class User < ActiveRecord::Base
-    has_and_belongs_to_many :roles, :class_name => "Admin::Role"
-    belongs_to :group, :class_name => "Admin::Group"
-
-    devise :database_authenticatable, 
-      :recoverable, :rememberable, :trackable, :validatable
+  class Group < ActiveRecord::Base
+    has_many :users
 
     def role_array
       self.roles.pluck(:name)
@@ -22,6 +18,5 @@ module Admin
     def remove_role(role)
       self.user_roles.find_by(role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
     end
-
   end
 end
