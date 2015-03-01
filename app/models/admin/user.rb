@@ -1,7 +1,6 @@
 module Admin
   class User < ActiveRecord::Base
     has_and_belongs_to_many :roles, :class_name => "Admin::Role"
-    belongs_to :group, :class_name => "Admin::Group"
 
     devise :database_authenticatable, 
       :recoverable, :rememberable, :trackable, :validatable
@@ -23,5 +22,11 @@ module Admin
       self.user_roles.find_by(role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
     end
 
+    # Get all ui can be used by user role
+    def get_ui_by_role(ui_type)
+      ui_type = (ui_type + 's').to_sym
+      ui = Admin::Function.arrange_nodes(self.roles.map { |role| role.send(ui_type) }.flatten.sort_by { |h| h.id })
+      Admin::Function.json_tree(ui)
+    end
   end
 end

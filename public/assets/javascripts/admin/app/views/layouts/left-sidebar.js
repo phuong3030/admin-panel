@@ -45,11 +45,6 @@ define(
         this.bindEvents();
       },
 
-      _closeAllToggleMenu: function () {
-
-        this.navbarMenu.closeAllMenu();
-      },
-
       bindEvents: function () {
 
         var that = this;
@@ -57,7 +52,7 @@ define(
         App.vent.on('leftSidebar', function (type) {
 
           that.tabsMenu.resizeMenu(type); 
-          that._closeAllToggleMenu();
+          that.navbarMenu.closeAllMenu();
         });
 
         App.vent.on('collapseUI', function (type) {
@@ -67,7 +62,7 @@ define(
             that.tabsMenu.removeTabsMenu();
           }
 
-          that._closeAllToggleMenu();
+          that.navbarMenu.closeAllMenu();
         });
       },
 

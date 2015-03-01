@@ -13,9 +13,6 @@ gem 'turbolinks'
 gem 'devise'
 gem 'cancancan'
 
-# CMS
-gem 'comfortable_mexican_sofa', '1.12.2'
-
 # Pagination and file upload gem 
 gem 'kaminari'
 gem 'paperclip'

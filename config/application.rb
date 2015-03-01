@@ -7,9 +7,6 @@ Bundler.require(*Rails.groups)
 module FoodStore
   class Application < Rails::Application
 
-    # Ensure order of CMS route for application
-    config.railties_order = [ :all, ComfortableMexicanSofa::Engine ]
-
     config.generators do |g|
       g.test_framework :rspec
       g.integration_tool :rspec

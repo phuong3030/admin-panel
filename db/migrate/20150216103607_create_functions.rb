@@ -5,13 +5,14 @@ class CreateFunctions < ActiveRecord::Migration
       t.string :url
       t.boolean :display
       t.string :icon
-      t.integer :functionable_id
-      t.string :functionable_type
+      t.string :type
+
+      t.references :role, index: true
 
       t.timestamps
     end
 
-    add_index :functions, :functionable_id
+    add_index :functions, :type
   end
 
 end

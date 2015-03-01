@@ -37,6 +37,7 @@ class CreateUsers < ActiveRecord::Migration
 
       t.references :ship_address, :index => true
       t.references :bill_address, :index => true
+      t.references :group, :index => true
 
       t.timestamps
     end

@@ -26,9 +26,6 @@ Rails.application.routes.draw do
       get '/logout' => 'core#logout', :as => 'logout'
     end
       
-    # Make sure this routeset is defined last
-    #comfy_route :cms_admin, :path => '/admin/cms'
-    comfy_route :cms, :path => '/', :sitemap => false
   #end
 
   #get '', :to => redirect("/#{I18n.default_locale}")

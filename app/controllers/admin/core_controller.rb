@@ -1,8 +1,7 @@
-class Admin::CoreController < Comfy::Admin::Cms::BaseController
+class Admin::CoreController < ApplicationController
 
   layout 'admin'
 
-  skip_before_action :load_admin_site, :load_fixtures
   before_action :authenticate, :except => [:login, :logout]
 
   # GET /admin

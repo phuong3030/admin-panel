@@ -11,8 +11,13 @@ module API
 
       resource :user do
         desc 'Get current user information'
-        get '/my_info' do
+        get '/info' do
           { username: current_user.username }
+        end
+
+        desc 'Get navbar of current user by his roles'
+        get '/ui' do
+          current_user.get_ui_by_role(params[:type])
         end
       end
 
