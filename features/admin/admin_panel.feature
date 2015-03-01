@@ -3,6 +3,7 @@ Feature: Admin header and sidebar function
   A admin user
   Should be able to use items effect in header and sidebar
 
+  @dev
   Scenario Outline: Change left sidebar size to medium/small/none
     Given I'm logged in as admin user
     Given Sidebar is on <state> 
@@ -41,7 +42,6 @@ Feature: Admin header and sidebar function
     |  "fullscreen"  |  ".remove-header-button"   |  ""                    |  ".collapsed-header"  |
     |  "fullscreen"  |  ".fullscreen-button"      |  ""                    |  ""                   |
 
-  @dev
   Scenario Outline: Main heading of page
     Given I'm logged in as admin user
     When I go to <page>

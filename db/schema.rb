@@ -16,125 +16,6 @@ ActiveRecord::Schema.define(version: 20150216104507) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "comfy_cms_blocks", force: true do |t|
-    t.string   "identifier",     null: false
-    t.text     "content"
-    t.integer  "blockable_id"
-    t.string   "blockable_type"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_cms_blocks", ["blockable_id", "blockable_type"], name: "index_comfy_cms_blocks_on_blockable_id_and_blockable_type", using: :btree
-  add_index "comfy_cms_blocks", ["identifier"], name: "index_comfy_cms_blocks_on_identifier", using: :btree
-
-  create_table "comfy_cms_categories", force: true do |t|
-    t.integer "site_id",          null: false
-    t.string  "label",            null: false
-    t.string  "categorized_type", null: false
-  end
-
-  add_index "comfy_cms_categories", ["site_id", "categorized_type", "label"], name: "index_cms_categories_on_site_id_and_cat_type_and_label", unique: true, using: :btree
-
-  create_table "comfy_cms_categorizations", force: true do |t|
-    t.integer "category_id",      null: false
-    t.string  "categorized_type", null: false
-    t.integer "categorized_id",   null: false
-  end
-
-  add_index "comfy_cms_categorizations", ["category_id", "categorized_type", "categorized_id"], name: "index_cms_categorizations_on_cat_id_and_catd_type_and_catd_id", unique: true, using: :btree
-
-  create_table "comfy_cms_files", force: true do |t|
-    t.integer  "site_id",                                    null: false
-    t.integer  "block_id"
-    t.string   "label",                                      null: false
-    t.string   "file_file_name",                             null: false
-    t.string   "file_content_type",                          null: false
-    t.integer  "file_file_size",                             null: false
-    t.string   "description",       limit: 2048
-    t.integer  "position",                       default: 0, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_cms_files", ["site_id", "block_id"], name: "index_comfy_cms_files_on_site_id_and_block_id", using: :btree
-  add_index "comfy_cms_files", ["site_id", "file_file_name"], name: "index_comfy_cms_files_on_site_id_and_file_file_name", using: :btree
-  add_index "comfy_cms_files", ["site_id", "label"], name: "index_comfy_cms_files_on_site_id_and_label", using: :btree
-  add_index "comfy_cms_files", ["site_id", "position"], name: "index_comfy_cms_files_on_site_id_and_position", using: :btree
-
-  create_table "comfy_cms_layouts", force: true do |t|
-    t.integer  "site_id",                    null: false
-    t.integer  "parent_id"
-    t.string   "app_layout"
-    t.string   "label",                      null: false
-    t.string   "identifier",                 null: false
-    t.text     "content"
-    t.text     "css"
-    t.text     "js"
-    t.integer  "position",   default: 0,     null: false
-    t.boolean  "is_shared",  default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_cms_layouts", ["parent_id", "position"], name: "index_comfy_cms_layouts_on_parent_id_and_position", using: :btree
-  add_index "comfy_cms_layouts", ["site_id", "identifier"], name: "index_comfy_cms_layouts_on_site_id_and_identifier", unique: true, using: :btree
-
-  create_table "comfy_cms_pages", force: true do |t|
-    t.integer  "site_id",                        null: false
-    t.integer  "layout_id"
-    t.integer  "parent_id"
-    t.integer  "target_page_id"
-    t.string   "label",                          null: false
-    t.string   "slug"
-    t.string   "full_path",                      null: false
-    t.text     "content_cache"
-    t.integer  "position",       default: 0,     null: false
-    t.integer  "children_count", default: 0,     null: false
-    t.boolean  "is_published",   default: true,  null: false
-    t.boolean  "is_shared",      default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_cms_pages", ["parent_id", "position"], name: "index_comfy_cms_pages_on_parent_id_and_position", using: :btree
-  add_index "comfy_cms_pages", ["site_id", "full_path"], name: "index_comfy_cms_pages_on_site_id_and_full_path", using: :btree
-
-  create_table "comfy_cms_revisions", force: true do |t|
-    t.string   "record_type", null: false
-    t.integer  "record_id",   null: false
-    t.text     "data"
-    t.datetime "created_at"
-  end
-
-  add_index "comfy_cms_revisions", ["record_type", "record_id", "created_at"], name: "index_cms_revisions_on_rtype_and_rid_and_created_at", using: :btree
-
-  create_table "comfy_cms_sites", force: true do |t|
-    t.string  "label",                       null: false
-    t.string  "identifier",                  null: false
-    t.string  "hostname",                    null: false
-    t.string  "path"
-    t.string  "locale",      default: "en",  null: false
-    t.boolean "is_mirrored", default: false, null: false
-  end
-
-  add_index "comfy_cms_sites", ["hostname"], name: "index_comfy_cms_sites_on_hostname", using: :btree
-  add_index "comfy_cms_sites", ["is_mirrored"], name: "index_comfy_cms_sites_on_is_mirrored", using: :btree
-
-  create_table "comfy_cms_snippets", force: true do |t|
-    t.integer  "site_id",                    null: false
-    t.string   "label",                      null: false
-    t.string   "identifier",                 null: false
-    t.text     "content"
-    t.integer  "position",   default: 0,     null: false
-    t.boolean  "is_shared",  default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_cms_snippets", ["site_id", "identifier"], name: "index_comfy_cms_snippets_on_site_id_and_identifier", unique: true, using: :btree
-  add_index "comfy_cms_snippets", ["site_id", "position"], name: "index_comfy_cms_snippets_on_site_id_and_position", using: :btree
-
   create_table "ecommerce_addresses", force: true do |t|
     t.string   "firstname"
     t.string   "lastname"
@@ -354,16 +235,6 @@ ActiveRecord::Schema.define(version: 20150216104507) do
   add_index "ecommerce_products_properties", ["product_id"], name: "index_ecommerce_products_properties_on_product_id", using: :btree
   add_index "ecommerce_products_properties", ["property_id"], name: "index_ecommerce_products_properties_on_property_id", using: :btree
 
-  create_table "ecommerce_products_taxons", id: false, force: true do |t|
-    t.integer  "product_id"
-    t.integer  "taxon_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "ecommerce_products_taxons", ["product_id"], name: "index_ecommerce_products_taxons_on_product_id", using: :btree
-  add_index "ecommerce_products_taxons", ["taxon_id"], name: "index_ecommerce_products_taxons_on_taxon_id", using: :btree
-
   create_table "ecommerce_properties", force: true do |t|
     t.string   "name"
     t.string   "presentation", null: false
@@ -533,15 +404,17 @@ ActiveRecord::Schema.define(version: 20150216104507) do
     t.string   "name"
     t.string   "url"
     t.boolean  "display"
-    t.integer  "functionable_id"
-    t.string   "functionable_type"
+    t.string   "icon"
+    t.string   "type"
+    t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "ancestry"
   end
 
   add_index "functions", ["ancestry"], name: "index_functions_on_ancestry", using: :btree
-  add_index "functions", ["functionable_id"], name: "index_functions_on_functionable_id", using: :btree
+  add_index "functions", ["role_id"], name: "index_functions_on_role_id", using: :btree
+  add_index "functions", ["type"], name: "index_functions_on_type", using: :btree
 
   create_table "roles", force: true do |t|
     t.string   "name"
@@ -571,12 +444,14 @@ ActiveRecord::Schema.define(version: 20150216104507) do
     t.string   "last_sign_in_ip"
     t.integer  "ship_address_id"
     t.integer  "bill_address_id"
+    t.integer  "group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "users", ["bill_address_id"], name: "index_users_on_bill_address_id", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["group_id"], name: "index_users_on_group_id", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["ship_address_id"], name: "index_users_on_ship_address_id", using: :btree
 

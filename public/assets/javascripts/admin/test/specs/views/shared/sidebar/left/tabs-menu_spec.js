@@ -1,7 +1,7 @@
 define(
   [
     'app',
-    'views/sidebar/left/tabs-menu',
+    'views/shared/sidebar/left/tabs-menu',
     'jasminejquery'
   ], function (App, TabsMenu) {
     
