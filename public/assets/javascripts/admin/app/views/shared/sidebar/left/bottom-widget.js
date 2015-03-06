@@ -19,10 +19,7 @@ define(
           statusCode: {
             204: function() {
 
-              console.log(window.location.origin + '/admin/logout');
-              // Return to login page
               window.location.assign(window.location.origin + '/admin/logout');
-              console.log(window.location);
             }
           }
         });
