@@ -2,6 +2,8 @@ module Admin
   class User < ActiveRecord::Base
     has_and_belongs_to_many :roles, :class_name => "Admin::Role"
 
+    acts_as_messageable
+
     devise :database_authenticatable, 
       :recoverable, :rememberable, :trackable, :validatable
 
@@ -22,11 +24,14 @@ module Admin
       self.user_roles.find_by(role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
     end
 
-    # Get all ui can be used by user role
-    def get_ui_by_role(ui_type)
-      ui_type = (ui_type + 's').to_sym
-      ui = Admin::Function.arrange_nodes(self.roles.map { |role| role.send(ui_type) }.flatten.sort_by { |h| h.id })
-      Admin::Function.json_tree(ui)
+    # Get all ui func can be used by user role
+    def get_func_by_role(func_type)
+      func_type = (func_type + 's').to_sym
+      funcs = Admin::Function.arrange_nodes(
+        self.roles.map { |role| role.send(func_type) }.flatten.sort_by { |h| h.id }
+      )
+      binding.pry
+      Admin::Function.json_tree(funcs)
     end
   end
 end

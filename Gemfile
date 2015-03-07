@@ -22,6 +22,7 @@ gem 'ancestry'
 
 # API
 gem 'grape', '~> 0.9.0'
+gem 'grape-rails-cache'
 
 # View engine
 gem 'slim-rails'
@@ -43,6 +44,9 @@ gem 'pg'
 
 # Web server gem 
 gem 'puma'
+
+# Notification system
+gem 'mailboxer'
 
 group :development, :test do
   gem 'spring'

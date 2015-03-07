@@ -1,6 +1,6 @@
 class Admin::Function < ActiveRecord::Base
   belongs_to :functionable, polymorphic: true
-  belongs_to :role, :class_name => 'Admin::Role'
+  has_and_belongs_to_many :roles, :class_name => "Admin::Role"
   has_ancestry
 
   def self.json_tree(nodes)

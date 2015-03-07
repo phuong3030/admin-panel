@@ -9,6 +9,8 @@ module Admin
 
       if user.role? :admin
         can :manage, :all
+      elsif user.role? :moderator
+        can :manage, :all
       elsif user.role? :cms_moderator
         can :manage, "Cms::Site"
         can :read, ActiveAdmin::Page, :name => "Dashboard"
