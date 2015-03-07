@@ -4,13 +4,13 @@ class Admin::Function < ActiveRecord::Base
   has_ancestry
 
   def self.json_tree(nodes)
-    nodes.map do |node, subnodes|
+    nodes.map do |key, value|
       {
-        :name => node.name, 
-        :url => node.url, 
-        :icon => node.icon, 
-        :id => node.id, 
-        :children => node.children.nil? ? {} : json_tree(node.children).compact 
+        :name => key.name, 
+        :url => key.url, 
+        :icon => key.icon, 
+        :id => key.id, 
+        :children => nodes[key].nil? ? {} : json_tree(nodes[key])
       } 
     end
   end
