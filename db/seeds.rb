@@ -5,6 +5,8 @@ Admin::User.create! do |user|
   user.email      = 'admin@example.com'
   user.username   = 'Admin'
   user.password   = '123123123'
+  user.firstname  = 'Phuong'
+  user.lastname   = 'Tran Tuan'
   user.roles << admin_role
 end
 
@@ -12,6 +14,8 @@ Admin::User.create! do |u|
   u.email      = 'moderator@example.com'
   u.username   = 'Moderator'
   u.password   = '123123123'
+  u.firstname  = 'Phuong'
+  u.lastname   = 'Tran Tuan'
   u.roles << moderator_role
 end
 

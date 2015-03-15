@@ -508,6 +508,8 @@ ActiveRecord::Schema.define(version: 20150307041333) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "firstname"
+    t.string   "lastname"
     t.integer  "ship_address_id"
     t.integer  "bill_address_id"
     t.integer  "group_id"

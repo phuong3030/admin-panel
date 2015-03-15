@@ -7,6 +7,19 @@ module Admin
     devise :database_authenticatable, 
       :recoverable, :rememberable, :trackable, :validatable
 
+    def fullname
+      firstname + ' ' + lastname
+    end
+
+    def mailboxer_email(object)
+      case object
+      when Mailboxer::Message
+        return nil
+      when Mailboxer::Notification
+        return email
+      end
+    end
+
     def role_array
       self.roles.pluck(:name)
     end
