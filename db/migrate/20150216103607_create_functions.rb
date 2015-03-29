@@ -7,12 +7,14 @@ class CreateFunctions < ActiveRecord::Migration
       t.string :icon
       t.string :type
 
+      t.string :ancestry
       t.references :role, index: true
 
       t.timestamps
     end
 
     add_index :functions, :type
+    add_index :functions, :ancestry
   end
 
 end

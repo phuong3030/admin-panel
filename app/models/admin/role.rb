@@ -1,6 +1,7 @@
 module Admin
   class Role < ActiveRecord::Base
-    has_and_belongs_to_many :users, class_name: "Admin::User"
+    has_and_belongs_to_many :groups, class_name: "Admin::Group"
+
     has_and_belongs_to_many :functions, class_name: "Admin::Function"
 
     has_many :functions_roles, class_name: "Admin::FunctionsRoles"

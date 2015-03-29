@@ -55,6 +55,7 @@ group :development, :test do
   gem 'commands'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
+  gem 'shoulda'
   gem 'guard-spring'
   gem 'guard-rspec', :require => false
   gem 'guard-cucumber'

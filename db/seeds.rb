@@ -1,13 +1,24 @@
 admin_role = Admin::Role.create(:name => 'admin')
 moderator_role = Admin::Role.create(:name => 'moderator')
 
+admin_group = Admin::Group.create! do |a|
+  a.name = 'Aministrators'
+  a.description = 'Admin group'
+  a.roles << admin_role
+end
+moderator_group = Admin::Group.create! do |m| 
+  m.name = 'Moderators' 
+  m.description = 'Moderator group'
+  m.roles << moderator_role
+end
+
 Admin::User.create! do |user|
   user.email      = 'admin@example.com'
   user.username   = 'Admin'
   user.password   = '123123123'
   user.firstname  = 'Phuong'
   user.lastname   = 'Tran Tuan'
-  user.roles << admin_role
+  user.group_id   = admin_group.id
 end
 
 Admin::User.create! do |u|
@@ -16,7 +27,7 @@ Admin::User.create! do |u|
   u.password   = '123123123'
   u.firstname  = 'Phuong'
   u.lastname   = 'Tran Tuan'
-  u.roles << moderator_role
+  u.group_id   = moderator_group.id
 end
 
 ActiveRecord::Base.transaction do

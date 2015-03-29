@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe API::V1::User, :type => :request do
+describe API::V1::User do
   context 'as admin user' do 
     let!(:admin_user) { FactoryGirl.create(:user_admin_role) }
 
@@ -17,7 +17,7 @@ describe API::V1::User, :type => :request do
     it 'get my navbar' do
       get '/api/v1/user/ui?type=sidebar'
       expect(response.status).to eq(200)
-      expect(response.body).to be_kind_of(Object)
+      expect(JSON.parse(response.body)).to be_kind_of(Array)
     end
   end
 end

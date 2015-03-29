@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307041333) do
+ActiveRecord::Schema.define(version: 20150329075831) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -406,10 +406,10 @@ ActiveRecord::Schema.define(version: 20150307041333) do
     t.boolean  "display"
     t.string   "icon"
     t.string   "type"
+    t.string   "ancestry"
     t.integer  "role_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "ancestry"
   end
 
   add_index "functions", ["ancestry"], name: "index_functions_on_ancestry", using: :btree
@@ -425,6 +425,23 @@ ActiveRecord::Schema.define(version: 20150307041333) do
 
   add_index "functions_roles", ["function_id"], name: "index_functions_roles_on_function_id", using: :btree
   add_index "functions_roles", ["role_id"], name: "index_functions_roles_on_role_id", using: :btree
+
+  create_table "groups", force: true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups_roles", id: false, force: true do |t|
+    t.integer  "group_id"
+    t.integer  "role_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "groups_roles", ["group_id"], name: "index_groups_roles_on_group_id", using: :btree
+  add_index "groups_roles", ["role_id"], name: "index_groups_roles_on_role_id", using: :btree
 
   create_table "mailboxer_conversation_opt_outs", force: true do |t|
     t.integer "unsubscriber_id"
@@ -484,16 +501,6 @@ ActiveRecord::Schema.define(version: 20150307041333) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  create_table "roles_users", id: false, force: true do |t|
-    t.integer  "user_id"
-    t.integer  "role_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "roles_users", ["role_id"], name: "index_roles_users_on_role_id", using: :btree
-  add_index "roles_users", ["user_id"], name: "index_roles_users_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "username"

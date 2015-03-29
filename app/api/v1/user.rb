@@ -13,14 +13,14 @@ module API
       resource :user do
         desc 'Get current user information'
         get '/info' do
-          cache(key: "api:users:infor", etag: current_user.updated_at, expires_in: 2.hours) do
+          cache(key: "api:users:information", etag: current_user.updated_at, expires_in: 2.hours) do
             { username: current_user.username }
           end
         end
 
         desc 'Get navbar of current user by his roles'
         get '/ui' do
-          current_user.get_func_by_role(params[:type])
+          current_user.group.get_func_by_role(params[:type])
         end
       end
 
