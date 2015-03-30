@@ -2,8 +2,10 @@ module Admin
   class Group < ActiveRecord::Base
     has_and_belongs_to_many :roles, :class_name => "Admin::Role"
     has_many :users, :class_name => "Admin::User"
+    has_many :groups_roles, :class_name => "Admin::GroupsRoles"
 
     validates_presence_of :name
+    validates_uniqueness_of :name
 
     def role_array
       self.roles.pluck(:name)
@@ -14,12 +16,11 @@ module Admin
     end
 
     def add_role(role)
-      self.update_attributes(accepted_at: Time.now) if self.is_only_potential?
-      self.group_roles.create(role_id: Role.find_by(name: role).id ) if !self.role?(role)
+      self.groups_roles.create(role_id: Admin::Role.find_by(name: role).id ) if !self.role?(role)
     end
 
     def remove_role(role)
-      self.group_roles.find_by(role_id: Role.find_by(name: role).id ).destroy if self.role?(role)
+      GroupsRoles.delete_all(role_id: Admin::Role.find_by(name: role).id, group_id: self.id) if self.role?(role)
     end
 
     # Get all ui func can be used by user role

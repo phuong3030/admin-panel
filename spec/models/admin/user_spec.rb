@@ -22,13 +22,12 @@ describe Admin::User, :type => :model do
     }
     subject { no_name_user }
 
-    it {should validate_presence_of(:firstname)}
-    it {should validate_presence_of(:lastname)}
-    it {should validate_presence_of(:email)}
-
-    it 'is invalid with wrong email format' do
-      should_not be_valid
-    end
+    it { should validate_presence_of(:firstname) }
+    it { should validate_presence_of(:lastname) }
+    it { should validate_presence_of(:email) }
+    it { should allow_value('admin@email.com').for(:email) }
+    it { should validate_uniqueness_of(:email) }
+    it { should validate_uniqueness_of(:username) }
   end
 
   context 'has right instance method' do
