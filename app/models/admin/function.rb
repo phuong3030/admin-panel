@@ -1,5 +1,4 @@
 class Admin::Function < ActiveRecord::Base
-  belongs_to :functionable, polymorphic: true
   has_and_belongs_to_many :roles, :class_name => "Admin::Role"
   has_ancestry
 

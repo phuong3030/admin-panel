@@ -33,5 +33,8 @@ RSpec.describe Admin::Group, type: :model do
     it 'can remove role' do
       expect { subject.remove_role(subject.role_array[0]) }.to change(subject.groups_roles, :count).from(1).to(0)
     end
+
+    it 'can get func by role' do
+    end
   end
 end

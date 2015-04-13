@@ -13,14 +13,14 @@ FactoryGirl.define do
     password_confirmation 'password'
   end
 
-  sequence(:name) { |n| "admin#{n}" }
+  sequence(:role_name) { |n| "admin#{n}" }
 
   factory :role, :class => Admin::Role do
-    name
+    role_name
   end
 
   factory :group, :class => Admin::Group do
-    name 
+    role_name 
 
     factory :group_admin do
       after(:create) do |group|
