@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Authen and author gem 
-gem 'devise'
+gem 'devise', '~> 3.2'
 gem 'cancancan'
 
 # Pagination and file upload gem 
@@ -56,7 +56,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
   gem 'shoulda'
-  gem 'guard-spring'
   gem 'guard-rspec', :require => false
   gem 'guard-cucumber'
   gem 'pry'
