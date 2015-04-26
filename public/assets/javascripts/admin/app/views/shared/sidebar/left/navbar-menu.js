@@ -50,7 +50,7 @@ define(
 
       expandAllMenu: function (e) {
 
-        var that = this;
+        var that = this,
             childMenu = this.$('.child-menu'),
             lstToggleMenu = this.ui.childMenu.toArray();
 

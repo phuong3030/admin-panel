@@ -1,3 +1,11 @@
+/* 
+ * Client application
+ * 
+ * This object define and store all application regions
+ * Define an object to store all model (apply the fly-weight patter)
+ *
+ */
+
 define(
   [
     'jquery', 
@@ -16,6 +24,7 @@ define(
       return ((/iPhone|iPod|iPad|Android|BlackBerry|Opera Mini|IEMobile/).test(userAgent));
     }
 
+    // Application regions pre-defined
     App.addRegions({
       application: 'body',
       header: 'header',
@@ -25,6 +34,9 @@ define(
       titleSection: '#title-section',
       content: '#content-section'
     });
+
+    // Define the fly weight storage
+    App.flyWeight = {};
 
     // Start subApp manually when subapp change
     App.startSubApp = function (appName, args) {
@@ -48,6 +60,7 @@ define(
       }
     };
 
+    // Start the hash listener, main router and sub-router
     App.on('start', function () {
 
       if (Backbone.history) {
