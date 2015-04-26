@@ -26,7 +26,7 @@ RSpec.describe Admin::Group, type: :model do
     end
 
     it 'can add new role' do
-      moderator = FactoryGirl.create(:role, name: 'moderator')
+      FactoryGirl.create(:role, name: 'moderator')
       expect { subject.add_role('moderator') }.to change(subject.groups_roles, :count).by(1)
     end
 
@@ -34,7 +34,12 @@ RSpec.describe Admin::Group, type: :model do
       expect { subject.remove_role(subject.role_array[0]) }.to change(subject.groups_roles, :count).from(1).to(0)
     end
 
+    # Just check the Admin::Function.json_tree method has been called
+    # The result of json_tree function is tested in function spec
     it 'can get func by role' do
+      Admin::Function.should_receive(:json_tree)
+
+      group.get_func_by_role('sidebar')
     end
   end
 end

@@ -1,6 +1,6 @@
 FactoryGirl.define do
   sequence(:url) { |n| "http://url#{n}.com" }
-  sequence(:name) { |n| "function#{n}" }
+  sequence(:name) { |n| "name#{n}" }
   sequence(:icon) { |n| "icon#{n}" }
 
   factory :function, class: Admin::Function do

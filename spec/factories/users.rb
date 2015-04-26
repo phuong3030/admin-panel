@@ -12,21 +12,5 @@ FactoryGirl.define do
     password 'password'
     password_confirmation 'password'
   end
-
-  sequence(:role_name) { |n| "admin#{n}" }
-
-  factory :role, :class => Admin::Role do
-    role_name
-  end
-
-  factory :group, :class => Admin::Group do
-    role_name 
-
-    factory :group_admin do
-      after(:create) do |group|
-        group.roles << FactoryGirl.create(:role)
-      end
-    end
-  end
-
-end
+  
+ end
