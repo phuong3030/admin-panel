@@ -4,7 +4,7 @@ FactoryGirl.define do
   sequence(:firstname) { |n| "firstname#{n}" }
   sequence(:lastname) { |n| "lastname#{n}" }
 
-  factory :user, :class => Admin::User do
+  factory :user, class: Admin::User do
     email
     username
     firstname

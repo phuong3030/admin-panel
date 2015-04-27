@@ -68,7 +68,7 @@ define(
         // Init all subapp router before start hash change listener
         require(['routers/room-router'], function () {
 
-          Backbone.history.start();
+          Backbone.history.start({ pushState: true });
         });
       }
     });

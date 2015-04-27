@@ -5,9 +5,9 @@ define(['app', 'routers/shared/base-router', 'modules/room'],
 
       this.Router = BaseRouter.extend({
         appRoutes: {
-          '!rooms-list': 'showRoomList',
-          '!room-type-list': 'showRoomTypeList',
-          '!amenities-list': 'showAmenitiesList'
+          'rooms-list': 'showRoomList',
+          'room-type-list': 'showRoomTypeList',
+          'amenities-list': 'showAmenitiesList'
         },
         _appName: 'Room'
       });

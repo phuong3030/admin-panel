@@ -25,7 +25,8 @@ module Admin
 
     # Get all ui func can be used by user role
     def get_func_by_role(func_type)
-      func_type = (func_type + 's').to_sym
+      func_type = func_type.to_sym
+
       funcs = Admin::Function.arrange_nodes(
         self.roles.map { |role| role.send(func_type) }.flatten.sort_by { |h| h.ancestry }
       )

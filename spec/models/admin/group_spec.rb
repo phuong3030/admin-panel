@@ -14,7 +14,7 @@ RSpec.describe Admin::Group, type: :model do
   end
 
   context 'role instance method' do
-    let(:group) { FactoryGirl.create(:group_admin) }
+    let(:group) { FactoryGirl.create(:admin_group) }
     subject { group }
 
     it 'can get list of role name' do
@@ -39,7 +39,7 @@ RSpec.describe Admin::Group, type: :model do
     it 'can get func by role' do
       Admin::Function.should_receive(:json_tree)
 
-      group.get_func_by_role('sidebar')
+      group.get_func_by_role('sidebars')
     end
   end
 end
