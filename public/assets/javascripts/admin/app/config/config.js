@@ -20,26 +20,32 @@ require.config({
     'backbone.routefilter':'../libs/plugins/backbone.routefilter',
     'bootstrap':'../libs/plugins/bootstrap',
     'text':'../libs/plugins/text',
-    'jasminejquery': '../libs/plugins/jasmine-jquery'
+    'jasminejquery': '../libs/plugins/jasmine-jquery',
+    'sinon': '../libs/sinon',
+    'jasminesinon': '../libs/plugins/jasmine-sinon'
   },
   // Sets the configuration for your third party scripts that are not AMD compatible
   shim:{
     'bootstrap':['jquery'],
     'jqueryui':['jquery'],
     'jquerymobile':['jqueryui'],
-    'jasminejquery': ['jquery'],
+    'jasminejquery': ['jquery', 'jasmine'],
+    'jasminesinon': ['sinon', 'jasmine'],
 
     'backbone':{
       'deps':['underscore', 'jquery'],
       'exports':'Backbone'
     },
+
     'marionette':{
       'deps':['underscore', 'backbone', 'jquery'],
       'exports':'Marionette'
     },
+
     'handlebars':{
       'exports':'Handlebars'
     },
+
     'backbone.validateAll':['backbone'],
 
     'jasmine': {

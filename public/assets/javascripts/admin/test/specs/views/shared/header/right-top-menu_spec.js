@@ -1,24 +1,45 @@
 define(
-  [
+    [
     'app',
     'views/shared/header/right-top-menu',
     'jasminejquery'
-  ], function (App, RightTopMenu) {
+    ], function (App, RightTopMenu) {
 
-    describe('Right top menu', function () {
+      describe('Right top menu', function () {
 
-      var rightTopMenu;
+        var rightTopMenu;
 
-      beforeEach(function () {
+        beforeEach(function () {
 
-        rightTopMenu = new RightTopMenu();
-        rightTopMenu.render();
-      });
-      
-      it('should be contained mega list', function () {
+          rightTopMenu = new RightTopMenu();
+          rightTopMenu.render();
+        });
 
-        expect(rightTopMenu.$el).toContainElement('.mega-ul');
-      });
+        describe('when view is constructing', function () {
+
+          it('should exist', function () {
+
+            expect(rightTopMenu).toBeDefined();
+          });
+        });
+
+        describe('when view is rendered', function () {
+
+          it('should have right class', function () {
+
+            expect(rightTopMenu.$el).toHaveClass('admin_mega-menu');
+          });
+
+          it('should call catch before show event to init sub view', function () {
+
+          });
+        });
+
+        describe('when model changed', function () {
+        });
+
+        describe('events', function () {
+        });
     });
   }
 );
