@@ -11,7 +11,7 @@ define(
 
       },
 
-      onRender: function() {
+      onShow: function() {
 
         // NOTE: We will remove this trick when Marionette upto version 3
         // Marionette will supports 'replaceElement' method to replace view to
