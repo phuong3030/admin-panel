@@ -58,11 +58,13 @@ define(
 
           it('should call catch before show event to init sub view', function () {
 
-            var spy = sinon.spy(rightTopMenu.getRegion('topMenuProfile'), 'show');
+            var profileMenu = sinon.spy(rightTopMenu.getRegion('topMenuProfile'), 'show'),
+                notificationsMenu = sinon.spy(rightTopMenu.getRegion('notifications'), 'show');
 
             rightTopMenu.onBeforeShow();
 
-            expect(spy).toHaveBeenCalled();
+            expect(profileMenu).toHaveBeenCalled();
+            expect(notificationsMenu).toHaveBeenCalled();
           });
         });
     });

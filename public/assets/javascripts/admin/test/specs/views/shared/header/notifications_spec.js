@@ -26,18 +26,6 @@ define(
 
         describe('When view is rendered', function () {
 
-          it('should have right class', function () {
-
-            expect(notifications.$el).toHaveClass('one-icon mega-li');
-          });
-
-          it('should have top menu profile region', function () {
-
-          });
-
-          it('should add sub view when right top menu show', function () {
-
-          });
         });
 
         describe('When model changed', function () {

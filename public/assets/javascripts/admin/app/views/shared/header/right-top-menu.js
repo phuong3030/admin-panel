@@ -2,8 +2,9 @@ define(
   [
     'app',
     'views/shared/header/top-menu-profile',
+    'views/shared/header/notifications',
     'hbs!templates/shared/header/right-top-menu'
-  ], function (App, TopMenuProfile, rightTopMenuTemplate) {
+  ], function (App, TopMenuProfile, Notifications, rightTopMenuTemplate) {
     
     return Backbone.Marionette.LayoutView.extend({
       template: rightTopMenuTemplate,
@@ -14,10 +15,27 @@ define(
         notifications: '#notifications-menu'
       },
 
+      ui: {
+        'link': 'a.mega-link'
+      },
+
+      events: {
+        'click @ui.link': 'openChildMenu'
+      },
+
+
       onBeforeShow: function () {
 
         this.topMenuProfile = new TopMenuProfile();
+        this.notifications = new Notifications();
+
         this.getRegion('topMenuProfile').show(this.topMenuProfile);
+        this.getRegion('notifications').show(this.notifications, { replaceElement: true });
+      },
+
+      openChildMenu: function (e) {
+        
+        $(e.currentTarget).next().slideToggle();
       }
     });
   }

@@ -10,13 +10,10 @@ define(
       className: 'admin_mega-menu pull-right',
 
       ui: {
-        'link': 'a.mega-link',
-        'megaChildMenu': '.mega-menu-content',
         'logoutLink': 'a.logout'
       },
 
       events: {
-        'click @ui.link': 'openChildMenu',
         'click @ui.logoutLink': 'logout'
       },
 
@@ -43,11 +40,6 @@ define(
 
       modelEvents: {
         'change': 'render'
-      },
-
-      openChildMenu: function (e) {
-        
-        this.ui.megaChildMenu.slideToggle();
       }
     });
   }
