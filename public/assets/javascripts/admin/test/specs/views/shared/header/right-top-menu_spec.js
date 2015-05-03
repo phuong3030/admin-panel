@@ -42,13 +42,10 @@ define(
 
           it('should add sub view when right top menu show', function () {
 
-            var spy = sinon.spy(rightTopMenu, 'onBeforeShow'),
-                fakeRegion = new Backbone.Marionette.Region({
-                    el: 'body',
-                });
+            var spy = sinon.spy(rightTopMenu, 'onBeforeShow');
 
             // Use header region to fake show view method
-            fakeRegion.show(rightTopMenu);
+            Marionette.triggerMethodOn(rightTopMenu, 'before:show', rightTopMenu, {}, {});
             
             expect(spy).toHaveBeenCalled();
           });

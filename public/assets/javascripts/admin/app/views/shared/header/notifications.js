@@ -7,6 +7,7 @@ define(
     return Backbone.Marionette.CompositeView.extend({
       template: notificationsTemplate,
       tagName: 'li',
+      className: 'one-icon mega-li',
       
       initialize: function () {
       },

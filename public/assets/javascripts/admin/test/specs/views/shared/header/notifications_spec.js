@@ -28,6 +28,7 @@ define(
 
           it('should have right class', function () {
 
+            expect(notifications.$el).toHaveClass('one-icon mega-li');
           });
 
           it('should have top menu profile region', function () {

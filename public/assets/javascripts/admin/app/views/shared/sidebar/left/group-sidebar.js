@@ -11,17 +11,20 @@ define(
       
       initialize: function () {
 
-        var childMenus = this.model.get('children');
+        if (this.model instanceof Backbone.Model) {
 
-        /* 
-         * Grab the child collection from the parent model
-         * so that we can render the collection as children
-         * of this parent node
-         */
-        if (childMenus.length > 0) {
+          var childMenus = this.model.get('children');
 
-          this.collection = new Navbar(childMenus);
-        } 
+          /* 
+           * Grab the child collection from the parent model
+           * so that we can render the collection as children
+           * of this parent node
+           */
+          if (childMenus.length > 0) {
+
+            this.collection = new Navbar(childMenus);
+          } 
+        }
       },
 
       onRender: function() {
