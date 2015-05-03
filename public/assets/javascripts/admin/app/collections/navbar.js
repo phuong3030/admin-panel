@@ -1,4 +1,4 @@
-define(['models/func'], function (Func) {
+define(['models/shared/func'], function (Func) {
   
   var Navbar = Backbone.Collection.extend({
     model: Func,

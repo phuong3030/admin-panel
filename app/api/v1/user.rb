@@ -28,8 +28,8 @@ module API
         end
 
         desc 'Get user notifications'
-        get '/notification' do 
-          quantity, page = params[:quantity], params[:page]
+        get '/notifications' do 
+          quantity, page = params[:quantity].to_i, params[:page].to_i
 
           if quantity > 0 && quantity < 20
             current_user.mailbox.notifications.first(quantity)

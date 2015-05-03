@@ -42,7 +42,7 @@ describe Admin::User, :type => :model do
     subject { user }
 
     it 'choose email method when receive notification' do
-      subject.mailboxer_email(Mailboxer::Notification.new).should == subject.email
+      subject.mailboxer_email(Mailboxer::Notification.new).should be_nil 
     end
 
     it 'does nothing when receive message' do

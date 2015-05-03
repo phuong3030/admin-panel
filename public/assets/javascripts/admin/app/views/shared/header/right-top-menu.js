@@ -1,10 +1,11 @@
 define(
   [
     'app',
+    'collections/notifications',
     'views/shared/header/top-menu-profile',
     'views/shared/header/notifications',
     'hbs!templates/shared/header/right-top-menu'
-  ], function (App, TopMenuProfile, Notifications, rightTopMenuTemplate) {
+  ], function (App, Notifications, TopMenuProfile, NotificationsView, rightTopMenuTemplate) {
     
     return Backbone.Marionette.LayoutView.extend({
       template: rightTopMenuTemplate,
@@ -26,11 +27,16 @@ define(
 
       onBeforeShow: function () {
 
+        // Create and fetch notifications
+        var notifications = new Notifications();
+
+        notifications.fetch();
+
         this.topMenuProfile = new TopMenuProfile();
-        this.notifications = new Notifications();
+        this.notificationsView = new NotificationsView({ collection: notifications });
 
         this.getRegion('topMenuProfile').show(this.topMenuProfile);
-        this.getRegion('notifications').show(this.notifications, { replaceElement: true });
+        this.getRegion('notifications').show(this.notificationsView, { replaceElement: true });
       },
 
       openChildMenu: function (e) {

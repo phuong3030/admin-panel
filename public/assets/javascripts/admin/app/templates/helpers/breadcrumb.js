@@ -18,7 +18,8 @@ define(['handlebars'], function ( Handlebars ){
     return output;
   }
 
-  Handlebars.registerHelper( 'breadcrumb', breadcrumbHelper );
+
+  Handlebars.registerHelper('breadcrumb', breadcrumbHelper );
 
   return breadcrumbHelper;
 });

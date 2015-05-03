@@ -1,11 +1,18 @@
 define(
   [
     'app',
+    'views/shared/header/notification-item',
     'hbs!templates/shared/header/notifications'
-  ], function (App, notificationsTemplate) {
+  ], function (App, NotificationItem, notificationsTemplate) {
     
     return Backbone.Marionette.CompositeView.extend({
       template: notificationsTemplate,
+      childView: NotificationItem,
+      childViewContainer: ".list-wrapper",
+
+      ui: {
+        badge: '.badge'
+      },
       
       initialize: function () {
 
@@ -13,25 +20,20 @@ define(
 
       onShow: function() {
 
-        // NOTE: We will remove this trick when Marionette upto version 3
-        // Marionette will supports 'replaceElement' method to replace view to
-        // the region element
-        /* 
-         * Get rid of that pesky wrapping-div.
-         * Assumes 1 child element present in template.
+        /*
+         * NOTE: We will remove this trick when Marionette upto version 3
+         * Marionette will supports 'replaceElement' method to replace view to
+         * the region element
          */
-        this.$el = this.$el.children();
-        /* 
-         * Unwrap the element to prevent infinitely 
-         * nesting elements during re-render.
-         */
-        this.$el.unwrap();
-        this.setElement(this.$el);
-      },
 
-      attachHtml: function(collectionView, itemView, index){
-        // Ensure we nest the child list inside of the current list item
-        //collectionView.$(".child-menu ul").append(itemView.el);
+        /* 
+         * Copy all view children to outside div wrapper and set the view
+         * element to this parent
+         */
+        parent = this.$el.parent();
+        parent.append(this.$el.children());
+        this.$el.remove();
+        this.setElement(parent);
       }
     });
   }

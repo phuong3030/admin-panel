@@ -1,7 +1,7 @@
 define(
   [
     'app',
-    'models/user',
+    'models/shared/user',
     'hbs!templates/shared/header/top-menu-profile'
   ], function (App, User, topMenuProfileTemplate) {
     

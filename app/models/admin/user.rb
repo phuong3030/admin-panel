@@ -20,7 +20,7 @@ module Admin
       when Mailboxer::Message
         return nil
       when Mailboxer::Notification
-        return email
+        return nil
       end
     end
     
