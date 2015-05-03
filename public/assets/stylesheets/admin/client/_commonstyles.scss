@@ -592,6 +592,14 @@ header {
       @include border-radius(30px);
     }
   }
+
+  .child-menu {
+    position: relative;
+    padding: 0;
+    color: #5e656b;
+    letter-spacing: .3px;
+  }
+
 }
 
 /* Left sidebar
@@ -956,12 +964,6 @@ header {
       right: 20px;
     }
 
-    .child-menu {
-      position: relative;
-      padding: 0;
-      color: #5e656b;
-      letter-spacing: .3px;
-    }
   }
 }
 

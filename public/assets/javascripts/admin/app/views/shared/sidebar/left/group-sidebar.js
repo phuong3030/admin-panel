@@ -13,9 +13,11 @@ define(
 
         var childMenus = this.model.get('children');
 
-        // Grab the child collection from the parent model
-        // so that we can render the collection as children
-        // of this parent node
+        /* 
+         * Grab the child collection from the parent model
+         * so that we can render the collection as children
+         * of this parent node
+         */
         if (childMenus.length > 0) {
 
           this.collection = new Navbar(childMenus);
@@ -40,8 +42,10 @@ define(
       },
 
       attachHtml: function(collectionView, itemView, index){
-        // Ensure we nest the child list inside of 
-        // the current list item
+        /* 
+         * Ensure we nest the child list inside of 
+         * the current list item
+         */
         collectionView.$(".child-menu ul").append(itemView.el);
       }
     });

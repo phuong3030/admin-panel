@@ -10,7 +10,8 @@ define(
       className: 'admin_mega-menu pull-right',
 
       regions: {
-        topMenuProfile: '#top-menu-profile'
+        topMenuProfile: '#top-menu-profile',
+        notifications: '#notifications-menu'
       },
 
       onBeforeShow: function () {

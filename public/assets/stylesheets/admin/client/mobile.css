@@ -9433,6 +9433,12 @@ header .header-container {
   -moz-border-radius: 30px;
   border-radius: 30px;
 }
+.mega-menu-wrapper .child-menu {
+  position: relative;
+  padding: 0;
+  color: #5e656b;
+  letter-spacing: .3px;
+}
 
 /* Left sidebar
  **********************************************/
@@ -9890,12 +9896,6 @@ header .header-container {
   top: -12px;
   left: auto;
   right: 20px;
-}
-#top-menu-profile .mega-menu-content .child-menu {
-  position: relative;
-  padding: 0;
-  color: #5e656b;
-  letter-spacing: .3px;
 }
 
 .content-list .list-wrapper li {
