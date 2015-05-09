@@ -34,10 +34,60 @@ describe API::V1::User do
       expect(response.body).to eq(group.get_func_by_role('sidebars').to_json)
     end
 
-    it 'get user notification with quantity' do 
+    context 'get user notifications' do
+      it 'with valid quantity' do 
+        get '/api/v1/user/notifications?quantity=5'
+
+        expect(response.body).to eq(user.mailbox.notifications.first(5).to_json)
+      end
+
+      it 'with invalid quantity' do
+
+        get '/api/v1/user/notifications?quantity=-1'
+
+        expect(response.body).to eq({
+          status: 400,
+          message: 'Invalid params',
+          errors: ['Wrong quantity param']
+        }.to_json)
+      end
+
+      it 'by valid page' do
+        get '/api/v1/user/notifications?page=1'
+
+        expect(response.body).to eq(user.mailbox.notifications.page(1).per(25).to_json)
+      end
+
+      it 'by invalid page' do
+        get '/api/v1/user/notifications?page=-1'
+
+        expect(response.body).to eq({
+          status: 400,
+          message: 'Invalid params',
+          errors: ['Wrong page param']
+        }.to_json)
+      end
+      it 'by invalid page' do
+        get '/api/v1/user/notifications?page=-1'
+
+        expect(response.body).to eq({
+          status: 400,
+          message: 'Invalid params',
+          errors: ['Wrong page param']
+        }.to_json)
+      end
     end
 
     it 'get user dashboard info' do
+      get '/api/v1/user/dashboard-info'
+
+      expect(response.body).to eq({
+        username: user.username,
+        email: user.email,
+        fullname: user.fullname,
+        navbars: group.get_func_by_role('sidebars'),
+        notifications: user.mailbox.notifications.first(5)
+      }.to_json)
     end
   end
 end

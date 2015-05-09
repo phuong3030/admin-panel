@@ -39,26 +39,26 @@ module API
             else
               error!({ 
                 status: 400, 
-                message: "Wrong page and quantity params",
-                errors: ['Wrong params']
+                message: "Invalid params",
+                errors: ['Wrong page param']
               }, 400)
             end
           else
             error!({ 
                 status: 400, 
-                message: "You can't get more than 20 notifications",
-                errors: ['Wrong params value']
+                message: "Invalid params",
+                errors: ['Wrong quantity param']
               }, 400)
           end
         end
 
         desc 'Get user info for dashboard'
-        get 'dashboard-info' do
+        get '/dashboard-info' do
           {
             username: current_user.username,
             email: current_user.email,
             fullname: current_user.fullname,
-            navbars: current_user.group.get_func_by_role(params[:type]),
+            navbars: current_user.group.get_func_by_role('sidebars'),
             notifications: current_user.mailbox.notifications.first(5)
           }
         end
