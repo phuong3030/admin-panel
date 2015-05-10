@@ -16,7 +16,7 @@ define(
         // Create and fetch notifications
         this.collection = new Notifications();
 
-        this.collection.fetch({ reset: true });
+        this.collection.fetch();
       },
 
       ui: {
@@ -24,7 +24,7 @@ define(
       },
 
       collectionEvents: {
-        'reset': 'insertNotificationCount'
+        'sync': 'insertNotificationCount'
       },
 
       insertNotificationCount: function () {
@@ -50,9 +50,12 @@ define(
          * element to this parent
          */
         parent = this.$el.parent();
-        parent.append(this.$el.children());
-        this.$el.remove();
-        this.setElement(parent.innerHTML);
+        wrapper = this.$el;
+        this.$el = parent;
+        this.el = parent[0];
+        parent.append(wrapper.children());
+        wrapper.remove();
+        this.setElement(parent);
       }
     });
   }

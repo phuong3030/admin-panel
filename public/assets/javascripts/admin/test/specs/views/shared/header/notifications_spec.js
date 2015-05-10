@@ -9,7 +9,8 @@ define(
 
       describe('Notifications View', function () {
 
-        var notifications;
+        var notifications,
+            server;
 
         beforeEach(function () {
 
@@ -27,7 +28,7 @@ define(
           it('should contain right collectionEvents', function () {
 
             expect(notifications.collectionEvents).toEqual(jasmine.objectContaining({
-              'reset': 'insertNotificationCount'
+              'sync': 'insertNotificationCount'
             }));
           });
 
@@ -45,19 +46,49 @@ define(
         });
 
         describe('When view is rendered', function () {
-          
+
         });
 
-        describe('When model changed', function () {
-        });
+        describe('When collection changed', function () {
 
-        describe('View Events', function () {
-          
-          it('should remove the default div wrapper in onShow event', function () {
+          beforeEach(function () {
 
-            notifications.onShow();
+            server = sinon.fakeServer.create();
 
-            expect(notifications.$el).toEqual('li.mega-li');
+            // Fake response message for collection fetch request 
+            server.respondWith(
+              'GET', 
+              '/api/v1/user/notifications?quantity=5', 
+              [
+                200,
+                {'Content-Type': 'application/json'},
+                JSON.stringify([{"id":1,"body":"This is a test notification","subject":"Subject"}])
+              ]
+            );
+          });
+
+          afterEach(function() {
+
+            server.restore();
+          });
+
+          // View has already fetch it's collection when it was initialing
+          it('should render new notifications count when collection fetched new data', function () {
+
+            notifications.collection.fetch();
+            server.respond();
+
+            expect(notifications.$el).toContainHtml('<span class="badge bg-red">1</span>');
+          });
+
+          it('should render right notification in view', function () {
+            
+            notifications.collection.fetch();
+
+            server.respond();
+
+            expect(notifications.collection.size()).toEqual(1);
+            expect(notifications.$el).toContainText('Subject');
           });
 
           it('should insert collection size to badge ui element', function () {
@@ -68,7 +99,23 @@ define(
 
             expect(notifications.ui.badge.html()).toEqual('2');
           });
+
         });
-    });
-  }
+
+        describe('View DOM Events', function () {
+
+          it('should remove the default div wrapper in onShow event', function () {
+
+            var liWrapper = $('<li class="mega-li"></li>'),
+            testRegion = new Backbone.Marionette.Region({ 
+              el: liWrapper[0]
+            });
+
+            testRegion.show(notifications);
+
+            expect(notifications.$el).toHaveClass('mega-li');
+          });
+        });
+      });
+    }
 );
