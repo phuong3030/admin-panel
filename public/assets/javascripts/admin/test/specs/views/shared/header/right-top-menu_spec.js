@@ -54,7 +54,7 @@ define(
         describe('When model changed', function () {
         });
 
-        describe('Events', function () {
+        describe('View Events', function () {
 
           it('should call catch before show event to init sub view', function () {
 

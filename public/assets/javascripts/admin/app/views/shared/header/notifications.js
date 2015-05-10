@@ -1,24 +1,43 @@
 define(
   [
     'app',
+    'collections/notifications',
     'views/shared/header/notification-item',
     'hbs!templates/shared/header/notifications'
-  ], function (App, NotificationItem, notificationsTemplate) {
+  ], function (App, Notifications, NotificationItem, notificationsTemplate) {
     
     return Backbone.Marionette.CompositeView.extend({
       template: notificationsTemplate,
       childView: NotificationItem,
       childViewContainer: ".list-wrapper",
 
+      initialize: function () {
+
+        // Create and fetch notifications
+        this.collection = new Notifications();
+
+        this.collection.fetch({ reset: true });
+      },
+
       ui: {
         badge: '.badge'
       },
-      
-      initialize: function () {
 
+      collectionEvents: {
+        'reset': 'insertNotificationCount'
       },
 
-      onShow: function() {
+      insertNotificationCount: function () {
+
+        var length = this.collection.size();
+
+        if (length > 0) {
+
+          this.ui.badge.html(length);
+        }
+      },
+
+      onShow: function () {
 
         /*
          * NOTE: We will remove this trick when Marionette upto version 3
@@ -33,7 +52,7 @@ define(
         parent = this.$el.parent();
         parent.append(this.$el.children());
         this.$el.remove();
-        this.setElement(parent);
+        this.setElement(parent.innerHTML);
       }
     });
   }
