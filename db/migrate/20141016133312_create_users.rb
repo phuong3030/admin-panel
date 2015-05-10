@@ -35,6 +35,9 @@ class CreateUsers < ActiveRecord::Migration
 
       # Uncomment below if timestamps were not included in your original model.
 
+      t.string :firstname
+      t.string :lastname
+
       t.references :ship_address, :index => true
       t.references :bill_address, :index => true
       t.references :group, :index => true

@@ -1,32 +1,28 @@
 module Admin
   class User < ActiveRecord::Base
-    has_and_belongs_to_many :roles, :class_name => "Admin::Role"
+    acts_as_messageable
+
+    belongs_to :group
 
     devise :database_authenticatable, 
       :recoverable, :rememberable, :trackable, :validatable
 
-    def role_array
-      self.roles.pluck(:name)
+    validates_presence_of :firstname, :lastname, :email
+    validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, message: 'Wrong email format'
+    validates_uniqueness_of :email, :username
+
+    def fullname
+      firstname + ' ' + lastname
     end
 
-    def role?(role)
-      role_array.include?(role.to_s)
+    def mailboxer_email(object)
+      case object
+      when Mailboxer::Message
+        return nil
+      when Mailboxer::Notification
+        return nil
+      end
     end
-
-    def add_role(role)
-      self.update_attributes(accepted_at: Time.now) if self.is_only_potential?
-      self.user_roles.create(role_id: Role.find_by(role: role).id ) if !self.role?(role)
-    end
-
-    def remove_role(role)
-      self.user_roles.find_by(role_id: Role.find_by(role: role).id ).destroy if self.role?(role)
-    end
-
-    # Get all ui can be used by user role
-    def get_ui_by_role(ui_type)
-      ui_type = (ui_type + 's').to_sym
-      ui = Admin::Function.arrange_nodes(self.roles.map { |role| role.send(ui_type) }.flatten.sort_by { |h| h.id })
-      Admin::Function.json_tree(ui)
-    end
+    
   end
 end

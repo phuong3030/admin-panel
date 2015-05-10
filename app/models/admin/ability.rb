@@ -7,11 +7,10 @@ module Admin
 
       user ||= Admin::User.new
 
-      if user.role? :admin
+      if user.group.role? :admin
         can :manage, :all
-      elsif user.role? :cms_moderator
-        can :manage, "Cms::Site"
-        can :read, ActiveAdmin::Page, :name => "Dashboard"
+      elsif user.group.role? :moderator
+        can :manage, :all
       end
     end
   end

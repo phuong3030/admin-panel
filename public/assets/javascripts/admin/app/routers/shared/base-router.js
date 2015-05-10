@@ -1,5 +1,9 @@
 define(['app'], function (App) {
 
+  /*
+   * Base router 
+   * Store the sub-application name and handle route filter
+   */
   return Backbone.Marionette.AppRouter.extend({
     _appName: '',
 
@@ -10,7 +14,7 @@ define(['app'], function (App) {
     
     after: function (route, param) {
 
-      App.vent.trigger('changeHeading', { 'route': route, 'params': param });
+      App.vent.trigger('Headingchanged', { route: route, params: param });
     }
   });
 });

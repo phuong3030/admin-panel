@@ -11,15 +11,20 @@ define(
       
       initialize: function () {
 
-        var childMenus = this.model.get('children');
+        if (this.model instanceof Backbone.Model) {
 
-        // Grab the child collection from the parent model
-        // so that we can render the collection as children
-        // of this parent node
-        if (childMenus.length > 0) {
+          var childMenus = this.model.get('children');
 
-          this.collection = new Navbar(childMenus);
-        } 
+          /* 
+           * Grab the child collection from the parent model
+           * so that we can render the collection as children
+           * of this parent node
+           */
+          if (childMenus.length > 0) {
+
+            this.collection = new Navbar(childMenus);
+          } 
+        }
       },
 
       onRender: function() {
@@ -40,8 +45,10 @@ define(
       },
 
       attachHtml: function(collectionView, itemView, index){
-        // Ensure we nest the child list inside of 
-        // the current list item
+        /* 
+         * Ensure we nest the child list inside of 
+         * the current list item
+         */
         collectionView.$(".child-menu ul").append(itemView.el);
       }
     });

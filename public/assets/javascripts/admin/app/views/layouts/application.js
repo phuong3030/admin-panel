@@ -28,6 +28,7 @@ define(
 
       },
 
+      // Load all sub UI module after the main layout
       onShow: function () {
 
         require(
@@ -40,12 +41,19 @@ define(
         );
       },
 
+      /*
+       * Left sizebar resizer
+       * Resize the sizebar with 3 type: full-width, small, medium
+       */
       resizeSidebar: function (type) {
 
         this.ui.leftSidebar.removeClass('medium small normal').addClass('sidebar ' + type);
         this.ui.mainContent.removeClass('medium small normal').addClass('admin-container ' + type);
       },
 
+      /*
+       * Collapse the sizebar and header by user
+       */
       collapseUI: function (type) {
 
         // Code duplicated because we have animation

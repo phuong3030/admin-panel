@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 
 # Authen and author gem 
-gem 'devise'
+gem 'devise', '~> 3.2'
 gem 'cancancan'
 
 # Pagination and file upload gem 
@@ -22,6 +22,7 @@ gem 'ancestry'
 
 # API
 gem 'grape', '~> 0.9.0'
+gem 'grape-rails-cache'
 
 # View engine
 gem 'slim-rails'
@@ -44,6 +45,9 @@ gem 'pg'
 # Web server gem 
 gem 'puma'
 
+# Notification system
+gem 'mailboxer'
+
 group :development, :test do
   gem 'spring'
   gem 'spring-commands-rspec'
@@ -51,7 +55,7 @@ group :development, :test do
   gem 'commands'
   gem 'rspec-rails'
   gem 'rspec-activemodel-mocks'
-  gem 'guard-spring'
+  gem 'shoulda'
   gem 'guard-rspec', :require => false
   gem 'guard-cucumber'
   gem 'pry'
