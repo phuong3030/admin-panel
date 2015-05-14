@@ -24,6 +24,9 @@ Rails.application.routes.draw do
       get '/' => 'core#index', :as => 'root'
       get '/login' => 'core#login', :as => 'login'
       get '/logout' => 'core#logout', :as => 'logout'
+
+      # Catch all sub routes in namespace admin for HTML pushstate
+      match "*path", to: "core#index", via: :all
     end
       
   #end
