@@ -1,8 +1,15 @@
-define(['handlebars'], function ( Handlebars ){
+define(['handlebars'], function (Handlebars) {
 
-  function breadcrumbHelper ( breads, options ) {
+  function breakBreads () {
+    
+    console.log(window.location.origin);
+  }
+
+  function breadcrumb(breads, options) {
 
     var i, output = '';
+
+    breakBreads();
 
     for (i = 0; i < breads.length; i++) {
       if (i !== breads.length - 1) {
@@ -15,11 +22,11 @@ define(['handlebars'], function ( Handlebars ){
       }
     }
 
-    return output;
+    return new Handlebars.SafeString(output);
   }
 
 
-  Handlebars.registerHelper('breadcrumb', breadcrumbHelper );
+  Handlebars.registerHelper('breadcrumb', breadcrumb);
 
-  return breadcrumbHelper;
+  return breadcrumb;
 });
