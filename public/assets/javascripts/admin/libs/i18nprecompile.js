@@ -9,7 +9,7 @@ define(['handlebars', "underscore"], function ( Handlebars, _ ) {
       _(ast.statements).forEach(function(statement, i){
         var newString = "<!-- i18n error -->";
         // If it's a translation node
-        if ( statement.type == "mustache" && statement.id && statement.id.original == "$" ) {
+        if ( statement.type === "mustache" && statement.id && statement.id.original === "$" ) {
 
           if ( statement.params.length && statement.params[0].string ) {
             var key = statement.params[0].string;
@@ -30,14 +30,26 @@ define(['handlebars', "underscore"], function ( Handlebars, _ ) {
     return ast;
   }
 
-  return function(string, mapping, options) {
-    options = options || {};
+  return function precompile (string, mapping, options) {
     var ast, environment;
+
+    options = options || {};
+
+    if (!('data' in options)) {
+      options.data = true;
+    }
+
+    if (options.compat) {
+      options.useDepths = true;
+    }
+
     ast = Handlebars.parse(string);
+
     // avoid replacing locale if mapping is `false`
     if (mapping !== false) {
         ast = replaceLocaleStrings(ast, mapping, options);
     }
+
     environment = new Handlebars.Compiler().compile(ast, options);
     return new Handlebars.JavaScriptCompiler().compile(environment, options);
   };

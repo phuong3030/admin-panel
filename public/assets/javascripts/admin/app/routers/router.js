@@ -13,7 +13,7 @@ define(['backbone', 'marionette'], function (Backbone, Marionette) {
 
     after: function (route, param) {
 
-      App.vent.trigger('changeHeading', route);
+      //App.vent.trigger('changeHeading', route);
     }
   });
 });

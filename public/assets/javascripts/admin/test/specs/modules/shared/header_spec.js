@@ -1,17 +1,21 @@
 define(
   [
     'app',
-    'modules/shared/header'
+    'modules/shared/header',
+    'sinon',
+    'jasminesinon'
   ], function (App, Header) {
 
     describe('Header module', function () {
 
       it('should show the header layout in header region when initialized', function () {
         
-        spyOn(App.header, 'show');
+        var spy = sinon.stub(App.header, 'show');
         App.module('Header').start();
 
-        expect(App.header.show).toHaveBeenCalled();
+        expect(spy).toHaveBeenCalled();
+
+        App.header.show.restore();
       });
     });
   }

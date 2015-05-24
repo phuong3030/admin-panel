@@ -48,6 +48,8 @@ define(
             Marionette.triggerMethodOn(rightTopMenu, 'before:show', rightTopMenu, {}, {});
             
             expect(spy).toHaveBeenCalled();
+
+            rightTopMenu.onBeforeShow.restore();
           });
         });
 
