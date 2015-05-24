@@ -1,25 +1,31 @@
 define(['handlebars'], function (Handlebars) {
 
-  var ROUTEMAPS = {
+  var Breadcrumb = {};
+
+  Breadcrumb.ROUTEMAPS = {
     'admin': { name: 'Default Dashboard', url: '/admin' }
   };
 
-  function breakPaths (paths) {
+  Breadcrumb.breakPaths = function (paths) {
     
     if(paths.length > 0) {
 
-      return paths.map(function (el) { return ROUTEMAPS[el]; });
+      return paths.map(function (el) { return Breadcrumb.ROUTEMAPS[el]; });
     } else {
 
       return [];
     }
-  }
+  };
 
-  function breadcrumb(context, options) {
+  Breadcrumb.getPathname = function () {
+
+    return window.location.pathname.substr(1).split('/');
+  };
+
+  Breadcrumb.breadcrumb = function (context, options) {
 
     var i, output = '',
-        paths = window.location.pathname.substr(1).split('/'),
-        breads = breakPaths(paths);
+        breads = Breadcrumb.breakPaths(Breadcrumb.getPathname());
 
     if (breads.length > 0) {
 
@@ -41,14 +47,10 @@ define(['handlebars'], function (Handlebars) {
 
       return '';
     }
-  }
-
-
-  Handlebars.registerHelper('breadcrumb', breadcrumb);
-
-  return {
-    breadcrumb: breadcrumb,
-    breakPaths: breakPaths,
-    routemaps: ROUTEMAPS
   };
+
+
+  Handlebars.registerHelper('breadcrumb', Breadcrumb.breadcrumb);
+
+  return Breadcrumb;
 });
