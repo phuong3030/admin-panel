@@ -12,7 +12,6 @@
 #### Dependencies:
 
  * Rails 4.1.6
- * Comfortable Mexican Sofa CMS
  * Backbone, MarionetteJS
  
 #### Continuous testing library:
