@@ -34,6 +34,14 @@ define(
 
         describe('View Events', function () {
 
+          it('should trigger event on app.vent to collapse UI', function  () {
+            
+            var spy = sinon.spy(App.vent, 'trigger');            
+
+            headSection.$el.find('.remove-sidebar-button').click();
+
+            expect(spy).toHaveBeenCalledWith('collapseUI', 'sidebar');
+          });
         });
     });
   }

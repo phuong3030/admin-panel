@@ -48,6 +48,11 @@ define(
         currentChildMenu.slideToggle(150, 'swing').toggleClass('open');
       },
 
+      closeAllMenu: function (e) {
+
+        this.ui.childMenu.slideUp(150, 'swing').removeClass('open');
+      },
+
       expandAllMenu: function (e) {
 
         var that = this,
