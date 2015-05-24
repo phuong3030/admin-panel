@@ -1,8 +1,10 @@
 define(
   [
+    'templates/helpers/breadcrumb',
     'hbs!templates/shared/main-content/head-section',
-    'jasminejquery'
-  ], function (HeadSection) {
+    'jasminejquery',
+    'sinon'
+  ], function (Breadcrumb, HeadSection) {
 
     describe('Head section template', function () {
 

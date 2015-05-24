@@ -77,8 +77,12 @@ define(
 
             notifications.collection.fetch();
             server.respond();
+            notifications.insertNotificationCount();
 
-            expect(notifications.$el).toContainHtml('<span class="badge bg-red">1</span>');
+            expect(notifications.$el).toContainHtml(
+              '<span class="badge bg-red">' + notifications.collection.size() 
+              + '</span>'
+            );
           });
 
           it('should render right notification in view', function () {
@@ -98,6 +102,8 @@ define(
             notifications.insertNotificationCount();
 
             expect(notifications.ui.badge.html()).toEqual('2');
+
+            stub.restore();
           });
 
         });
